@@ -77,6 +77,19 @@ namespace WebApplication1.Models
         public Int32 ID { get; set; }
         public String RACK { get; set; }
     }
+    public class SUPERMARKET_LINE_CAPACITY
+    {
+        public Int32 ID { get; set; }
+        public String CUSTOMER { get; set; }
+        public String H0 { get; set; }
+        public String A0 { get; set; }
+        public String MODEL { get; set; }
+        public Int32 CAPACITY { get; set; }
+        public Int32 MINUTE_30 { get; set; }
+        public Int32 MINUTE_60 { get; set; }
+        public Int32 MINUTE_90 { get; set; }
+    }
+
     public class SUPERMARKET_SLIDER
     {
         public Int32 ID { get; set; }

@@ -28,7 +28,17 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult SLIDER_INFORMATION()
+        {
+            return View();
+        }
+
         public ActionResult KANBAN_COLOR_FLOW()
+        {
+            return View();
+        }
+
+        public ActionResult KANBAN_CARD_INFORMATION()
         {
             return View();
         }
@@ -38,5 +48,42 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        public ActionResult RECEIVING()
+        {
+            return View();
+        }
+        //
+        public ActionResult RECEIVING_LABELLING()
+        {
+            return View();
+        }
+        public ActionResult PCB_LABELLING()
+        {
+            return View();
+        }
+        public ActionResult STOCK_OUT()
+        {
+            return View();
+        }
+        public ActionResult STOCK_IN()
+        {
+            return View();
+        }
+        public ActionResult KITTING()
+        {
+            return View();
+        }
+        public ActionResult SUPERMARKET()
+        {
+            return View();
+        }
+        public ActionResult DROP_IN()
+        {
+            return View();
+        }
+        public ActionResult PIECHART()
+        {
+            return View();
+        }
     }
 }

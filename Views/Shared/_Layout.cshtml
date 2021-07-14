@@ -74,6 +74,8 @@
                                 <li><a class="dropdown-item">Supermarket Bin ID</a></li>
                             </ul>
                         </li>
+                        <li>@Html.ActionLink("Slider Address Information", "SLIDER_INFORMATION", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Kanban Card Information", "KANBAN_CARD_INFORMATION", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
                     </ul>
                 </li>
 
@@ -105,6 +107,30 @@
                                 <li><a class="dropdown-item" href="http://172.16.206.19/RM_2002_TRIGERRING/File_Upload.aspx">2002 Triggering File Upload</a></li>
                             </ul>
                         </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Work Instruction </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Recieving</a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Receiving", "RECEIVING", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                                <li>@Html.ActionLink("Receiving Labelling", "RECEIVING_LABELLING", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                                <li>@Html.ActionLink("PCB Labelling", "PCB_LABELLING", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">(Main Store)</a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Stock In", "STOCK_IN", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                                <li>@Html.ActionLink("Stock Out", "STOCK_OUT", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("Kitting", "KITTING", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Drop In", "DROP_IN", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Supermarket", "SUPERMARKET", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
                     </ul>
                 </li>
 

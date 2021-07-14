@@ -68,6 +68,11 @@ namespace WebApplication1
             double kanbancard_value_box_two_height = XUnit.FromMillimeter(4.5);
             int kanban_image_height = 145;
             int kanban_image_width = 155;
+            double kitting_slider_width = XUnit.FromMillimeter(15);
+            double kitting_slider_height = XUnit.FromMillimeter(13.5);
+            double kitting_slider_value_width = line_value_box_width;
+            double kitting_slider_value_height = XUnit.FromMillimeter(13.5);
+
 
             int col_count = 0;
             int kanban_per_page_count = 1;
@@ -112,6 +117,8 @@ namespace WebApplication1
             double model_text_horizontal_position = kanbancard_value_box_two_horizontal_position + kanbancard_value_box_two_width;
             double revision_text_horizontal_position = width;
             double kanban_image_horizontal_position = line_value_box_horizontal_position + line_value_box_width + 5;
+            double kitting_slider_horizontal_position = 20.0;
+            double kitting_slider_value_horizontal_position = kitting_slider_horizontal_position + kitting_slider_width;
 
             double box_vertical_position = 20.0;
             double barcode_box_vertical_position = 20.0;
@@ -129,10 +136,12 @@ namespace WebApplication1
             double plannercode_text_box_vertical_position = barcode_box_vertical_position + barcode_box_height + line_text_box_height;
             double line_value_box_vertical_position = barcode_box_vertical_position + barcode_box_height;
             double slider_no_text_box_vertical_position = barcode_box_vertical_position + barcode_box_height + line_value_box_height;
+            double kitting_slider_vertical_position = slider_no_text_box_vertical_position + slider_no_text_box_height;
             double safety_part_text_box_vertical_position = slider_no_text_box_vertical_position + slider_no_text_box_height;
             double appr_part_text_box_vertical_position = safety_part_text_box_vertical_position + safety_part_text_box_height;
             double high_consump_text_box_vertical_position = appr_part_text_box_vertical_position + appr_part_text_box_height;
             double slider_no_value_box_vertical_position = line_value_box_vertical_position + line_value_box_height;
+            double kitting_slider_value_vertical_position = slider_no_value_box_vertical_position + slider_no_value_box_height;
             double kanbancard_text_box_vertical_position = high_consump_text_box_vertical_position + high_consump_text_box_height;
             double safety_part_value_box_vertical_position = safety_part_text_box_vertical_position;
             double appr_part_value_box_vertical_position = appr_part_text_box_vertical_position;
@@ -143,6 +152,8 @@ namespace WebApplication1
             double revision_text_vertical_position = model_text_vertical_position;
             double kanban_image_vertical_position = bintype_text_box_vertical_position + bintype_text_box_height + 5;
 
+
+
             XColor kanbanColor = XColor.FromArgb(255, 112, 217);
 
             XGraphics gfx = XGraphics.FromPdfPage(page);
@@ -151,6 +162,10 @@ namespace WebApplication1
                 kanban_color == "Subwork" && kANBAN_MASTER.PROCESS.Contains("SUBWORK") )
             {
                 kanbanColor = XColor.FromArgb(255, 255, 255);
+            }
+            else if (kanban_color == "SUB_ST")
+            {
+                kanbanColor = XColor.FromArgb(195, 195, 195);
             }
             else if (kanban_color == "Prod" && kANBAN_MASTER.PROCESS == "SUB" || kanban_color == "Prod" && kANBAN_MASTER.PROCESS == "SUBWORK"  || kanban_color == "Prod" && kANBAN_MASTER.PROCESS.Contains("SUB") ||
                 kanban_color == "Prod" && kANBAN_MASTER.PROCESS.Contains("SUBWORK"))
@@ -201,7 +216,7 @@ namespace WebApplication1
                     gfx = XGraphics.FromPdfPage(page);
                     kanban_per_page_count = 1;
                     col_count = 0;
-                    //reset horizontal position
+                    //reset both position
                     box_horizontal_position = 20.0;
                     box_horizontal_position = 20.0;
                     barcode_box_horizontal_position = 20.0;
@@ -232,6 +247,8 @@ namespace WebApplication1
                     model_text_horizontal_position = kanbancard_value_box_two_horizontal_position + kanbancard_value_box_two_width;
                     revision_text_horizontal_position = width;
                     kanban_image_horizontal_position = line_value_box_horizontal_position + line_value_box_width + 5;
+                    kitting_slider_horizontal_position = 20.0;
+                    kitting_slider_value_horizontal_position = kitting_slider_horizontal_position + kitting_slider_width;
 
                     box_vertical_position = 20.0;
                     barcode_box_vertical_position = 20.0;
@@ -254,9 +271,7 @@ namespace WebApplication1
                     high_consump_text_box_vertical_position = appr_part_text_box_vertical_position + appr_part_text_box_height;
                     slider_no_value_box_vertical_position = line_value_box_vertical_position + line_value_box_height;
                     kanbancard_text_box_vertical_position = high_consump_text_box_vertical_position + high_consump_text_box_height;
-
                     safety_part_value_box_vertical_position = safety_part_text_box_vertical_position;
-
                     appr_part_value_box_vertical_position = appr_part_text_box_vertical_position;
                     high_consump_value_box_vertical_position = high_consump_text_box_vertical_position;
                     kanbancard_value_box_one_vertical_position = kanbancard_text_box_vertical_position;
@@ -264,6 +279,8 @@ namespace WebApplication1
                     model_text_vertical_position = kanbancard_value_box_two_vertical_position + (kanbancard_value_box_two_height / 2);
                     revision_text_vertical_position = model_text_vertical_position;
                     kanban_image_vertical_position = bintype_text_box_vertical_position + bintype_text_box_height + 5;
+                    kitting_slider_vertical_position = slider_no_text_box_vertical_position + slider_no_text_box_height;
+                    kitting_slider_value_vertical_position = slider_no_value_box_vertical_position + slider_no_value_box_height;
 
                 }
 
@@ -301,6 +318,8 @@ namespace WebApplication1
                     model_text_horizontal_position = kanbancard_value_box_two_horizontal_position + kanbancard_value_box_two_width;
                     revision_text_horizontal_position = width;
                     kanban_image_horizontal_position = line_value_box_horizontal_position + line_value_box_width + 5;
+                    kitting_slider_horizontal_position = 20.0;
+                    kitting_slider_value_horizontal_position = kitting_slider_horizontal_position + kitting_slider_width;
 
                     // set the position to duplicate the designs to other kanban cards vertically
                     box_vertical_position = box_vertical_position + 15 + height;
@@ -332,6 +351,8 @@ namespace WebApplication1
                     model_text_vertical_position = model_text_vertical_position + 15 + height;
                     revision_text_vertical_position = revision_text_vertical_position + 15 + height;
                     kanban_image_vertical_position = kanban_image_vertical_position + 15 + height;
+                    kitting_slider_vertical_position = kitting_slider_vertical_position + 15 + height;
+                    kitting_slider_value_vertical_position = kitting_slider_value_vertical_position + 15 + height;
 
                     //reset count
                     col_count = 0;
@@ -420,27 +441,6 @@ namespace WebApplication1
 
                 gfx.DrawString(kanban_of_number.ToString(), new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
                 kanban_of_number++;
-
-                //Draw a box containing high consump value
-                gfx.DrawRectangle(pen, high_consump_value_box_horizontal_position, high_consump_value_box_vertical_position, high_consump_value_box_width, high_consump_value_box_height);
-                points = new XPoint(high_consump_value_box_horizontal_position + (high_consump_value_box_width / 2), high_consump_value_box_vertical_position + (high_consump_value_box_height / 2));
-                gfx.DrawString("", new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
-
-                //Draw a box containing app part value text
-                gfx.DrawRectangle(pen, appr_part_value_box_horizontal_position, appr_part_value_box_vertical_position, appr_part_value_box_width, appr_part_value_box_height);
-                points = new XPoint(appr_part_value_box_horizontal_position + (appr_part_value_box_width / 2), appr_part_value_box_vertical_position + (appr_part_value_box_height / 2));
-                gfx.DrawString("", new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
-
-                //Draw a box containing app part value text
-                gfx.DrawRectangle(pen, appr_part_value_box_horizontal_position, appr_part_value_box_vertical_position, appr_part_value_box_width, appr_part_value_box_height);
-                points = new XPoint(appr_part_value_box_horizontal_position + (appr_part_value_box_width / 2), appr_part_value_box_vertical_position + (appr_part_value_box_height / 2));
-                gfx.DrawString("", new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
-
-
-                //Draw a box containing safetypart value text
-                gfx.DrawRectangle(pen, safety_part_value_box_horizontal_position, safety_part_value_box_vertical_position, safety_part_value_box_width, safety_part_value_box_height);
-                points = new XPoint(safety_part_value_box_horizontal_position + (safety_part_value_box_width / 2), safety_part_value_box_vertical_position + (safety_part_value_box_height / 2));
-                gfx.DrawString("", new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
 
                 //Draw a box containing kanbancard text
                 gfx.DrawRectangle(pen, brush, kanbancard_text_box_horizontal_position, kanbancard_text_box_vertical_position, kanbancard_text_box_width, kanbancard_text_box_height);
@@ -608,21 +608,61 @@ namespace WebApplication1
                 rect = new XRect(slider_no_value_box_horizontal_position + slider_no_value_box_width / 4, slider_no_value_box_vertical_position + slider_no_value_box_height / 4, slider_no_value_box_width, slider_no_value_box_height);
                 tf.DrawString(slider_Address, new XFont("Arial", font_size, XFontStyle.Bold), XBrushes.Black, rect, XStringFormats.TopLeft);
 
-                //Draw a box containing safety part text
-                gfx.DrawRectangle(pen, brush, safety_part_text_box_horizontal_position, safety_part_text_box_vertical_position, safety_part_text_box_width, safety_part_text_box_height);
-                points = new XPoint(safety_part_text_box_horizontal_position + 20, safety_part_text_box_vertical_position + (safety_part_text_box_height / 2));
-                gfx.DrawString("Safety Part:", new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
+                if (kanban_color != "SUB_ST")
+                {
+                    //Draw a box containing safety part text
+                    gfx.DrawRectangle(pen, brush, safety_part_text_box_horizontal_position, safety_part_text_box_vertical_position, safety_part_text_box_width, safety_part_text_box_height);
+                    points = new XPoint(safety_part_text_box_horizontal_position + 20, safety_part_text_box_vertical_position + (safety_part_text_box_height / 2));
+                    gfx.DrawString("Safety Part:", new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
 
-                //Draw a box containing appr part text
-                gfx.DrawRectangle(pen, brush, appr_part_text_box_horizontal_position, appr_part_text_box_vertical_position, appr_part_text_box_width, appr_part_text_box_height);
-                points = new XPoint(appr_part_text_box_horizontal_position + (appr_part_text_box_width / 2), appr_part_text_box_vertical_position + (appr_part_text_box_height / 2));
-                gfx.DrawString("Appr Part", new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
+                    //Draw a box containing appr part text
+                    gfx.DrawRectangle(pen, brush, appr_part_text_box_horizontal_position, appr_part_text_box_vertical_position, appr_part_text_box_width, appr_part_text_box_height);
+                    points = new XPoint(appr_part_text_box_horizontal_position + (appr_part_text_box_width / 2), appr_part_text_box_vertical_position + (appr_part_text_box_height / 2));
+                    gfx.DrawString("Appr Part", new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
+
+                    //Draw a box containing high consump value
+                    gfx.DrawRectangle(pen, high_consump_value_box_horizontal_position, high_consump_value_box_vertical_position, high_consump_value_box_width, high_consump_value_box_height);
+                    points = new XPoint(high_consump_value_box_horizontal_position + (high_consump_value_box_width / 2), high_consump_value_box_vertical_position + (high_consump_value_box_height / 2));
+                    gfx.DrawString("", new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
+
+                    //Draw a box containing High consump texyt
+                    gfx.DrawRectangle(pen, brush, high_consump_text_box_horizontal_position, high_consump_text_box_vertical_position, high_consump_text_box_width, high_consump_text_box_height);
+                    points = new XPoint(high_consump_text_box_horizontal_position + (high_consump_text_box_width / 2), high_consump_text_box_vertical_position + (appr_part_text_box_height / 2));
+                    gfx.DrawString("High Consump", new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
+
+                    //Draw a box containing safetypart value text
+                    gfx.DrawRectangle(pen, safety_part_value_box_horizontal_position, safety_part_value_box_vertical_position, safety_part_value_box_width, safety_part_value_box_height);
+                    points = new XPoint(safety_part_value_box_horizontal_position + (safety_part_value_box_width / 2), safety_part_value_box_vertical_position + (safety_part_value_box_height / 2));
+                    gfx.DrawString("", new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
+
+                    //Draw a box containing app part value text
+                    gfx.DrawRectangle(pen, appr_part_value_box_horizontal_position, appr_part_value_box_vertical_position, appr_part_value_box_width, appr_part_value_box_height);
+                    points = new XPoint(appr_part_value_box_horizontal_position + (appr_part_value_box_width / 2), appr_part_value_box_vertical_position + (appr_part_value_box_height / 2));
+                    gfx.DrawString("", new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
+
+                    //Draw a box containing app part value text
+                    gfx.DrawRectangle(pen, appr_part_value_box_horizontal_position, appr_part_value_box_vertical_position, appr_part_value_box_width, appr_part_value_box_height);
+                    points = new XPoint(appr_part_value_box_horizontal_position + (appr_part_value_box_width / 2), appr_part_value_box_vertical_position + (appr_part_value_box_height / 2));
+                    gfx.DrawString("", new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
 
 
-                //Draw a box containing High consump texyt
-                gfx.DrawRectangle(pen, brush, high_consump_text_box_horizontal_position, high_consump_text_box_vertical_position, high_consump_text_box_width, high_consump_text_box_height);
-                points = new XPoint(high_consump_text_box_horizontal_position + (high_consump_text_box_width / 2), high_consump_text_box_vertical_position + (appr_part_text_box_height / 2));
-                gfx.DrawString("High Consump", new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
+                }
+                else
+                {
+                    //Draw a box containing Kitting Slider
+                    gfx.DrawRectangle(pen, brush, kitting_slider_horizontal_position, safety_part_text_box_vertical_position, kitting_slider_width, kitting_slider_height);
+
+                    points = new XPoint(kitting_slider_horizontal_position + (kitting_slider_width / 2), safety_part_text_box_vertical_position + (kitting_slider_height / 2));
+                    gfx.DrawString("Kitting Slider", new XFont("Arial", 7), XBrushes.Black, points, XStringFormats.Center);
+
+
+                    //Draw a box containing Kitting Slider value
+                    gfx.DrawRectangle(pen, kitting_slider_value_horizontal_position, safety_part_text_box_vertical_position, kitting_slider_value_width, kitting_slider_value_height);
+                    
+                    points = new XPoint(kitting_slider_value_horizontal_position + (kitting_slider_value_width / 2), safety_part_text_box_vertical_position + (kitting_slider_value_height / 2));
+                    gfx.DrawString(kANBAN_MASTER.KITTING_SLIDER, new XFont("Arial", 14), XBrushes.Black, points, XStringFormats.Center);
+                }
+
 
                 //creates 3 pieces of kanban before going next line
                 col_count++;
@@ -659,6 +699,8 @@ namespace WebApplication1
                 model_text_horizontal_position = model_text_horizontal_position + 30 + width;
                 revision_text_horizontal_position = width + 30 + revision_text_horizontal_position;
                 kanban_image_horizontal_position = width + kanban_image_horizontal_position + 30;
+                kitting_slider_horizontal_position = width + kitting_slider_horizontal_position + 30;
+                kitting_slider_value_horizontal_position = width + 30 + kitting_slider_value_horizontal_position;
 
             }
 
@@ -721,14 +763,7 @@ namespace WebApplication1
             page.Orientation = PdfSharp.PageOrientation.Landscape;
             page.Size = PdfSharp.PageSize.A4;
 
-            var QCwriter = new BarcodeWriter();
-            QCwriter.Format = BarcodeFormat.QR_CODE;
-            QCwriter.Options.Height = 155;
-            QCwriter.Options.Width = 155;
-            QCwriter.Options.Margin = 0;
-            var result = QCwriter.Write(kANBAN_MASTER.PART_NO);
-            var barcodeBitmap = new Bitmap(result);
-            barcodeBitmap.SetResolution(300.0F, 300.0F);
+
 
             if (kANBAN_MASTER.PART_NAME.Length > 20)
             {
@@ -812,6 +847,15 @@ namespace WebApplication1
             {
                 kanbanColor = XColor.FromArgb(255, 112, 217);
             }
+
+            var QCwriter = new BarcodeWriter();
+            QCwriter.Format = BarcodeFormat.QR_CODE;
+            QCwriter.Options.Height = 155;
+            QCwriter.Options.Width = 155;
+            QCwriter.Options.Margin = 0;
+            var result = QCwriter.Write(kANBAN_MASTER.PART_NO);
+            var barcodeBitmap = new Bitmap(result);
+            barcodeBitmap.SetResolution(300.0F, 300.0F);
 
             for (int i = 0; i < store_Qty; i++)
             {
@@ -1104,10 +1148,14 @@ namespace WebApplication1
                 string slider_add_part = "";
                 double slider_address_height_addition = (supermarket_section_height / 2);
 
-                if (kANBAN_MASTER.SLIDER_ADDRESS.Length != 0)
+                if (string.IsNullOrEmpty(kANBAN_MASTER.SLIDER_ADDRESS) == false)
                 {
-                    slider_add_part = kANBAN_MASTER.SLIDER_ADDRESS.Substring(0,2);
+                    slider_add_part = kANBAN_MASTER.SLIDER_ADDRESS.Substring(0, 2);
 
+                }
+                else
+                {
+                    slider_add_part = "";
                 }
 
                 //Draw a box containing the quantity description

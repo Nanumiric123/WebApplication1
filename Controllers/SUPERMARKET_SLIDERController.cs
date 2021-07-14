@@ -16,7 +16,7 @@ namespace WebApplication1.Views
         private WebApplication1Context db = new WebApplication1Context();
 
         // GET: SUPERMARKET_SLIDER
-        public ActionResult Index(string SearchColor,string SearchRack,string SearchSliderAddress)
+        public ActionResult Index(string SearchColor,string SearchRack,string SearchSliderAddress, string SearchPartNumber,string SearchBIN,string SearchArea,string SearchStatus)
         {
             var sliderList = db.SUPERMARKET_SLIDER.ToList();
 
@@ -24,9 +24,25 @@ namespace WebApplication1.Views
             { 
                  sliderList = db.SUPERMARKET_SLIDER.Where(x => x.COLOR.Equals(SearchColor)).ToList();
             }
+            else if (!String.IsNullOrEmpty(SearchStatus))
+            {
+                sliderList = db.SUPERMARKET_SLIDER.Where(x => x.STATUS.Equals(SearchStatus)).ToList();
+            }
+            else if (!String.IsNullOrEmpty(SearchArea))
+            {
+                sliderList = db.SUPERMARKET_SLIDER.Where(x => x.AREA.Equals(SearchArea)).ToList();
+            }
+            else if (!String.IsNullOrEmpty(SearchBIN))
+            {
+                sliderList = db.SUPERMARKET_SLIDER.Where(x => x.BIN.Equals(SearchBIN)).ToList();
+            }
             else if (!String.IsNullOrEmpty(SearchRack))
             {
                 sliderList = db.SUPERMARKET_SLIDER.Where(x => x.RACK.Equals(SearchRack)).ToList();
+            }
+            else if (!String.IsNullOrEmpty(SearchPartNumber))
+            {
+                sliderList = db.SUPERMARKET_SLIDER.Where(x => x.PART_NUMBER.Equals(SearchPartNumber)).ToList();
             }
             else if (!String.IsNullOrEmpty(SearchSliderAddress))
             {

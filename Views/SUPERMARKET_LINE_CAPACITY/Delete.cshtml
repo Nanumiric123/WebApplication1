@@ -1,0 +1,88 @@
+﻿@model WebApplication1.Models.SUPERMARKET_LINE_CAPACITY
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>SUPERMARKET_LINE_CAPACITY</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CUSTOMER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CUSTOMER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.H0)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.H0)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.A0)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.A0)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MODEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MODEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CAPACITY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CAPACITY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MINUTE_30)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MINUTE_30)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MINUTE_60)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MINUTE_60)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MINUTE_90)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MINUTE_90)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

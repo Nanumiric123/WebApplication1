@@ -22,9 +22,17 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PART_NUMBER)
+                <div class="form-group">
+                    @Html.TextBox("SearchPartNumber")
+                    <input type="submit" value="Search" />
+                </div>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.STATUS)
+                <div class="form-group">
+                    @Html.TextBox("SearchStatus")
+                    <input type="submit" value="Search" />
+                </div>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.RACK)
@@ -35,9 +43,17 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.AREA)
+                <div class="form-group">
+                    @Html.TextBox("SearchArea")
+                    <input type="submit" value="Search" />
+                </div>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.BIN)
+                <div class="form-group">
+                    @Html.TextBox("SearchBIN")
+                    <input type="submit" value="Search" />
+                </div>
             </th>
 
             <th>

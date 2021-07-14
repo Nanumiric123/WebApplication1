@@ -18,6 +18,7 @@ namespace WebApplication1.Controllers
     {
         private WebApplication1Context db = new WebApplication1Context();
         private sliderContext sliderdb = new sliderContext();
+        private capacityContext capacitydb = new capacityContext();
 
 
         // GET: KANBAN_MASTER
@@ -226,7 +227,7 @@ namespace WebApplication1.Controllers
                    int found_count = 0;
                     foreach (var j in Kanbanmasterlist)
                     {
-                        if (k.PART_NUMBER.Contains(j.PART_NO))
+                        if (k.PART_NUMBER == j.PART_NO)
                         {
                             SUPERMARKET_SLIDER_JOINED l = new SUPERMARKET_SLIDER_JOINED();
                             l.ID = k.ID;
@@ -357,8 +358,9 @@ namespace WebApplication1.Controllers
             decimal output_perhr_half = (line_output / 10.5m) / 2.0m;
 
             decimal SUPERMARKET_STOCK_90_MIN = ((output_perhr + output_perhr_half) / bin_qty) * per_usage;
+            result = (int)Math.Ceiling(SUPERMARKET_STOCK_90_MIN);
 
-            result = int.Parse(Math.Floor(SUPERMARKET_STOCK_90_MIN).ToString());
+            //result = int.Parse(Math.Round(SUPERMARKET_STOCK_90_MIN,1).ToString());
             result = result + 5;
 
             return result;
@@ -384,17 +386,41 @@ namespace WebApplication1.Controllers
 
             string[] lines_output = kANBAN_MASTER.LINE.ToString().Split();
 
+            decimal total_prod_output = 0;
 
-            decimal line_output_decimal = lines_output.Length;
+            foreach (var lin in lines_output)
+            {
+                SUPERMARKET_LINE_CAPACITY LINE_CAPACITY_DB_H0 = capacitydb.SUPERMARKET_LINE_CAPACITY.Where(s => s.H0 == lin).FirstOrDefault<SUPERMARKET_LINE_CAPACITY>();
+                SUPERMARKET_LINE_CAPACITY LINE_CAPACITY_DB_A0 = capacitydb.SUPERMARKET_LINE_CAPACITY.Where(s => s.A0 == lin).FirstOrDefault<SUPERMARKET_LINE_CAPACITY>();
+                if (LINE_CAPACITY_DB_H0 != null && LINE_CAPACITY_DB_A0 == null)
+                {
+                    total_prod_output = total_prod_output + LINE_CAPACITY_DB_H0.CAPACITY;
+
+                }
+                else if (LINE_CAPACITY_DB_A0 != null && LINE_CAPACITY_DB_H0 == null)
+                {
+                    total_prod_output = total_prod_output + LINE_CAPACITY_DB_A0.CAPACITY;
+                }
+                else if (LINE_CAPACITY_DB_A0 != null && LINE_CAPACITY_DB_H0 != null)
+                {
+                    total_prod_output = total_prod_output + LINE_CAPACITY_DB_A0.CAPACITY + LINE_CAPACITY_DB_H0.CAPACITY;
+                }
+                else
+                {
+
+                }
+            }
+
+            decimal line_output_decimal = decimal.Parse(kANBAN_MASTER.OUTPUT.ToString());
             decimal STORE_OUTPUT_DECIMAL = decimal.Parse(kANBAN_MASTER.OUTPUT.ToString());
             decimal bin_qty_decimal = decimal.Parse(kANBAN_MASTER.QTY_PER_BIN.ToString());
             decimal per_usage_decimal = decimal.Parse(kANBAN_MASTER.USAGE.ToString());
 
 
-            kANBAN_MASTER.PROD_KANBAN_QTY = calculate_prod_kanban_qty(line_output_decimal,
+            kANBAN_MASTER.PROD_KANBAN_QTY = calculate_prod_kanban_qty(total_prod_output,
                 bin_qty_decimal, per_usage_decimal);
 
-            kANBAN_MASTER.STORE_KANBAN_QTY = calculate_store_kanban_qty(STORE_OUTPUT_DECIMAL,
+            kANBAN_MASTER.STORE_KANBAN_QTY = calculate_store_kanban_qty(total_prod_output,
                 bin_qty_decimal, per_usage_decimal);
 
             string BIN_NUMBER = kANBAN_MASTER.BIN_NUMBER_END;
@@ -451,6 +477,30 @@ namespace WebApplication1.Controllers
             }
             string[] lines_output = kANBAN_MASTER.LINE.ToString().Split();
 
+            decimal total_prod_output = 0;
+
+            foreach (var lin in lines_output)
+            {
+                SUPERMARKET_LINE_CAPACITY LINE_CAPACITY_DB_H0 = capacitydb.SUPERMARKET_LINE_CAPACITY.Where(s => s.H0 == lin).FirstOrDefault<SUPERMARKET_LINE_CAPACITY>();
+                SUPERMARKET_LINE_CAPACITY LINE_CAPACITY_DB_A0 = capacitydb.SUPERMARKET_LINE_CAPACITY.Where(s => s.A0 == lin).FirstOrDefault<SUPERMARKET_LINE_CAPACITY>();
+                if (LINE_CAPACITY_DB_H0 != null && LINE_CAPACITY_DB_A0 == null)
+                {
+                    total_prod_output = total_prod_output + LINE_CAPACITY_DB_H0.CAPACITY;
+
+                }
+                else if (LINE_CAPACITY_DB_A0 != null && LINE_CAPACITY_DB_H0 == null)
+                {
+                    total_prod_output = total_prod_output + LINE_CAPACITY_DB_A0.CAPACITY;
+                }
+                else if (LINE_CAPACITY_DB_A0 != null && LINE_CAPACITY_DB_H0 != null)
+                {
+                    total_prod_output = total_prod_output + LINE_CAPACITY_DB_A0.CAPACITY + LINE_CAPACITY_DB_H0.CAPACITY;
+                }
+                else
+                {
+
+                }
+            }
 
             decimal line_output_decimal = lines_output.Length;
             decimal lineoutput_decimal_store = decimal.Parse(kANBAN_MASTER.OUTPUT.ToString());
@@ -458,10 +508,10 @@ namespace WebApplication1.Controllers
             decimal bin_qty_decimal = decimal.Parse(kANBAN_MASTER.QTY_PER_BIN.ToString());
             decimal per_usage_decimal = decimal.Parse(kANBAN_MASTER.USAGE.ToString());
 
-            kANBAN_MASTER.PROD_KANBAN_QTY = calculate_prod_kanban_qty(line_output_decimal,
+            kANBAN_MASTER.PROD_KANBAN_QTY = calculate_prod_kanban_qty(total_prod_output,
                 bin_qty_decimal, per_usage_decimal);
 
-            kANBAN_MASTER.STORE_KANBAN_QTY = calculate_store_kanban_qty(lineoutput_decimal_store,
+            kANBAN_MASTER.STORE_KANBAN_QTY = calculate_store_kanban_qty(total_prod_output,
                 bin_qty_decimal, per_usage_decimal);
 
             string BIN_NUMBER = kANBAN_MASTER.BIN_NUMBER_END;
@@ -583,22 +633,47 @@ namespace WebApplication1.Controllers
 
             }
             string[] lines_output = kANBAN_MASTER.LINE.ToString().Split();
+            decimal total_prod_output = 0;
 
+            foreach (var lin in lines_output)
+            {
+                SUPERMARKET_LINE_CAPACITY LINE_CAPACITY_DB_H0 = capacitydb.SUPERMARKET_LINE_CAPACITY.Where(s => s.H0 == lin).FirstOrDefault<SUPERMARKET_LINE_CAPACITY>();
+                SUPERMARKET_LINE_CAPACITY LINE_CAPACITY_DB_A0 = capacitydb.SUPERMARKET_LINE_CAPACITY.Where(s => s.A0 == lin).FirstOrDefault<SUPERMARKET_LINE_CAPACITY>();
+                if (LINE_CAPACITY_DB_H0 != null && LINE_CAPACITY_DB_A0 == null)
+                {
+                    total_prod_output = total_prod_output + LINE_CAPACITY_DB_H0.CAPACITY;
 
-            decimal line_output_decimal = lines_output.Length;
+                }
+                else if (LINE_CAPACITY_DB_A0 != null && LINE_CAPACITY_DB_H0 == null)
+                {
+                    total_prod_output = total_prod_output + LINE_CAPACITY_DB_A0.CAPACITY;
+                }
+                else if (LINE_CAPACITY_DB_A0 != null && LINE_CAPACITY_DB_H0 != null)
+                {
+                    total_prod_output = total_prod_output + LINE_CAPACITY_DB_A0.CAPACITY + LINE_CAPACITY_DB_H0.CAPACITY;
+                }
+                else
+                {
+
+                }
+            }
+
+            decimal line_output_decimal = decimal.Parse(kANBAN_MASTER.OUTPUT.ToString());
             decimal bin_qty_decimal = decimal.Parse(kANBAN_MASTER.QTY_PER_BIN.ToString());
             decimal per_usage_decimal = decimal.Parse(kANBAN_MASTER.USAGE.ToString());
             decimal lineoutput_decimal_store = decimal.Parse(kANBAN_MASTER.OUTPUT.ToString());
 
-            kANBAN_MASTER.PROD_KANBAN_QTY = calculate_prod_kanban_qty(line_output_decimal,
+            kANBAN_MASTER.PROD_KANBAN_QTY = calculate_prod_kanban_qty(total_prod_output,
                 bin_qty_decimal, per_usage_decimal);
 
-            kANBAN_MASTER.STORE_KANBAN_QTY = calculate_store_kanban_qty(lineoutput_decimal_store,
+            kANBAN_MASTER.STORE_KANBAN_QTY = calculate_store_kanban_qty(total_prod_output,
                 bin_qty_decimal, per_usage_decimal);
 
             string BIN_NUMBER = kANBAN_MASTER.BIN_NUMBER_END;
 
             int bin_num = 0;
+
+            /*
             try
             {
                 string[] bin_split = BIN_NUMBER.Split('S');
@@ -608,7 +683,7 @@ namespace WebApplication1.Controllers
             }
             catch { kANBAN_MASTER.BIN_NUMBER_END = ""; }
 
-
+            */
 
 
 
@@ -684,11 +759,53 @@ namespace WebApplication1.Controllers
         public FileStreamResult CreateProdKanbanPdf(int? id, [Bind(Include = "ID,PHOTO,PART_NO,PART_NAME,MODEL,LINE,OUTPUT,USAGE,PROCESS,QTY_PER_TRAY,TARY_PER_BIN,QTY_PER_BIN,BIN_TYPE,LOCATION,SLIDER_ADDRESS,KITTING_SLIDER,STORE_KANBAN_QTY,PROD_KANBAN_QTY,BASIC_FINISH_DATE,REVISION,CYCLE_TIME")] KANBAN_MASTER kANBAN_MASTER, string kanban_color)
         {
             KANBAN_MASTER kANBAN_MASTER_db = db.KANBAN_MASTER.Find(kANBAN_MASTER.ID);
+            
             kANBAN_MASTER_db.LINE = kANBAN_MASTER.LINE;
+            SUPERMARKET_LINE_CAPACITY LINE_CAPACITY_DB_H0 = capacitydb.SUPERMARKET_LINE_CAPACITY.Where(s => s.H0 == kANBAN_MASTER.LINE.ToString()).FirstOrDefault<SUPERMARKET_LINE_CAPACITY>();
+            SUPERMARKET_LINE_CAPACITY LINE_CAPACITY_DB_A0 = capacitydb.SUPERMARKET_LINE_CAPACITY.Where(s => s.A0 == kANBAN_MASTER.LINE.ToString()).FirstOrDefault<SUPERMARKET_LINE_CAPACITY>();
+            
+            decimal line_output_decimal = decimal.Parse(kANBAN_MASTER_db.USAGE.ToString());
+            decimal bin_qty_decimal = decimal.Parse(kANBAN_MASTER_db.QTY_PER_BIN.ToString());
+            decimal per_usage_decimal = decimal.Parse(kANBAN_MASTER_db.USAGE.ToString());
+
+            if (LINE_CAPACITY_DB_H0 !=null && LINE_CAPACITY_DB_A0 == null)
+            {
+                
+                decimal lineoutput_decimal_store = decimal.Parse(LINE_CAPACITY_DB_H0.H0.ToString());
+
+                kANBAN_MASTER.STORE_KANBAN_QTY = calculate_store_kanban_qty(lineoutput_decimal_store,bin_qty_decimal, per_usage_decimal);
+            }
+            else if (LINE_CAPACITY_DB_A0 != null && LINE_CAPACITY_DB_H0 == null)
+            {
+                decimal lineoutput_decimal_store = decimal.Parse(LINE_CAPACITY_DB_A0.A0.ToString());
+
+                kANBAN_MASTER.STORE_KANBAN_QTY = calculate_store_kanban_qty(lineoutput_decimal_store, bin_qty_decimal, per_usage_decimal);
+            }
+            else if (LINE_CAPACITY_DB_A0 != null && LINE_CAPACITY_DB_H0 != null)
+            {
+                decimal lineoutput_decimal_store_A0 = decimal.Parse(LINE_CAPACITY_DB_A0.A0.ToString());
+                decimal lineoutput_decimal_store_H0 = decimal.Parse(LINE_CAPACITY_DB_H0.H0.ToString());
+                decimal both = lineoutput_decimal_store_A0 + lineoutput_decimal_store_H0;
+
+                kANBAN_MASTER.STORE_KANBAN_QTY = calculate_store_kanban_qty(both, bin_qty_decimal, per_usage_decimal);
+            }
+            else
+            {
+
+            }
+            
             if (kanban_color == "FG")
             {
                 CreateKanbanPDF CKPDF = new CreateKanbanPDF();
                 PdfDocument document = CKPDF.create_FG_kanban(kANBAN_MASTER_db);
+                MemoryStream stream = new MemoryStream();
+                document.Save(stream, false);
+                return File(stream, "application/pdf");
+            }
+            else if (kanban_color == "SUB_ST")
+            {
+                CreateKanbanPDF CKPDF = new CreateKanbanPDF();
+                PdfDocument document = CKPDF.create_Production_kanban(kANBAN_MASTER_db, kanban_color);
                 MemoryStream stream = new MemoryStream();
                 document.Save(stream, false);
                 return File(stream, "application/pdf");
@@ -750,9 +867,10 @@ namespace WebApplication1.Controllers
                     DateTime basic_fin_date = Convert.ToDateTime(k.BASIC_FINISH_DATE);
                     DateTime date_tdy = DateTime.Now;
 
-                    TimeSpan value_betweet = basic_fin_date.Subtract(date_tdy);
+                    double value_betweet = basic_fin_date.Subtract(date_tdy).Days / (365.2425 / 12);
 
-                    int days_span = value_betweet.Days;
+
+                    double days_span = value_betweet;
 
                     if (!(k.SLIDER_ADDRESS is null))
                     {
@@ -773,11 +891,11 @@ namespace WebApplication1.Controllers
                             smk_upd.RACK = m.RACK;
                             smk_upd.SLIDER_ADDRESS = m.SLIDER_ADDRESS;
                             smk_upd.MULTIPLE_PLART = m.MULTIPLE_PLART;
-                            if (days_span <= 3)
+                            if (days_span >= 0 && days_span < 4)
                             {
                                 smk_upd.STATUS = "SLOW MOVING";
                             }
-                            else if (days_span >= 3)
+                            else if (days_span >= 4)
                             {
                                 smk_upd.STATUS = "MOVING";
                             }

@@ -179,6 +179,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KANBAN_MASTERController.cs" />
     <Compile Include="Controllers\CreateKanbanPDF.cs" />
+    <Compile Include="Data\capacityContext.cs" />
     <Compile Include="Data\sliderContext.cs" />
     <Compile Include="Data\WebApplication1Context.cs" />
     <Compile Include="Global.asax.cs">
@@ -187,6 +188,7 @@
     <Compile Include="Models\KANBAN_MASTER.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\SUPERMARKET_SLIDERController.cs" />
+    <Compile Include="Controllers\SUPERMARKET_LINE_CAPACITYController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-darkly.css" />
@@ -199,9 +201,19 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="IMAGES\Drop In.png" />
+    <Content Include="IMAGES\kanban information.jpg" />
     <Content Include="IMAGES\KANBAN_CARD_COLOR.PNG" />
     <Content Include="IMAGES\KANBAN_FORMULA.png" />
+    <Content Include="IMAGES\Kitting.png" />
+    <Content Include="IMAGES\Labelling.png" />
     <Content Include="IMAGES\MATERIAL STORE SUPERMARKET.jpg" />
+    <Content Include="IMAGES\PCB Labelling.png" />
+    <Content Include="IMAGES\Receiving.jpg" />
+    <Content Include="IMAGES\slider information.jpg" />
+    <Content Include="IMAGES\Stock In %28MAin Store%29.png" />
+    <Content Include="IMAGES\Stock Out.png" />
+    <Content Include="IMAGES\Supermarket.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -347,6 +359,22 @@
     <Content Include="Views\SUPERMARKET_SLIDER\Details.cshtml" />
     <Content Include="Views\SUPERMARKET_SLIDER\Edit.cshtml" />
     <Content Include="Views\SUPERMARKET_SLIDER\Index.cshtml" />
+    <Content Include="Views\SUPERMARKET_LINE_CAPACITY\Create.cshtml" />
+    <Content Include="Views\SUPERMARKET_LINE_CAPACITY\Delete.cshtml" />
+    <Content Include="Views\SUPERMARKET_LINE_CAPACITY\Details.cshtml" />
+    <Content Include="Views\SUPERMARKET_LINE_CAPACITY\Edit.cshtml" />
+    <Content Include="Views\SUPERMARKET_LINE_CAPACITY\Index.cshtml" />
+    <Content Include="Views\Home\KANBAN_CARD_INFORMATION.cshtml" />
+    <Content Include="Views\Home\SLIDER_INFORMATION.cshtml" />
+    <Content Include="Views\Home\RECEIVING.cshtml" />
+    <Content Include="Views\Home\RECEIVING_LABELLING.cshtml" />
+    <Content Include="Views\Home\PCB_LABELLING.cshtml" />
+    <Content Include="Views\Home\STOCK_IN.cshtml" />
+    <Content Include="Views\Home\STOCK_OUT.cshtml" />
+    <Content Include="Views\Home\KITTING.cshtml" />
+    <Content Include="Views\Home\SUPERMARKET.cshtml" />
+    <Content Include="Views\Home\DROP_IN.cshtml" />
+    <Content Include="Views\Home\PIECHART.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
