@@ -1,0 +1,225 @@
+﻿@model IEnumerable<WebApplication1.Models.KANBAN_MASTER_index>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<br />
+<h2>Index</h2>
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    <hr />
+    @Html.ActionLink("Create Slider Address", "CreateSliderKanban")
+</p>
+
+<div></div>
+<style type="text/css">
+    .tableFixHead {
+        overflow-y: auto;
+        height: 1000px;
+    }
+
+        .tableFixHead thead th {
+            position: sticky;
+            top: 0;
+        }
+
+    /* Just common table stuff. Really. */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .col-1 {
+        width: 200px;
+        min-width: 200px;
+    }
+
+    .col-2 {
+        width: 270px;
+        min-width: 270px;
+    }
+
+    th, td {
+        padding: 10px 16px;
+    }
+
+    th {
+        background: #eee;
+    }
+
+    .table tbody tr.highlight td {
+        background-color: lightblue;
+    }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" />
+
+<script>
+    $(document).ready(function () {
+        $('#bodytable').on('click', 'tbody tr', function (event) {
+            $(this).addClass('highlight').siblings().removeClass('highlight');
+        });
+    });
+</script>
+
+<div class="table tableFixHead">
+    <table id="bodytable" class="table table-bordered">
+        <thead>
+            <tr>
+                @using (Html.BeginForm("Index", "KANBAN_MASTER", FormMethod.Get))
+                {
+
+                    <th class="col-1">
+                        <div class="form-group">
+
+                        </div>
+
+                    </th>
+
+                    <th>
+                        <div class="form-group">
+                            @Html.Label("Item No")
+                        </div>
+                    </th>
+                    <th>
+                        @Html.Label("Slider Address")
+                        <div class="form-group">
+                            @Html.TextBox("SearchSliderAddress")
+                            <input type="submit" value="Search" />
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group">
+                            @Html.Label("Part Number")
+                            <br />
+                            @Html.TextBox("SearchPart")
+                            <input type="submit" value="Search" />
+                        </div>
+                    </th>
+                    <th>
+                        @Html.Label("Part Name")
+                        <div class="form-group">
+                            @Html.TextBox("SearchPartName")
+                            <input type="submit" value="Search" />
+                        </div>
+                    </th>
+                    <th>
+                        @Html.Label("Model")
+                        <div class="form-group justify-content-lg-center">
+                            @Html.TextBox("SearchModel")
+                            <input type="submit" value="Search" />
+                        </div>
+                    </th>
+                    <th>
+                        @Html.Label("Line")
+                        <div class="form-group">
+                            @Html.TextBox("SearchLine")
+                            <input type="submit" value="Search" />
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group">
+                            @Html.Label("Process")
+                            <br />
+                            @Html.TextBox("SearchProcess")
+                            <input type="submit" value="Search" />
+                        </div>
+                    </th>
+                    <th>
+                        @Html.Label("Bin Type")
+                        <div class="form-group">
+                            @Html.TextBox("SearchbinType")
+                            <input type="submit" value="Search" />
+                        </div>
+                    </th>
+                    <th>
+                        @Html.Label("Location")
+                        <div class="form-group">
+                            @Html.TextBox("SearchLoc")
+                            <input type="submit" value="Search" />
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group">
+                            @Html.Label("Kitting Slider")
+                            <br />
+                            @Html.TextBox("SearchKittingSlider")
+                            <input type="submit" value="Search" />
+                        </div>
+                    </th>
+                    <th class="col-2">
+                        @Html.Label("Supplier")
+                        <div class="form-group">
+                            @Html.TextBox("SearchSupplier")
+                            <input type="submit" value="Search" class="w-25" />
+                        </div>
+                    </th>
+
+                }
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+                    @Html.ActionLink("Create Store Kanban", "CreateStoreKanbanPdf", new { id = item.ID }) |
+                    @Html.ActionLink("Create Prod Kanban", "CreateProdKanban", new { id = item.ID })
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SLIDER_ADDRESS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PART_NO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PART_NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MODEL)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.LINE)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PROCESS)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.BIN_TYPE)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOCATION)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.KITTING_SLIDER)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.SUPPLIER)
+                </td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

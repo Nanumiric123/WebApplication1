@@ -1,0 +1,80 @@
+﻿@model WebApplication1.Models.SUPERMARKET_SLIDER
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>SUPERMARKET_SLIDER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SLIDER_ADDRESS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SLIDER_ADDRESS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PART_NUMBER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PART_NUMBER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STATUS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RACK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RACK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AREA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AREA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COLOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COLOR)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

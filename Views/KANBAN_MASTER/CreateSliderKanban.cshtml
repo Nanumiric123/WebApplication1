@@ -1,0 +1,46 @@
+﻿@model WebApplication1.Models.KANBAN_MASTER
+
+@{
+    ViewBag.Title = "CreateSliderKanban";
+}
+
+
+
+@using (Html.BeginForm("CreateSLIDERKanbanPdf", "KANBAN_MASTER", FormMethod.Get, new { enctype = "multipart/form-data" }))
+{
+
+<div class="form-horizontal">
+    <h2>CreateSliderKanban</h2>
+    <hr />
+    <hr />
+    <a>Enter EMPTY$Slider_address for empty slider address kanban</a>
+    <br />
+    <a>Example : EMPTY$2C301</a>
+    <hr />
+    <hr />
+    <div class="form-group">
+        Enter Part Number 1: @Html.TextBox("PN1")
+        <hr />
+        Enter Part Number 2: @Html.TextBox("PN2")
+        <hr />
+        Enter Part Number 3: @Html.TextBox("PN3")
+        <hr />
+        Enter Part Number 4: @Html.TextBox("PN4")
+        <hr />
+        Enter Part Number 5: @Html.TextBox("PN5")
+        <hr />
+        Enter Part Number 6: @Html.TextBox("PN6")
+        <hr />
+        Enter Part Number 7: @Html.TextBox("PN7")
+        <hr />
+        Enter Part Number 8: @Html.TextBox("PN8")
+        <hr />
+        Enter Part Number 9: @Html.TextBox("PN9")
+    </div>
+    <div>
+        <input id="CreateSliderKanban" type="submit" value="submit" />
+    </div>
+
+</div>
+
+}

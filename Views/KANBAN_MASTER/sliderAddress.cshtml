@@ -1,0 +1,312 @@
+﻿@model IEnumerable<WebApplication1.Models.SUPERMARKET_SLIDER_JOINED>
+
+@{
+    ViewBag.Title = "sliderAddress";
+}
+<br />
+<h2>Supermarket Slider Address</h2>
+
+<style>
+    table,
+    thead,
+    tr,
+    tbody,
+    th,
+    td {
+        text-align: center;
+        font-family: Calibri;
+        white-space: nowrap;
+    }
+
+    .table td {
+        text-align: center;
+        border-color: black;
+    }
+
+    .col-3 {
+        width: 520px;
+        min-width: 520px;
+    }
+
+    .col-2 {
+        width: 140px;
+        min-width: 140px;
+    }
+
+    .col-1 {
+        width: 140px;
+        min-width: 140px;
+    }
+
+    .nopadding {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+    }
+
+    .textstyle {
+        font-weight: 900;
+    }
+
+    .cellheadingcolor {
+        background-color: grey;
+    }
+
+    .cellstatuscolor {
+        background-color: darkseagreen;
+    }
+
+    .cellstatusslowmovingcolor {
+        background-color: orange;
+    }
+
+    .cellstatusemptycolor {
+        background-color: lightcoral;
+        color: red;
+    }
+
+    .binareacolor {
+        background-color: yellow;
+    }
+
+    .purplekanbancolor {
+        background-color: #FF00FF;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    .greenkanbancolor {
+        background-color: #92D050;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    .eolstatusindicator {
+        background-color: red;
+    }
+
+    .darkpurplekanbancolor {
+        background-color: #7030A0;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    .bluekanbancolor {
+        background-color: #00B0F0;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    .greykanbancolor {
+        background-color: #A6A6A6;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    .orangekanbancolor {
+        background-color: #FF8F0F;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+</style>
+
+<div>
+    @Html.ActionLink("Update Slider", "update_slider") <a>: to update Slider Part Number assignment Click this Link </a>
+    <br />
+    <a style="color:red;">Important! This will take a long time to update</a>
+
+</div>
+<br />
+<div>
+    <br />
+    Click to Maintain Slider Adress Color
+    <br />
+    @Html.ActionLink("Maintain Slider Color", "Index", "SUPERMARKET_SLIDER")
+    <br />
+</div>
+<br />
+
+
+<div class="container-fluid body-content">
+
+    <div class="form-group">
+        <div class="col-md-10">
+
+            <div class="table">
+                @using (Html.BeginForm("sliderAddress", "KANBAN_MASTER", FormMethod.Get))
+                {
+                    @Html.DropDownList("ddlRacks", new SelectList(ViewBag.rack_lists, "RACK"))
+                    <input type="submit" value="Generate" />
+                }
+                @{
+
+
+                    var rack_section = Model.Select(Model => Model.SLIDER_ADDRESS.Substring(0, 3)).Distinct().ToList();
+                    rack_section = rack_section.OrderByDescending(x => x).ToList();
+                    <br />
+                    <br />
+                    foreach (var rs in rack_section)
+                    {
+
+                        <table class="table table-bordered">
+                            <tr>
+                                <td class="nopadding textstyle cellheadingcolor">
+                                    <a>@ViewBag.Rack_name</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="nopadding cellheadingcolor">Slider Address</td>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.SLIDER_ADDRESS.Substring(0, 3) == rs)
+                                    {
+                                        if (item.STATUS.Contains("MOVING"))
+                                        {
+                                            if (item.COLOR == "greykanbancolor")
+                                            {
+                                                <td class="nopadding textstyle greykanbancolor">@Html.DisplayFor(modelItem => item.SLIDER_ADDRESS)</td>
+                                            }
+                                            else if (item.COLOR == "purplekanbancolor")
+                                            {
+                                                <td class="nopadding textstyle purplekanbancolor">@Html.DisplayFor(modelItem => item.SLIDER_ADDRESS)</td>
+                                            }
+                                            else if (item.COLOR == "bluekanbancolor")
+                                            {
+                                                <td class="nopadding textstyle bluekanbancolor">@Html.DisplayFor(modelItem => item.SLIDER_ADDRESS)</td>
+                                            }
+                                            else if (item.COLOR == "greenkanbancolor")
+                                            {
+                                                <td class="nopadding textstyle greenkanbancolor">@Html.DisplayFor(modelItem => item.SLIDER_ADDRESS)</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="nopadding textstyle greykanbancolor">@Html.DisplayFor(modelItem => item.SLIDER_ADDRESS)</td>
+                                            }
+                                        }
+                                        else if (item.STATUS.Contains("EMPTY"))
+                                        {
+                                            <td class="nopadding textstyle">@Html.DisplayFor(modelItem => item.SLIDER_ADDRESS)</td>
+                                        }
+                                        else
+                                        {
+                                            <td class="nopadding textstyle">@Html.DisplayFor(modelItem => item.SLIDER_ADDRESS)</td>
+                                        }
+
+                                    }
+
+
+                                }
+                            </tr>
+
+                            <tr>
+                                <td class="nopadding cellheadingcolor">Part No.#</td>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.SLIDER_ADDRESS.Substring(0, 3) == rs)
+                                    {
+                                        if (item.STATUS.Contains("MOVING"))
+                                        {
+                                            if (item.PROCESS == "H0-SB")
+                                            {
+                                                <td class="nopadding greenkanbancolor">@Html.DisplayFor(modelItem => item.PART_NUMBER)</td>
+                                            }
+                                            else if (item.PROCESS == "H0-SK")
+                                            {
+                                                <td class="nopadding orangekanbancolor">@Html.DisplayFor(modelItem => item.PART_NUMBER)</td>
+                                            }
+                                            else if (item.PROCESS == "H0" || item.PROCESS == "H0-1" || item.PROCESS == "H0-2" || item.PROCESS == "H0-3" || item.PROCESS == "H0-4")
+                                            {
+                                                <td class="nopadding greenkanbancolor">@Html.DisplayFor(modelItem => item.PART_NUMBER)</td>
+                                            }
+                                            else if (item.PROCESS == "SUB")
+                                            {
+                                                <td class="nopadding greykanbancolor">@Html.DisplayFor(modelItem => item.PART_NUMBER)</td>
+                                            }
+                                            else if (item.PROCESS == "A0")
+                                            {
+                                                <td class="nopadding darkpurplekanbancolor">@Html.DisplayFor(modelItem => item.PART_NUMBER)</td>
+                                            }
+                                            else if (item.PROCESS == "J" || item.PROCESS == "H0-J" || item.PROCESS == "A0-J")
+                                            {
+                                                <td class="nopadding purplekanbancolor">@Html.DisplayFor(modelItem => item.PART_NUMBER)</td>
+                                            }
+                                            else
+                                            {
+                                                <td class="nopadding">@Html.DisplayFor(modelItem => item.PART_NUMBER)</td>
+                                            }
+                                        }
+                                        else if (item.STATUS.Contains("EMPTY"))
+                                        {
+                                            <td class="nopadding">@Html.DisplayFor(modelItem => item.PART_NUMBER)</td>
+                                        }
+                                        else
+                                        {
+                                            <td class="nopadding greykanbancolor">@Html.DisplayFor(modelItem => item.PART_NUMBER)</td>
+                                        }
+                                    }
+
+
+                                }
+
+                            </tr>
+                            <tr>
+                                <td class="nopadding cellheadingcolor">Slider Status</td>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.SLIDER_ADDRESS.Substring(0, 3) == rs)
+                                    {
+                                        if (item.STATUS == "MOVING")
+                                        {
+                                            <td class="nopadding cellstatuscolor">@Html.DisplayFor(modelItem => item.STATUS)</td>
+                                        }
+                                        else if (item.STATUS == "SLOW MOVING" || item.STATUS == "SUBWORK")
+                                        {
+                                            <td class="nopadding cellstatusslowmovingcolor">@Html.DisplayFor(modelItem => item.STATUS)</td>
+                                        }
+                                        else if (item.STATUS == "EMPTY")
+                                        {
+                                            <td class="nopadding cellstatusemptycolor">@Html.DisplayFor(modelItem => item.STATUS)</td>
+                                        }
+                                        else
+                                        {
+                                            <td class="nopadding eolstatusindicator">@Html.DisplayFor(modelItem => item.STATUS)</td>
+                                        }
+                                    }
+                                }
+
+                            </tr>
+                            <tr>
+                                <td class="nopadding"> </td>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.SLIDER_ADDRESS.Substring(0, 3) == rs)
+                                    {
+                                        <td class="nopadding">
+                                            @using (Html.BeginForm("sliderAddress", "KANBAN_MASTER", FormMethod.Get))
+                                            {
+                                                @Html.ActionLink("Details", "SliderAddressDetails", new { sliderAddress = item.SLIDER_ADDRESS })
+
+                                            }
+
+											@Html.ActionLink("Change Slider Color", "Edit", "SUPERMARKET_SLIDER", new { id = item.ID }, null)
+
+                                            
+                                        </td>
+                                    }
+                                }
+
+                            </tr>
+
+                        </table>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+</div>

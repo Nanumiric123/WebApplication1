@@ -1,0 +1,256 @@
+﻿@model WebApplication1.Models.KANBAN_MASTER
+
+@{
+    ViewBag.Title = "Create";
+}
+<br />
+<h2>Create</h2>
+
+
+@using (Html.BeginForm("Create", "KANBAN_MASTER", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>KANBAN MASTER</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.TextBox("file", "", new { type = "file" }) <br />
+    </div>
+
+</div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PART_NO, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PART_NO, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PART_NO, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PART_NAME, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PART_NAME, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PART_NAME, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MODEL, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MODEL, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MODEL, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LINE, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LINE, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LINE, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("OUTPUT/SHIFT", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.OUTPUT, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.OUTPUT, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("USAGE OF PART", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.USAGE, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.USAGE, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PROCESS, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @{
+                List<SelectListItem> lines = new List<SelectListItem>();
+
+                lines.Add(new SelectListItem { Text = "H0-SB - Supplier Bin", Value = "H0-SB" });
+                lines.Add(new SelectListItem { Text = "H0-SK - Supplier Kitting", Value = "H0-SK" });
+                lines.Add(new SelectListItem { Text = "SUB - Subwork", Value = "SUB" });
+                lines.Add(new SelectListItem { Text = "A0 - Drop in", Value = "A0" });
+                lines.Add(new SelectListItem { Text = "A0-J - Drop in Rack J", Value = "A0-J" });
+                lines.Add(new SelectListItem { Text = "H0 - Final", Value = "H0" });
+                lines.Add(new SelectListItem { Text = "H0-J - Final Rack J", Value = "H0-J" });
+                lines.Add(new SelectListItem { Text = "Packing", Value = "Packing" });
+            }
+
+            @(Html.DropDownListFor(model => model.PROCESS, lines, new { @class = "form-control" }))
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.QTY_PER_TRAY, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.QTY_PER_TRAY, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.QTY_PER_TRAY, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("TRAY PER BIN", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TARY_PER_BIN, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TARY_PER_BIN, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("QTY PER BIN", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.QTY_PER_BIN, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.QTY_PER_BIN, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BIN_TYPE, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @{
+                List<SelectListItem> bins = new List<SelectListItem>();
+
+                bins.Add(new SelectListItem { Text = "BB", Value = "BB" });
+                bins.Add(new SelectListItem { Text = "BA", Value = "BA" });
+                bins.Add(new SelectListItem { Text = "BC", Value = "BC" });
+                bins.Add(new SelectListItem { Text = "BD", Value = "BD" });
+                bins.Add(new SelectListItem { Text = "BE", Value = "BE" });
+                bins.Add(new SelectListItem { Text = "B1P", Value = "B1P" });
+                bins.Add(new SelectListItem { Text = "B2P", Value = "B2P" });
+                bins.Add(new SelectListItem { Text = "B3P", Value = "B3P" });
+                bins.Add(new SelectListItem { Text = "B4P", Value = "B4P" });
+                bins.Add(new SelectListItem { Text = "B6P", Value = "B6P" });
+                bins.Add(new SelectListItem { Text = "B7P", Value = "B7P" });
+                bins.Add(new SelectListItem { Text = "B8P", Value = "B8P" });
+                bins.Add(new SelectListItem { Text = "B9P", Value = "B9P" });
+                bins.Add(new SelectListItem { Text = "BS", Value = "BS" });
+                bins.Add(new SelectListItem { Text = "BP", Value = "BP" });
+                bins.Add(new SelectListItem { Text = "B10P", Value = "B10P" });
+            }
+
+            @(Html.DropDownListFor(model => model.BIN_TYPE, bins, new { @class = "form-control" }))
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LOCATION, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @{
+                List<SelectListItem> loc = new List<SelectListItem>();
+
+                loc.Add(new SelectListItem { Text = "Supermarket", Value = "Supermarket" });
+                loc.Add(new SelectListItem { Text = "Subwork", Value = "Subwork" });
+                loc.Add(new SelectListItem { Text = "Packing", Value = "Packing" });
+                loc.Add(new SelectListItem { Text = "A0 Room", Value = "A0 Room" });
+            }
+
+            @(Html.DropDownListFor(model => model.LOCATION, loc, new { @class = "form-control" }))
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SLIDER_ADDRESS, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SLIDER_ADDRESS, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SLIDER_ADDRESS, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.KITTING_SLIDER, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @{
+                List<SelectListItem> kitting_slider = new List<SelectListItem>();
+                kitting_slider.Add(new SelectListItem { Text = "2002", Value = "2002" });
+                kitting_slider.Add(new SelectListItem { Text = "1", Value = "1" });
+                kitting_slider.Add(new SelectListItem { Text = "2", Value = "2" });
+                kitting_slider.Add(new SelectListItem { Text = "3", Value = "3" });
+                kitting_slider.Add(new SelectListItem { Text = "4", Value = "4" });
+                kitting_slider.Add(new SelectListItem { Text = "A0", Value = "A0" });
+                kitting_slider.Add(new SelectListItem { Text = "J", Value = "J" });
+            }
+
+            @(Html.DropDownListFor(model => model.KITTING_SLIDER, kitting_slider, new { @class = "form-control" }))
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BASIC_FINISH_DATE, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BASIC_FINISH_DATE, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BASIC_FINISH_DATE, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.REVISION, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.REVISION, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.REVISION, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("BIN NUMBER")
+        <a>(Enter the last Bin Number)</a>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BIN_NUMBER_END, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BIN_NUMBER_END, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CYCLE_TIME, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CYCLE_TIME, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CYCLE_TIME, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SUPPLIER, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SUPPLIER, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SUPPLIER, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.REMARKS, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.REMARKS, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.REMARKS, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-outline-primary" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<WebApplication1.Models.SUPERMARKET_SLIDER>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @using (Html.BeginForm("Index", "SUPERMARKET_SLIDER", FormMethod.Get))
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.SLIDER_ADDRESS)
+                <div class="form-group">
+                    @Html.TextBox("SearchSliderAddress")
+                    <input type="submit" value="Search" />
+                </div>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PART_NUMBER)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.STATUS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RACK)
+                <div class="form-group">
+                    @Html.TextBox("SearchRack")
+                    <input type="submit" value="Search" />
+                </div>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AREA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BIN)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.COLOR)
+                <div class="form-group">
+                    @Html.TextBox("SearchColor")
+                    <input type="submit" value="Search" />
+                </div>
+            </th>
+        }
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SLIDER_ADDRESS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PART_NUMBER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RACK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AREA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BIN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COLOR)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

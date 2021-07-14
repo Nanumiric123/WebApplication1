@@ -1,0 +1,80 @@
+﻿@model WebApplication1.Models.SUPERMARKET_SLIDER
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SUPERMARKET_SLIDER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SLIDER_ADDRESS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SLIDER_ADDRESS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PART_NUMBER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PART_NUMBER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STATUS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RACK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RACK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AREA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AREA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COLOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COLOR)
+        </dd>
+        <dt>
+            @Html.Label("Multiple Part Flag")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MULTIPLE_PLART)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
