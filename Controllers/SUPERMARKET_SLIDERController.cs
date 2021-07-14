@@ -32,7 +32,7 @@ namespace WebApplication1.Views
             {
                 sliderList = db.SUPERMARKET_SLIDER.Where(x => x.SLIDER_ADDRESS.Equals(SearchSliderAddress)).ToList();
             }
-                return View(sliderList);
+                return View(sliderList.OrderBy(s => s.SLIDER_ADDRESS).ToList());
         }
 
         // GET: SUPERMARKET_SLIDER/Details/5

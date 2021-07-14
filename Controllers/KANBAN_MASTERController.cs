@@ -264,6 +264,8 @@ namespace WebApplication1.Controllers
                     }
 
                 }
+
+                
                 /*
             foreach (var i in join2)
             {
@@ -766,7 +768,7 @@ namespace WebApplication1.Controllers
                             {
                                 smk_upd.PART_NUMBER = k.PART_NO;
                             }
-                            smk_upd.PART_NUMBER = k.PART_NO;
+                            //smk_upd.PART_NUMBER = k.PART_NO;
                             smk_upd.ID = m.ID;
                             smk_upd.RACK = m.RACK;
                             smk_upd.SLIDER_ADDRESS = m.SLIDER_ADDRESS;
