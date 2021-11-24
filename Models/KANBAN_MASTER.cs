@@ -90,6 +90,12 @@ namespace WebApplication1.Models
         public Int32 MINUTE_90 { get; set; }
     }
 
+    public class SUPERMARKET_SLIDER_REPORT
+    {
+        public string STATUS { get; set; }
+        public string RACK { get; set; }
+        public int COUNT { get; set; }
+    }
     public class SUPERMARKET_SLIDER
     {
         public Int32 ID { get; set; }
@@ -101,6 +107,45 @@ namespace WebApplication1.Models
         public String BIN { get; set; }
         public string COLOR { get; set; }
         public bool MULTIPLE_PLART { get; set; }
+    }
+
+    public class KB_CARD_STATS
+    {
+
+        public String PROCESS { get; set; }
+        public int COUNT { get; set; }
+    }
+    public class RCKS_LISTS
+    {
+        public String RACK { get; set; }
+        public String STATUS { get; set; }
+        public int COUNT { get; set; }
+    }
+    public class RCKS_TOT
+    {
+        public String RACK { get; set; }
+        public int COUNT { get; set; }
+    }
+    public class BIN_TYPE
+    {
+       
+        public String BIN { get; set; }
+        public int COUNT { get; set; }
+    }
+
+    public class BIN_RACK_COLOR
+    {
+
+        public String RACK { get; set; }
+        public String BIN { get; set; }
+        public String COLOR { get; set; }
+    }
+
+    public class SUBWORK_BIN_RACK
+    {
+
+        public String RACK { get; set; }
+        public String BIN { get; set; }
     }
 
 }

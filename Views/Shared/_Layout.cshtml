@@ -4,8 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Warehouse Portal</title>
+    <link href="~/Content/c3.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/c3.min.js"></script>
+    <script src="~/Scripts/d3.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
     <style>
         .navbar-nav li:hover > ul.dropdown-menu {
             display: block;
@@ -37,9 +44,9 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Kitting and Supermarket </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -133,9 +140,12 @@
                         <li>@Html.ActionLink("Supermarket", "SUPERMARKET", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
                     </ul>
                 </li>
-
+                <li class="nav-item active">
+                    @Html.ActionLink("Statistics", "Chart", "KANBAN_MASTER", new { area = "" }, new { @class = "nav-link" })
+                </li>
             </ul>
         </div>
+
     </nav>
     <div class="container body-content">
 

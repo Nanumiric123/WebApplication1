@@ -7,3 +7,41 @@
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+<div id="pieChart"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/KANBAN_MASTER/PieChart",
+            data: {},
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                successFunc(response);
+            },
+        });
+
+        function successFunc(jsondata) {
+            var data = {};
+            var STATUses = [];
+            jsondata.forEach(function (e) {
+                STATUses.push(e.STATUS);
+                data[e.STATUS] = e.COUNT;
+            })
+            var chart = c3.generate({
+                bindto: '#pieChart',
+                data: {
+                    json: [data],
+                    keys: {
+                        value: STATUses,
+                    },
+                    type: 'pie'
+                },
+                color: {
+                    pattern: ['#1f77b4', '#aec7e8', '#ff7f0e', '#ffbb78', '#2ca02c', '#98df8a', '#d62728', '#ff9896', '#9467bd', '#c5b0d5', '#8c564b', '#c49c94', '#e377c2', '#f7b6d2', '#7f7f7f', '#c7c7c7', '#bcbd22', '#dbdb8d', '#17becf', '#9edae5']
+                },
+            });
+        }
+    });
+</script> 

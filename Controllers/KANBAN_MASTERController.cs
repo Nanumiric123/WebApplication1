@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Data;
@@ -25,6 +26,8 @@ namespace WebApplication1.Controllers
         public ActionResult Index(string SearchPart, string SearchModel, string SearchBin, string SearchPartName, string SearchLine, string SearchbinType, string SearchLoc, string SearchSliderAddress,
             string SearchRemarks, string SearchSupplier, string SearchProcess, string SearchKittingSlider)
         {
+
+
             var kanbanMaster = from s in db.KANBAN_MASTER.Select(p => new KANBAN_MASTER_index
             {
                 ID = p.ID,
@@ -137,9 +140,554 @@ namespace WebApplication1.Controllers
             }
             return View(kANBAN_MASTER);
         }
+       
 
-            // GET : SliderAddress
-            public ActionResult sliderAddress(string ddlRacks)
+        public ActionResult Chart()
+        {
+            //set room 1 data
+            var r1_rack_in_clause = new string[] { "RACK 1A", "Rack 1A", "RACK 1B", "Rack 1B", "RACK 1C", "Rack 1C", "RACK 1D", "Rack 1D", "RACK 1E", "Rack 1E", "RACK 1F", "Rack 1F",
+            "RACK 1G","Rack 1G","RACK 1H","Rack 1H","RACK 1J","Rack 1J","RACK 1K","Rack 1K","RACK 1L","Rack 1L","RACK 1M","Rack 1M"};
+            var r1_status_in_clause = new string[] { "EOL", "MOVING", "SLOW MOVING", "EMPTY", "NON MOVING" };
+
+            var room1 = (from c in sliderdb.SUPERMARKET_SLIDER
+                         where r1_rack_in_clause.Contains(c.RACK)
+                         group c by new { c.RACK, c.STATUS } into grouping
+                         select new SUPERMARKET_SLIDER_REPORT
+                         {
+                             STATUS = grouping.Key.STATUS,
+                             RACK = grouping.Key.RACK,
+                             COUNT = grouping.Count()
+                         }).ToList();
+
+
+
+            Report_data rooms_results = new Report_data();
+            int[] room1_res = rooms_results.room_results(room1);
+
+            ViewBag.Room1 = room1_res[0].ToString();
+            ViewBag.Room1Use = room1_res[1].ToString();
+            ViewBag.Room1Empty = room1_res[2].ToString();
+
+            //set room 2 data
+            var r2_rack_in_clause = new string[] { "RACK 2A", "RACK 2B", "RACK 2C", "RACK 2D", "RACK 2E", "RACK 2F", "RACK 2G", "RACK 2H", "RACK 2J", "RACK 2K", "RACK 2M", "RACK 2N", "RACK 2P", "RACK 2Q",
+                                                   "Rack 2A", "Rack 2B", "Rack 2C", "Rack 2D", "Rack 2E", "Rack 2F", "Rack 2G", "Rack 2H", "Rack 2J", "Rack 2K", "Rack 2M", "Rack 2N", "Rack 2P", "Rack 2Q"};
+            var r2_status_in_clause = new string[] { "EOL", "MOVING", "SLOW MOVING", "EMPTY", "NON MOVING" };
+
+            var room2 = (from c in sliderdb.SUPERMARKET_SLIDER
+                         where r2_rack_in_clause.Contains(c.RACK)
+                         group c by new { c.RACK, c.STATUS } into grouping
+                         select new SUPERMARKET_SLIDER_REPORT
+                         {
+                             STATUS = grouping.Key.STATUS,
+                             RACK = grouping.Key.RACK,
+                             COUNT = grouping.Count()
+                         }).ToList();
+
+            int[] room2_res = rooms_results.room_results(room2);
+            ViewBag.Room2 = room2_res[0].ToString();
+            ViewBag.Room2Use = room2_res[1].ToString();
+            ViewBag.Room2Empty = room2_res[2].ToString();
+
+            //set A0 Room data
+            var AO_rack_in_clause = new string[] { "RACK SA", "RACK SB", "RACK SC", "RACK SD" };
+            var A0_room = (from c in sliderdb.SUPERMARKET_SLIDER
+                           where AO_rack_in_clause.Contains(c.RACK)
+                           group c by new { c.RACK, c.STATUS } into grouping
+                         select new SUPERMARKET_SLIDER_REPORT
+                         {
+                             STATUS = grouping.Key.STATUS,
+                             RACK = grouping.Key.RACK,
+                             COUNT = grouping.Count()
+                         }).ToList();
+
+            int[] A0_room_res = rooms_results.room_results(A0_room);
+            ViewBag.A0Room = A0_room_res[0].ToString();
+            ViewBag.A0RoomUse = A0_room_res[1].ToString();
+            ViewBag.A0RoomEmpty = A0_room_res[2].ToString();
+
+            //set total data
+            var total = (from c in sliderdb.SUPERMARKET_SLIDER
+                           group c by new { c.RACK, c.STATUS } into grouping
+                           select new SUPERMARKET_SLIDER_REPORT
+                           {
+                               STATUS = grouping.Key.STATUS,
+                               RACK = grouping.Key.RACK,
+                               COUNT = grouping.Count()
+                           }).ToList();
+
+            int[] total_res = rooms_results.room_results(total);
+            ViewBag.total_res = total_res[0].ToString();
+            ViewBag.totalUse = total_res[1].ToString();
+            ViewBag.totalEmpty = total_res[2].ToString();
+
+            //Calculate Bin type room 1& 2 B4P /BE rack 1A/1B/1D
+            var bintyp_r1_rack_in_clause = new string[] { "RACK 1A", "Rack 1B", "Rack 2D" };
+
+            var bin_typ_room_1_2 = (from c in sliderdb.SUPERMARKET_SLIDER
+                                    where bintyp_r1_rack_in_clause.Contains(c.RACK)
+                                    group c by new { c.RACK, c.STATUS } into grouping
+                                    select new SUPERMARKET_SLIDER_REPORT
+                                    {
+                                        STATUS = grouping.Key.STATUS,
+                                        RACK = grouping.Key.RACK,
+                                        COUNT = grouping.Count()
+                                    }).ToList();
+
+
+
+            String bins_lists = rooms_results.get_bins(sliderdb, bintyp_r1_rack_in_clause);
+
+            ViewBag.bins_of_rack_1A_1B_2D = bins_lists;
+
+            int[] cal_room_1_2_bintyp = rooms_results.room_results(bin_typ_room_1_2);
+
+            ViewBag.use_rack_1A_1B_2D = cal_room_1_2_bintyp[1].ToString();
+            ViewBag.empty_rack_1A_1B_2D = cal_room_1_2_bintyp[2].ToString();
+
+            //Calculate Bin type room 1& 2 DB rack 1C/1D/1E/2D/2N/2P
+            var bintyp_r1_rack_in_clause2 = new string[] { "Rack 1C", "Rack 1D", "Rack 1E", "Rack 2D","Rack 2N","Rack 2P" };
+
+            var bin_typ_room_1_22 = (from c in sliderdb.SUPERMARKET_SLIDER
+                                    where bintyp_r1_rack_in_clause2.Contains(c.RACK)
+                                    group c by new { c.RACK, c.STATUS } into grouping
+                                    select new SUPERMARKET_SLIDER_REPORT
+                                    {
+                                        STATUS = grouping.Key.STATUS,
+                                        RACK = grouping.Key.RACK,
+                                        COUNT = grouping.Count()
+                                    }).ToList();
+            bins_lists = "";
+            bins_lists = rooms_results.get_bins(sliderdb, bintyp_r1_rack_in_clause2);
+
+            ViewBag.bins_of_rack_1C_1D_1E_2D_2N_2P = bins_lists;
+
+            int[] cal_room_1_2_bintyp2 = rooms_results.room_results(bin_typ_room_1_22);
+            ViewBag.use_rack_1C_1D_1E_2D_2N_2P = cal_room_1_2_bintyp2[1].ToString();
+            ViewBag.empty_rack_1C_1D_1E_2D_2N_2P = cal_room_1_2_bintyp2[2].ToString();
+
+            //Calculate Bin type room 1& 2 DB rack 2A/2B/2C
+            var bintyp_r1_rack_in_clause3 = new string[] { "Rack 2A","RACK 2A", "Rack 2B","RACK 2B", "Rack 2C", "Rack 2C" };
+
+            var bin_typ_room_1_23 = (from c in sliderdb.SUPERMARKET_SLIDER
+                                     where bintyp_r1_rack_in_clause3.Contains(c.RACK)
+                                     group c by new { c.RACK, c.STATUS } into grouping
+                                     select new SUPERMARKET_SLIDER_REPORT
+                                     {
+                                         STATUS = grouping.Key.STATUS,
+                                         RACK = grouping.Key.RACK,
+                                         COUNT = grouping.Count()
+                                     }).ToList();
+
+            bins_lists = "";
+            bins_lists = rooms_results.get_bins(sliderdb, bintyp_r1_rack_in_clause3);
+
+            ViewBag.bins_of_rack_2A_2B_2C = bins_lists;
+
+            int[] cal_room_1_2_bintyp3 = rooms_results.room_results(bin_typ_room_1_23);
+            ViewBag.use_rack_2A_2B_2C = cal_room_1_2_bintyp3[1].ToString();
+            ViewBag.empty_rack_2A_2B_2C = cal_room_1_2_bintyp3[2].ToString();
+
+            //Calculate Bin type room 1& 2 DB rack 2E/2F/2G/2H/2M
+            var bintyp_r1_rack_in_clause4 = new string[] { "Rack 2E", "RACK 2F", "Rack 2G", "RACK 2H", "Rack 2M" };
+            var bin_typ_room_1_24 = (from c in sliderdb.SUPERMARKET_SLIDER
+                                     where bintyp_r1_rack_in_clause4.Contains(c.RACK)
+                                     group c by new { c.RACK, c.STATUS } into grouping
+                                     select new SUPERMARKET_SLIDER_REPORT
+                                     {
+                                         STATUS = grouping.Key.STATUS,
+                                         RACK = grouping.Key.RACK,
+                                         COUNT = grouping.Count()
+                                     }).ToList();
+
+            bins_lists = "";
+            bins_lists = rooms_results.get_bins(sliderdb, bintyp_r1_rack_in_clause4);
+
+            ViewBag.bins_of_rack_2E_2F_2G_2H_2M = bins_lists;
+
+            int[] cal_room_1_2_bintyp4 = rooms_results.room_results(bin_typ_room_1_24);
+            ViewBag.use_rack_2E_2F_2G_2H_2M = cal_room_1_2_bintyp4[1].ToString();
+            ViewBag.empty_rack_2E_2F_2G_2H_2M = cal_room_1_2_bintyp4[2].ToString();
+
+            //Calculate Bin type room 1& 2 DB rack 1F/1G/1H/1J/1K/1L/1M/2J/2K/2Q
+            var bintyp_r1_rack_in_clause5 = new string[] { "Rack 1F","RACK 1F", "Rack 1G", "Rack 1H","RACK 1H", "RACK 2J","Rack 1J", "Rack 2L","RACK 1L", "Rack 1M","RACK 1M", "Rack 2J","RACK 2J"
+            ,"Rack 2K","RACK 2K","Rack 2Q","RACK 2Q"};
+            var bin_typ_room_1_25 = (from c in sliderdb.SUPERMARKET_SLIDER
+                                     where bintyp_r1_rack_in_clause5.Contains(c.RACK)
+                                     group c by new { c.RACK, c.STATUS } into grouping
+                                     select new SUPERMARKET_SLIDER_REPORT
+                                     {
+                                         STATUS = grouping.Key.STATUS,
+                                         RACK = grouping.Key.RACK,
+                                         COUNT = grouping.Count()
+                                     }).ToList();
+
+            bins_lists = "";
+            bins_lists = rooms_results.get_bins(sliderdb, bintyp_r1_rack_in_clause5);
+
+            ViewBag.bins_of_rack_1F_1G_1H_1J_1K_1L_1M_2J_2K_2Q = bins_lists;
+
+            int[] cal_room_1_2_bintyp5 = rooms_results.room_results(bin_typ_room_1_25);
+            ViewBag.use_rack_1F_1G_1H_1J_1K_1L_1M_2J_2K_2Q = cal_room_1_2_bintyp5[1].ToString();
+            ViewBag.empty_rack_1F_1G_1H_1J_1K_1L_1M_2J_2K_2Q = cal_room_1_2_bintyp5[2].ToString();
+
+            //calculate Bin type room small part SA / SB
+            var bintyp_r1_rack_in_clause6 = new string[] { "RACK SA", "RACK SB", "Rack SA", "Rack SB" };
+            var bin_typ_room_1_26 = (from c in sliderdb.SUPERMARKET_SLIDER
+                                     where bintyp_r1_rack_in_clause6.Contains(c.RACK)
+                                     group c by new { c.RACK, c.STATUS } into grouping
+                                     select new SUPERMARKET_SLIDER_REPORT
+                                     {
+                                         STATUS = grouping.Key.STATUS,
+                                         RACK = grouping.Key.RACK,
+                                         COUNT = grouping.Count()
+                                     }).ToList();
+
+            bins_lists = "";
+            bins_lists = rooms_results.get_bins(sliderdb, bintyp_r1_rack_in_clause6);
+
+            ViewBag.bins_of_rack_SA_SB = bins_lists;
+            int[] cal_room_1_2_bintyp6 = rooms_results.room_results(bin_typ_room_1_26);
+            ViewBag.use_rack_SA_SB = cal_room_1_2_bintyp6[1].ToString();
+            ViewBag.empty_rack_SA_SB = cal_room_1_2_bintyp6[2].ToString();
+
+            //calculate Bin type room small part SC / SD
+            var bintyp_r1_rack_in_clause7 = new string[] { "RACK SC", "RACK SC", "Rack SD", "Rack SD" };
+            var bin_typ_room_1_27 = (from c in sliderdb.SUPERMARKET_SLIDER
+                                     where bintyp_r1_rack_in_clause7.Contains(c.RACK)
+                                     group c by new { c.RACK, c.STATUS } into grouping
+                                     select new SUPERMARKET_SLIDER_REPORT
+                                     {
+                                         STATUS = grouping.Key.STATUS,
+                                         RACK = grouping.Key.RACK,
+                                         COUNT = grouping.Count()
+                                     }).ToList();
+            bins_lists = "";
+            bins_lists = rooms_results.get_bins(sliderdb, bintyp_r1_rack_in_clause7);
+
+            ViewBag.bins_of_rack_SC_SD = bins_lists;
+            int[] cal_room_1_2_bintyp7 = rooms_results.room_results(bin_typ_room_1_27);
+            ViewBag.use_rack_SC_SD = cal_room_1_2_bintyp7[1].ToString();
+            ViewBag.empty_rack_SC_SD = cal_room_1_2_bintyp7[2].ToString();
+
+            var bin_count = (from c in sliderdb.SUPERMARKET_SLIDER
+                             group c by new { c.BIN } into grouping
+                             select new BIN_TYPE
+                             {
+                                 BIN = grouping.Key.BIN,
+                                 COUNT = grouping.Count()
+                             }).ToList();
+
+            ViewBag.bc = bin_count;
+
+            var process_class = (from c in db.KANBAN_MASTER
+                                group c by new { c.PROCESS } into grouping
+                                select new KB_CARD_STATS
+                                {
+                                    PROCESS = grouping.Key.PROCESS,
+                                    COUNT = grouping.Count()
+                                }).ToList();
+
+            ViewBag.A0PROCESSCLASS = rooms_results.get_A0_Process(process_class);
+            ViewBag.H0PROCESSCLASS = rooms_results.get_H0_Process(process_class);
+            ViewBag.A0H0PROCESSCLASS = rooms_results.get_A0H0_Process(process_class);
+            ViewBag.SUBPROCESSCLASS = rooms_results.get_SUB_Process(process_class);
+
+            var racks_in_room_1 = (from c in sliderdb.SUPERMARKET_SLIDER
+                                   where c.RACK.Contains("Rack 1")
+                                   orderby c.RACK
+                                   group c by new { c.RACK, c.STATUS } into grouping
+                                   select new RCKS_LISTS
+                                   {
+                                       STATUS = grouping.Key.STATUS,
+                                       RACK = grouping.Key.RACK,
+                                       COUNT = grouping.Count()
+                                   }).ToList();
+
+             
+
+            var list_of_racks = racks_in_room_1.Select(x => x.RACK).Distinct().ToArray();
+            ViewBag.racksinroom1 = list_of_racks;
+            ViewBag.racks_in_room_1 = racks_in_room_1;
+
+            var totalinallracks = racks_in_room_1.GroupBy(x => x.RACK).Select(cl => new RCKS_TOT
+            {
+                RACK = cl.First().RACK,
+                COUNT = cl.Sum(co => co.COUNT)
+            }).ToList();
+
+            ViewBag.totalallracks = totalinallracks;
+
+            //calculate racks in room 2
+            var racks_in_room_2 = (from c in sliderdb.SUPERMARKET_SLIDER
+                                   where c.RACK.Contains("Rack 2")
+                                   orderby c.RACK
+                                   group c by new { c.RACK, c.STATUS } into grouping
+                                   select new RCKS_LISTS
+                                   {
+                                       STATUS = grouping.Key.STATUS,
+                                       RACK = grouping.Key.RACK,
+                                       COUNT = grouping.Count()
+                                   }).ToList();
+
+            var list_of_racks2 = racks_in_room_2.Select(x => x.RACK).Distinct().ToArray();
+            ViewBag.racksinroom2 = list_of_racks2;
+            ViewBag.racks_in_room_2 = racks_in_room_2;
+
+            var totalinallracks2 = racks_in_room_2.GroupBy(x => x.RACK).Select(cl => new RCKS_TOT
+            {
+                RACK = cl.First().RACK,
+                COUNT = cl.Sum(co => co.COUNT)
+            }).ToList();
+
+            ViewBag.totalallracks2 = totalinallracks2;
+
+            var racks_bin = (from c in sliderdb.SUPERMARKET_SLIDER
+                                   orderby c.RACK
+                                   group c by new { c.RACK, c.BIN } into grouping
+                                   select new
+                                   {
+                                       RACK = grouping.Key.RACK,
+                                       BIN = grouping.Key.BIN
+                                   }).ToList();
+
+
+            var racks_COLOR = (from c in sliderdb.SUPERMARKET_SLIDER
+                             orderby c.RACK
+                             group c by new { c.RACK, c.COLOR } into grouping
+                             select new
+                             {
+                                 RACK = grouping.Key.RACK,
+                                 COLOR = grouping.Key.COLOR
+                             }).ToList();
+
+            IList<BIN_RACK_COLOR> binrackcolor1 = new List<BIN_RACK_COLOR>();
+
+
+            var allracks = racks_bin.OrderBy(s => s.RACK).Select(x => x.RACK).Distinct().ToArray();
+
+            foreach(var i in allracks)
+            {
+                BIN_RACK_COLOR itm = new BIN_RACK_COLOR();
+                string temp_bin = "";
+                foreach (var k in racks_bin)
+                {
+
+                    if (i == k.RACK)
+                    {
+                        temp_bin = temp_bin + k.BIN + Environment.NewLine;
+
+                    }
+
+                }
+                itm.BIN = temp_bin;
+                itm.RACK = i;
+
+
+                string temp_color = "";
+                string result_color = "";
+                foreach(var l in racks_COLOR)
+                {
+                    if (i == l.RACK)
+                    {
+                        temp_color = "";
+                        switch (l.COLOR)
+                        {
+                            case ("bluekanbancolor"):
+                                temp_color = "BLUE";
+                                break;
+                            case ("greykanbancolor"):
+                                temp_color = "GREY";
+                                break;
+                            case ("purplekanbancolor"):
+                                temp_color = "PURPLE";
+                                break;
+                            case ("greenkanbancolor"):
+                                temp_color = "GREEN";
+                                break;
+                        }
+                        if (!result_color.Contains(temp_color))
+                        {
+                            result_color = result_color + temp_color + Environment.NewLine;
+                        }
+
+                    }
+
+                }
+                itm.COLOR = result_color;
+                result_color = "";
+                binrackcolor1.Add(itm);
+                
+            }
+
+            ViewBag.condensed_racks_bin_color = binrackcolor1.Where(x => x.RACK.Contains("Rack 2"));
+            ViewBag.condensed_racks_bin_color2 = binrackcolor1.Where(x => x.RACK.Contains("Rack 1"));
+
+            var racks_in_room_subwrk = (from c in sliderdb.SUPERMARKET_SLIDER
+                                   where c.AREA == "Subwork"
+                                   orderby c.RACK
+                                   group c by new { c.RACK, c.STATUS } into grouping
+                                   select new RCKS_LISTS
+                                   {
+                                       STATUS = grouping.Key.STATUS,
+                                       RACK = grouping.Key.RACK,
+                                       COUNT = grouping.Count()
+                                   }).ToList();
+
+            ViewBag.racksinsubworkcount = racks_in_room_subwrk;
+
+
+            var R_IN_SUB = (from c in sliderdb.SUPERMARKET_SLIDER
+                                      orderby c.RACK
+                                      where c.AREA == "Subwork"
+                                      group c by new { c.RACK } into grouping
+                                      select new
+                                      {
+                                          RACK = grouping.Key.RACK
+                                      }).ToArray();
+
+            ViewBag.racksinsubwork = R_IN_SUB.OrderBy(x =>x.RACK).Select(x=> x.RACK).Distinct().ToArray();
+
+            var racksubworkcolor = (from c in sliderdb.SUPERMARKET_SLIDER
+                                    orderby c.RACK
+                                    where c.AREA == "Subwork"
+                                    group c by new { c.RACK,c.BIN } into grouping
+                                    select new SUBWORK_BIN_RACK
+                                    {
+                                        RACK = grouping.Key.RACK,
+                                        BIN = grouping.Key.BIN
+                                    }).ToArray();
+
+
+
+            IList<SUBWORK_BIN_RACK> subworkbin = new List<SUBWORK_BIN_RACK>();
+
+            foreach(var i in R_IN_SUB)
+            {
+                SUBWORK_BIN_RACK itm = new SUBWORK_BIN_RACK();
+
+                string tmp_bin = "";
+                foreach (var j in racksubworkcolor)
+                {
+                    if (i.RACK.ToString() == j.RACK.ToString())
+                    {
+                        tmp_bin = tmp_bin + j.BIN + Environment.NewLine;
+                    }
+                }
+                itm.BIN = tmp_bin;
+                itm.RACK = i.RACK;
+                subworkbin.Add(itm);
+
+            }
+
+            ViewBag.condensed_racks_bin_subwaork = subworkbin;
+
+            var totalinallrackswubwork = racks_in_room_subwrk.GroupBy(x => x.RACK).Select(cl => new RCKS_TOT
+            {
+                RACK = cl.First().RACK,
+                COUNT = cl.Sum(co => co.COUNT)
+            }).ToList();
+
+            ViewBag.totalallsubworkrack = totalinallrackswubwork;
+
+            var bintyp_A0_ROOM_rack_in_clause = new string[] { "RACK SA", "RACK SB", "RACK SC", "RACK SD", "Rack SA", "Rack SB", "Rack SC", "Rack SD" };
+
+            var R_IN_A0 = (from c in sliderdb.SUPERMARKET_SLIDER
+                           orderby c.RACK
+                           where bintyp_A0_ROOM_rack_in_clause.Contains(c.RACK)
+                           group c by new { c.RACK } into grouping
+                           select new
+                           {
+                               RACK = grouping.Key.RACK
+                           }).ToArray();
+
+            ViewBag.racksinA0 = R_IN_A0.OrderBy(x => x.RACK).Select(x => x.RACK).Distinct().ToArray();
+
+            var rackA0color = (from c in sliderdb.SUPERMARKET_SLIDER
+                                    orderby c.RACK
+                                    where bintyp_A0_ROOM_rack_in_clause.Contains(c.RACK)
+                                    group c by new { c.RACK, c.BIN } into grouping
+                                    select new SUBWORK_BIN_RACK
+                                    {
+                                        RACK = grouping.Key.RACK,
+                                        BIN = grouping.Key.BIN
+                                    }).ToArray();
+
+            IList<SUBWORK_BIN_RACK> A0bin = new List<SUBWORK_BIN_RACK>();
+
+            foreach (var i in R_IN_A0)
+            {
+                SUBWORK_BIN_RACK itm = new SUBWORK_BIN_RACK();
+
+                string tmp_bin = "";
+                foreach (var j in rackA0color)
+                {
+                    if (i.RACK.ToString() == j.RACK.ToString())
+                    {
+                        tmp_bin = tmp_bin + j.BIN + Environment.NewLine;
+                    }
+                }
+                itm.BIN = tmp_bin;
+                itm.RACK = i.RACK;
+                A0bin.Add(itm);
+
+            }
+
+            ViewBag.condensed_racks_bin_A0 = A0bin;
+
+            var racks_in_room_A0 = (from c in sliderdb.SUPERMARKET_SLIDER
+                                        where bintyp_A0_ROOM_rack_in_clause.Contains(c.RACK)
+                                        orderby c.RACK
+                                        group c by new { c.RACK, c.STATUS } into grouping
+                                        select new RCKS_LISTS
+                                        {
+                                            STATUS = grouping.Key.STATUS,
+                                            RACK = grouping.Key.RACK,
+                                            COUNT = grouping.Count()
+                                        }).ToList();
+            ViewBag.racksinA0count = racks_in_room_A0;
+
+            var totalinallrackA0 = racks_in_room_A0.GroupBy(x => x.RACK).Select(cl => new RCKS_TOT
+            {
+                RACK = cl.First().RACK,
+                COUNT = cl.Sum(co => co.COUNT)
+            }).ToList();
+
+            ViewBag.totalallA0rack = totalinallrackA0;
+
+
+            return View();
+        }
+
+        public ActionResult PieChart()
+        {
+            var results = (from c in sliderdb.SUPERMARKET_SLIDER
+                           where c.STATUS == "EOL" || c.STATUS == "MOVING" || c.STATUS == "NON MOVING" || c.STATUS == "SLOW MOVING"
+                           group c by new { c.STATUS } into grouping
+                           select new
+                           {
+                               STATUS = grouping.Key.STATUS,
+                               COUNT = grouping.Count()
+                           }).ToList();
+
+            return Json(results, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult SecondPieChart()
+        {
+            var results = (from c in db.KANBAN_MASTER
+                           group c by new { c.MODEL } into grouping
+                           select new
+                           {
+                               MODEL = grouping.Key.MODEL,
+                               COUNT = grouping.Count()
+                           }).ToList();
+
+
+            return Json(results, JsonRequestBehavior.AllowGet);
+        }
+
+        // GET : SliderAddress
+        public ActionResult sliderAddress(string ddlRacks)
             {
                 var RACKS_LISTS = from rk in sliderdb.SUPERMARKET_SLIDER select rk;
                 var racks_only = RACKS_LISTS.Select(x => x.RACK).Distinct().ToList();
@@ -194,6 +742,7 @@ namespace WebApplication1.Controllers
                 SUPPLIER = p.SUPPLIER
             })
                                select s;
+
             var Kanbanmasterlist = kanbanMaster.ToList();
             var sliderAddresses = sliderdb.SUPERMARKET_SLIDER.ToList();
            /*
