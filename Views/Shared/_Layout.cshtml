@@ -18,6 +18,11 @@
             display: block;
         }
 
+        body {
+            margin: 0px;
+            padding-top: 0px !important;
+        }
+
         .dropdown-submenu {
             position: relative;
         }
@@ -50,12 +55,12 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Kitting and Supermarket </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li>@Html.ActionLink("Kanban Master", "Index", "KANBAN_MASTER", new { area = "" }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Kanban Master", "Login", "Home", new { id = "1" }, new { @class = "dropdown-item" })</li>
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle" href="#">Supermarket</a>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Supermarket Slider Colour Maintainance", "Index", "SUPERMARKET_SLIDER", new { area = "" }, new { @class = "dropdown-item" })</li>
-                                <li>@Html.ActionLink("Supermarket Slider Address", "sliderAddress", "KANBAN_MASTER", new { area = "" }, new { @class = "dropdown-item" })</li>
+                                <li>@Html.ActionLink("Supermarket Slider Color  Maintainance", "Login", "Home", new { id = "3" }, new { @class = "dropdown-item" })</li>
+                                <li>@Html.ActionLink("Supermarket Slider Address", "Login", "Home", new { id = "2" }, new { @class = "dropdown-item" })</li>
                                 <li class="dropdown-submenu">
                                     <a class="dropdown-item dropdown-toggle" href="#">Supermarket Trigerring</a>
                                     <ul class="dropdown-menu">
@@ -106,13 +111,26 @@
                                 <li><a class="dropdown-item" href="http://172.16.206.19/ProductionMonitor/T32All.aspx">Kitting Monitor</a></li>
 
                             </ul>
-                        </li>
+
                         <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#">2002 Triggering</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="http://172.16.206.19/RM_2002_TRIGERRING/WH_2002.aspx">2002 Triggering</a></li>
-                                <li><a class="dropdown-item" href="http://172.16.206.19/RM_2002_TRIGERRING/File_Upload.aspx">2002 Triggering File Upload</a></li>
+                            <a class="dropdown-item dropdown-toggle" href="#">2002 Warehouse Trigerring</a>
+                            <ul class="dropdown-menu dropdown-submenu">
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">RM WORKARA Trigerring</a>
+                                    <ul class="dropdown-menu dropdown-submenu">
+                                        <li><a class="dropdown-item" href="http://172.16.206.19/Supermarket_Triggering/RM_WORKARA.aspx"> 2002 RM WORKARA Monitor</a></li>
+                                        <li><a class="dropdown-item" href="http://172.16.206.19/Supermarket_Triggering/FileUpload_Workara.aspx">2002 RM WORKARA File upload</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">2002 Trigerring</a>
+                                    <ul class="dropdown-menu dropdown-submenu">
+                                        <li><a class="dropdown-item" href="http://172.16.206.19/RM_2002_TRIGERRING/WH_2002.aspx">2002 Triggering</a></li>
+                                        <li><a class="dropdown-item" href="http://172.16.206.19/RM_2002_TRIGERRING/File_Upload.aspx">2002 Triggering File Upload</a></li>
+                                    </ul>
+                                </li>
                             </ul>
+
                         </li>
                     </ul>
                 </li>
@@ -147,6 +165,7 @@
         </div>
 
     </nav>
+
     <div class="container body-content">
 
     </div>

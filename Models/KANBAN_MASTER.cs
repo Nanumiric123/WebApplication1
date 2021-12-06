@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication1.Models
 {
@@ -146,6 +147,16 @@ namespace WebApplication1.Models
 
         public String RACK { get; set; }
         public String BIN { get; set; }
+    }
+
+    [Table("LOGIN_INFO")]
+    public class LOGIN_INFO
+    {
+        [System.ComponentModel.DataAnnotations.Key]
+        public int UserId { get; set; }
+        public string User { get; set; }
+        public string Password { get; set; }
+        public string Group { get; set; }
     }
 
 }

@@ -11,6 +11,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Views
 {
+    [NoDirectAccess]
     public class SUPERMARKET_SLIDERController : Controller
     {
         private WebApplication1Context db = new WebApplication1Context();

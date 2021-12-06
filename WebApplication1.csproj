@@ -184,6 +184,7 @@
     <Compile Include="Controllers\CreateKanbanPDF.cs" />
     <Compile Include="Controllers\Report_data.cs" />
     <Compile Include="Data\capacityContext.cs" />
+    <Compile Include="Data\IbsuinessContext.cs" />
     <Compile Include="Data\sliderContext.cs" />
     <Compile Include="Data\WebApplication1Context.cs" />
     <Compile Include="Global.asax.cs">
@@ -389,6 +390,8 @@
     <Content Include="Views\Home\DROP_IN.cshtml" />
     <Content Include="Views\Home\PIECHART.cshtml" />
     <Content Include="Views\KANBAN_MASTER\Chart.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\LoginError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

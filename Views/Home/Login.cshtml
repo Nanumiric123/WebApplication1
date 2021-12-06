@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+
+@model WebApplication1.Models.LOGIN_INFO
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+
+@{
+    var id = ViewContext.RouteData.Values["id"];
+}
+<div class="container">
+    <h2>Login To Kanban Master</h2>
+</div>
+<br />
+<div>
+
+</div>
+@using (Html.BeginForm("Check_authority_Login", "Home", FormMethod.Post))
+{
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <a>Input Username and password</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <br />
+                &nbsp;<input id="Text1" type="text" name="Text1" />
+                <br />
+                &nbsp;<input id="Password1" type="password" name="Password1" />
+                <br />
+                &nbsp;<input type="submit" value="Login" />
+            </div>
+        </div>
+    </div>
+}

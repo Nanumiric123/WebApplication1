@@ -15,11 +15,13 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
+    [NoDirectAccess]
     public class KANBAN_MASTERController : Controller
     {
         private WebApplication1Context db = new WebApplication1Context();
         private sliderContext sliderdb = new sliderContext();
         private capacityContext capacitydb = new capacityContext();
+        private IbsuinessContext ibctc = new IbsuinessContext();
 
 
         // GET: KANBAN_MASTER
@@ -140,7 +142,7 @@ namespace WebApplication1.Controllers
             }
             return View(kANBAN_MASTER);
         }
-       
+
 
         public ActionResult Chart()
         {
@@ -387,10 +389,15 @@ namespace WebApplication1.Controllers
                                     COUNT = grouping.Count()
                                 }).ToList();
 
+            var processclass_Clause = new string[] { "A0 H0", "SUB", "A0","H0" };
             ViewBag.A0PROCESSCLASS = rooms_results.get_A0_Process(process_class);
             ViewBag.H0PROCESSCLASS = rooms_results.get_H0_Process(process_class);
             ViewBag.A0H0PROCESSCLASS = rooms_results.get_A0H0_Process(process_class);
             ViewBag.SUBPROCESSCLASS = rooms_results.get_SUB_Process(process_class);
+            var totalallprocessclass = process_class.Where(f => processclass_Clause.Contains(f.PROCESS)).Select(f => f.COUNT).DefaultIfEmpty().Sum();
+            ViewBag.totalallprocessclass = totalallprocessclass;
+
+
 
             var racks_in_room_1 = (from c in sliderdb.SUPERMARKET_SLIDER
                                    where c.RACK.Contains("Rack 1")
@@ -1087,24 +1094,23 @@ namespace WebApplication1.Controllers
             }
             return View(kANBAN_MASTER);
         }
-
-        // GET: KANBAN_MASTER/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
+            // GET: KANBAN_MASTER/Edit/5
+            public ActionResult Edit(int? id)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            KANBAN_MASTER kANBAN_MASTER = db.KANBAN_MASTER.Find(id);
-            TempData["TempModel"] = kANBAN_MASTER.PHOTO;
-            Session["photo"] = kANBAN_MASTER.PHOTO;
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                KANBAN_MASTER kANBAN_MASTER = db.KANBAN_MASTER.Find(id);
+                TempData["TempModel"] = kANBAN_MASTER.PHOTO;
+                Session["photo"] = kANBAN_MASTER.PHOTO;
 
-            if (kANBAN_MASTER == null)
-            {
-                return HttpNotFound();
+                if (kANBAN_MASTER == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(kANBAN_MASTER);
             }
-            return View(kANBAN_MASTER);
-        }
 
         // GET: KANBAN_MASTER/Details/5
         public ActionResult SliderAddressDetails(string sliderAddress)
