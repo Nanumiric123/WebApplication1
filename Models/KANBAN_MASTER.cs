@@ -60,6 +60,14 @@ namespace WebApplication1.Models
 
     }
 
+    public class KANBAN_MASTER_part_model
+    {
+        public String PART_NO { get; set; }
+        public String MODEL { get; set; }
+
+
+    }
+
     public class SUPERMARKET_SLIDER_JOINED
     {
         public Int32 ID { get; set; }
@@ -89,6 +97,36 @@ namespace WebApplication1.Models
         public Int32 MINUTE_30 { get; set; }
         public Int32 MINUTE_60 { get; set; }
         public Int32 MINUTE_90 { get; set; }
+    }
+    public class KANBAN_MASTER_REPORT
+    {
+        public string PART_NO { get; set; }
+        public string BIN { get; set; }
+    }
+    public class SUPERMARKET_SLIDER_REPORT_BIN_type
+    {
+        public string BIN { get; set; }
+        public string RACK { get; set; }
+        public string STATUS { get; set; }
+    }
+    public class SUPERMARKET_SLIDER_REPORT_BIN_b
+    {
+        public string STATUS { get; set; }
+        public string RACK { get; set; }
+        public string BIN { get; set; }
+    }
+    public class SUPERMARKET_SLIDER_REPORT_BIN
+    {
+        public string STATUS { get; set; }
+        public string RACK { get; set; }
+        public string BIN { get; set; }
+        public int COUNT { get; set; }
+    }
+
+    public class SUPERMARKET_SLIDER_REPORT_CALCULATION
+    {
+        public string STATUS { get; set; }
+        public int COUNT { get; set; }
     }
 
     public class SUPERMARKET_SLIDER_REPORT
@@ -129,7 +167,7 @@ namespace WebApplication1.Models
     }
     public class BIN_TYPE
     {
-       
+
         public String BIN { get; set; }
         public int COUNT { get; set; }
     }
@@ -159,4 +197,48 @@ namespace WebApplication1.Models
         public string Group { get; set; }
     }
 
-}
+    public class RACK_MATERIAL
+    {
+        public string MATERIAL { get; set; }
+        public string RACK { get; set; }
+    }
+
+    public class KANBAN_MASTER_MODEL_COUNT
+    {
+        public string CUSTOMER { get; set; }
+        public int COUNT { get; set; }
+    }
+
+        public class PACKAGING_INFO
+        {
+            public int ID { get; set; }
+            public byte[] PHOTO_A { get; set; }
+            public byte[] PHOTO_B { get; set; }
+            public byte[] PHOTO_C { get; set; }
+            public string EXT_PCK_METHOD { get; set; }
+            public string INT_PACK_METHOD { set; get; }
+            public string EXT_PCK_SIZE { get; set; }
+            public string INT_PCK_QTY { get; set; }
+            public int TOTAL_NUMBER_OF_INT { get; set; }
+            public int PCK_TOTAL_QTY { get; set; }
+            public int WEIGHT_KG { get; set; }
+            public string REMARKS { get; set; }
+            public string SAVE { get; set; }
+        }
+
+
+        public class PACKAGING_INFO_INDEX
+        {
+            public int ID { get; set; }
+            public string EXT_PCK_METHOD { get; set; }
+            public string INT_PACK_METHOD { set; get; }
+            public string EXT_PCK_SIZE { get; set; }
+            public string INT_PCK_QTY { get; set; }
+            public int TOTAL_NUMBER_OF_INT { get; set; }
+            public int PCK_TOTAL_QTY { get; set; }
+            public int WEIGHT_KG { get; set; }
+            public string REMARKS { get; set; }
+            public string SAVE { get; set; }
+        }
+
+    }

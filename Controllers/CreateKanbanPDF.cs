@@ -6,8 +6,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using WebApplication1.Models;
 using System.Linq;
+using WebApplication1.Models;
 using ZXing;
 
 
@@ -158,8 +158,8 @@ namespace WebApplication1
 
             XGraphics gfx = XGraphics.FromPdfPage(page);
 
-            if (kanban_color == "Subwork" && kANBAN_MASTER.PROCESS == "SUB" || kanban_color == "Subwork" && kANBAN_MASTER.PROCESS == "SUBWORK" || kanban_color == "Subwork" && kANBAN_MASTER.PROCESS.Contains("SUB")||
-                kanban_color == "Subwork" && kANBAN_MASTER.PROCESS.Contains("SUBWORK") )
+            if (kanban_color == "Subwork" && kANBAN_MASTER.PROCESS == "SUB" || kanban_color == "Subwork" && kANBAN_MASTER.PROCESS == "SUBWORK" || kanban_color == "Subwork" && kANBAN_MASTER.PROCESS.Contains("SUB") ||
+                kanban_color == "Subwork" && kANBAN_MASTER.PROCESS.Contains("SUBWORK"))
             {
                 kanbanColor = XColor.FromArgb(255, 255, 255);
             }
@@ -167,7 +167,7 @@ namespace WebApplication1
             {
                 kanbanColor = XColor.FromArgb(195, 195, 195);
             }
-            else if (kanban_color == "Prod" && kANBAN_MASTER.PROCESS == "SUB" || kanban_color == "Prod" && kANBAN_MASTER.PROCESS == "SUBWORK"  || kanban_color == "Prod" && kANBAN_MASTER.PROCESS.Contains("SUB") ||
+            else if (kanban_color == "Prod" && kANBAN_MASTER.PROCESS == "SUB" || kanban_color == "Prod" && kANBAN_MASTER.PROCESS == "SUBWORK" || kanban_color == "Prod" && kANBAN_MASTER.PROCESS.Contains("SUB") ||
                 kanban_color == "Prod" && kANBAN_MASTER.PROCESS.Contains("SUBWORK"))
             {
                 kanbanColor = XColor.FromArgb(255, 153, 51);
@@ -472,7 +472,7 @@ namespace WebApplication1
 
                 //Draw a box containing the part number description
                 gfx.DrawRectangle(pen, brush, pn_des_box_horizontal_position, pn_des_box_vertical_position, pn_text_box_width, pn_text_box_height);
-                points = new XPoint(pn_des_box_horizontal_position +2, pn_des_box_vertical_position + (pn_text_box_height / 2));
+                points = new XPoint(pn_des_box_horizontal_position + 2, pn_des_box_vertical_position + (pn_text_box_height / 2));
                 gfx.DrawString(kANBAN_MASTER.PART_NAME, new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.CenterLeft);
 
                 //Draw a box containing the quantity description
@@ -658,7 +658,7 @@ namespace WebApplication1
 
                     //Draw a box containing Kitting Slider value
                     gfx.DrawRectangle(pen, kitting_slider_value_horizontal_position, safety_part_text_box_vertical_position, kitting_slider_value_width, kitting_slider_value_height);
-                    
+
                     points = new XPoint(kitting_slider_value_horizontal_position + (kitting_slider_value_width / 2), safety_part_text_box_vertical_position + (kitting_slider_value_height / 2));
                     gfx.DrawString(kANBAN_MASTER.KITTING_SLIDER, new XFont("Arial", 14), XBrushes.Black, points, XStringFormats.Center);
                 }
@@ -1014,7 +1014,7 @@ namespace WebApplication1
                 var bounds = new XRect(gfx.PageOrigin, gfx.PageSize);
                 XPoint points = new XPoint(pn_title_box_horizontal_position + 10, pn_title_box_vertical_position + 7);
 
-                
+
 
 
                 XBrush brush = new XSolidBrush(kanbanColor);
@@ -1221,7 +1221,7 @@ namespace WebApplication1
                             else
                             {
                                 line_string = line_string + lineses[j] + "\t";
-                                
+
                             }
 
                         }
@@ -1268,7 +1268,7 @@ namespace WebApplication1
                     string[] addresses = slider_Address.Split(' ');
                     if (addresses.Length >= 3)
                     {
-                        font_size = 10;
+                        font_size = 8;
                         slider_Address = "";
                         for (int j = 0; j < addresses.Length; j++)
                         {
@@ -1282,11 +1282,12 @@ namespace WebApplication1
                             }
                         }
                         number_of_sliders = addresses.Length;
+                        slider_vertical_Address = slider_vertical_Address + slider_no_value_box_height / 8;
                     }
                     else
                     {
-                        slider_vertical_Address = slider_vertical_Address + slider_no_value_box_height / 2.5;
-                         slider_Address = "";
+                        slider_vertical_Address = slider_vertical_Address + slider_no_value_box_height / 4;
+                        slider_Address = "";
                         for (int j = 0; j < addresses.Length; j++)
                         {
                             slider_Address = slider_Address + addresses[j] + System.Environment.NewLine;
@@ -1812,7 +1813,7 @@ namespace WebApplication1
                 //draw the box with part number from database
                 gfx.DrawRectangle(pen, brush, pn_value_box_horizontal_position, pn_value_box_vertical_position, pn_text_box_width, pn_text_box_height);
                 points = new XPoint(pn_value_box_horizontal_position + 5, pn_value_box_vertical_position + (pn_text_box_height / 2));
-                gfx.DrawString(kANBAN_MASTER.PART_NO, new XFont("Arial", 16,XFontStyle.Bold), XBrushes.Black, points, XStringFormats.CenterLeft);
+                gfx.DrawString(kANBAN_MASTER.PART_NO, new XFont("Arial", 16, XFontStyle.Bold), XBrushes.Black, points, XStringFormats.CenterLeft);
 
                 if (kANBAN_MASTER.PART_NAME.Length > 20)
                 {
@@ -1827,7 +1828,7 @@ namespace WebApplication1
                 //draw box with supplier value
                 gfx.DrawRectangle(pen, brush, supplier_value_horizontal_position, supplier_value_vertical_position, supplier_value_box_width, supplier_value_box_height);
                 points = new XPoint(supplier_value_horizontal_position + (supplier_value_box_width / 2), supplier_value_vertical_position + (supplier_value_box_height / 2));
-                gfx.DrawString(kANBAN_MASTER.SUPPLIER.Substring(0,10), new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
+                gfx.DrawString(kANBAN_MASTER.SUPPLIER.Substring(0, 10), new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
 
                 //draw box with supplier title
                 gfx.DrawRectangle(pen, brush, supplier_text_box_horizontal_position, supplier_text_box_vertical_position, supplier_text_box_width, supplier_text_box_height);
@@ -1854,7 +1855,7 @@ namespace WebApplication1
                 points = new XPoint(kanban_card_text_box_horizontal_position + (kanban_card_title_box_width / 2), kanban_card_text_box_vertical_position + (kanban_card_title_box_height / 2));
                 //gfx.DrawString("Kanban Card :", new XFont("Arial", 6), XBrushes.Black, points, XStringFormats.Center);
                 rect = new XRect(kanban_card_text_box_horizontal_position + (kanban_card_title_box_width / 8), kanban_card_text_box_vertical_position + (kanban_card_title_box_height / 8), kanban_card_title_box_width, kanban_card_title_box_height);
-                tf.DrawString("Kanban"+ Environment.NewLine +"Card :", new XFont("Arial", 8), XBrushes.Black, rect, XStringFormats.TopLeft);
+                tf.DrawString("Kanban" + Environment.NewLine + "Card :", new XFont("Arial", 8), XBrushes.Black, rect, XStringFormats.TopLeft);
 
                 int kanban_number = i + 1;
 
@@ -1904,7 +1905,7 @@ namespace WebApplication1
             return document;
         }
 
-        public PdfDocument create_slider_kanban(IEnumerable<WebApplication1.Models.KANBAN_MASTER> kANBAN_MASTER,List<string> empty_p_num)
+        public PdfDocument create_slider_kanban(IEnumerable<WebApplication1.Models.KANBAN_MASTER> kANBAN_MASTER, List<string> empty_p_num)
         {
             DataTable dt = new DataTable();
             dt.Columns.Add("part_number", typeof(string));
@@ -1921,7 +1922,7 @@ namespace WebApplication1
                 foreach (var addresses in slideraddresss)
                 {
 
-                    dt.Rows.Add(item.PART_NO, addresses, item.PART_NAME, item.PROCESS, ms,item.LINE);
+                    dt.Rows.Add(item.PART_NO, addresses, item.PART_NAME, item.PROCESS, ms, item.LINE);
                     dt.Rows.Add(item.PART_NO, addresses, item.PART_NAME, item.PROCESS, ms, item.LINE);
                 }
 
@@ -1929,7 +1930,7 @@ namespace WebApplication1
 
             if (empty_p_num.Count != 0)
             {
-                foreach(var p in empty_p_num)
+                foreach (var p in empty_p_num)
                 {
                     string[] prts_slider = p.Split('$');
                     dt.Rows.Add(prts_slider[0], prts_slider[1], p, "", null);
@@ -1947,7 +1948,7 @@ namespace WebApplication1
             double part_number_imagebox_height = mainbox_height;
             double line_numberbox_height = mainbox_height / 2;
 
-            int kanban_image_height =   100;
+            int kanban_image_height = 100;
 
             //set width
             double mainbox_width = XUnit.FromMillimeter(172.0);
@@ -2065,10 +2066,10 @@ namespace WebApplication1
                     XRect rect = new XRect(slider_addressbox_horizontal_position + slider_addressbox_width / 14, slider_addressbox_vertical_position + slider_addressbox_height / 4, slider_addressbox_width, slider_addressbox_height);
                     tf.DrawString(dt.Rows[i][1].ToString(), new XFont("Arial", 24, XFontStyle.Bold), XBrushes.Black, rect, XStringFormats.TopLeft);
                     //Write part number in the part number box
-                    rect = new XRect(part_numberbox_horizontal_position , part_numberbox_vertical_position + part_numberbox_height / 2, part_numberbox_width, part_numberbox_height);
+                    rect = new XRect(part_numberbox_horizontal_position, part_numberbox_vertical_position + part_numberbox_height / 2, part_numberbox_width, part_numberbox_height);
                     tf.DrawString(dt.Rows[i][0].ToString(), new XFont("Arial", 48, XFontStyle.Bold), XBrushes.Black, rect, XStringFormats.TopLeft);
 
-                   
+
                     //Draw line image box
                     gfx.DrawRectangle(pen, linebox_horizontal, linebox_vertical, line_numberbox_width, line_numberbox_height);
                     // Draw line qr code
@@ -2076,11 +2077,11 @@ namespace WebApplication1
 
                     //Draw Part number image box
                     gfx.DrawRectangle(pen, part_number_imagebox_horizontal_position, part_number_imagebox_vertical_position, part_number_imagebox_width, part_number_imagebox_height);
-                    rect = new XRect( part_number_imagebox_horizontal_position + part_number_imagebox_width / 4, part_number_imagebox_vertical_position + part_numberbox_height / 2, part_numberbox_width, part_numberbox_height);
+                    rect = new XRect(part_number_imagebox_horizontal_position + part_number_imagebox_width / 4, part_number_imagebox_vertical_position + part_numberbox_height / 2, part_numberbox_width, part_numberbox_height);
                     tf.DrawString("NA", new XFont("Arial", 48, XFontStyle.Bold), XBrushes.Black, rect, XStringFormats.TopLeft);
-                    
+
                 }
-                else 
+                else
                 {
 
                     //Create barcode for part_number
@@ -2191,7 +2192,7 @@ namespace WebApplication1
                     //Draw Part number image box
                     gfx.DrawRectangle(pen, part_number_imagebox_horizontal_position, part_number_imagebox_vertical_position, part_number_imagebox_width, part_number_imagebox_height);
                     //draw the photo of the part number
-                    gfx.DrawImage(pho, kanban_image_horizontal , kanban_image_vertical_position);
+                    gfx.DrawImage(pho, kanban_image_horizontal, kanban_image_vertical_position);
                     string[] line_splitted = dt.Rows[i][5].ToString().Split(' ');
                     int fnt_size = 12;
                     double auto_size_linetext_vertical_position = linetext_vertical_position;
@@ -2229,7 +2230,7 @@ namespace WebApplication1
                 i++;
                 j++;
             }
-            
+
 
             return document;
         }
@@ -2331,7 +2332,7 @@ namespace WebApplication1
             }
 
             int col_count = 0;
-            for (int i = 0; i< 4; i++)
+            for (int i = 0; i < 4; i++)
             {
                 if (col_count == 4)
                 {
@@ -2374,7 +2375,7 @@ namespace WebApplication1
                 gfx.DrawString(kANBAN_MASTER.QTY_PER_BIN.ToString(), new XFont("Arial", 14), XBrushes.Black, points, XStringFormats.Center);
                 //draw qty barcode box
                 gfx.DrawRectangle(sub_pen, qty_barcode_horizontal_position, qty_barcode_vertical_position, qty_barcode_box_width, qty_barcode_box_height);
-                gfx.DrawImage(qty_per_bin_barcode_image, qty_barcode_horizontal_position+ 5, qty_barcode_vertical_position + 5);
+                gfx.DrawImage(qty_per_bin_barcode_image, qty_barcode_horizontal_position + 5, qty_barcode_vertical_position + 5);
 
                 //draw stor loc text box
                 gfx.DrawRectangle(sub_pen, stor_loc_text_box_horizontal_position, stor_loc_text_box_vertical_position, stor_loc_text_box_width, stor_loc_text_box_height);
@@ -2407,6 +2408,838 @@ namespace WebApplication1
                 col_count++;
 
             }
+
+
+            return document;
+        }
+
+        public PdfDocument createWHpickingList(string[] production_orders)
+        {
+            PROD_ORDER.get_part_quantity_from_binSoapClient prod_ord = new PROD_ORDER.get_part_quantity_from_binSoapClient();
+            DataTable compiled_Data = new DataTable();
+
+            string prod_orders = "";
+            string orderqty = "";
+            int k = 1;
+            foreach (var i in production_orders)
+            {
+                if (i != "")
+                {
+                    DataTable datafrom_sap = prod_ord.GET_PRODUCTION_QUANTITY_BY_ORDER(i);
+                    if (compiled_Data.Columns.Count <= 0)
+                    {
+                        foreach (DataColumn dc in datafrom_sap.Columns)
+                        {
+                            compiled_Data.Columns.Add(dc.ColumnName, dc.DataType);
+                        }
+                    }
+                    compiled_Data.Merge(datafrom_sap);
+                    if (k % 7 != 0)
+                    {
+                        prod_orders = prod_orders + i + " ";
+
+                    }
+                    else if (k % 7 == 0)
+                    {
+                        prod_orders = prod_orders + i + Environment.NewLine;
+                    }
+
+                }
+                k++;
+            }
+            DataView dv = new DataView(compiled_Data);
+            DataTable compile_Data_distinct = dv.ToTable(true, "PRODUCTION ORDER", "ORDER QUANTITY");
+
+            for (int t = 0; t < compile_Data_distinct.Rows.Count; t++)
+            {
+
+                orderqty = orderqty + Math.Round(decimal.Parse(compile_Data_distinct.Rows[t][1].ToString())).ToString() + " ";
+            }
+
+            DataTable compile_Data_aggr = compiled_Data.AsEnumerable().
+                GroupBy(r => r.Field<string>("COMPONENT")).
+                Select(g =>
+                {
+                    var row = compiled_Data.NewRow();
+                    row["COMPONENT"] = g.Key;
+                    row["ORDER QUANTITY"] = g.Sum(r => r.Field<decimal>("ORDER QUANTITY"));
+                    row["REQUIREMENT QUANTITY"] = g.Sum(r => r.Field<decimal>("REQUIREMENT QUANTITY"));
+                    row["WITHDRAWN QUANTITY"] = g.Sum(r => r.Field<decimal>("WITHDRAWN QUANTITY"));
+                    return row;
+                }).CopyToDataTable();
+
+            DataTable line_material = compiled_Data.AsEnumerable().
+                GroupBy(r => new { component = r.Field<string>("COMPONENT"), line = r.Field<string>("LINE") })
+                .Select(g =>
+                {
+                    var row = compiled_Data.NewRow();
+                    row["COMPONENT"] = g.Key.component;
+                    row["LINE"] = g.Key.line;
+                    return row;
+                }).CopyToDataTable();
+
+
+            for (int i = 0; i < compile_Data_aggr.Rows.Count; i++)
+            {
+                string material = compile_Data_aggr.Rows[i][1].ToString();
+                string line = compile_Data_aggr.Rows[i][2].ToString();
+
+                for (int j = 0; j < line_material.Rows.Count; j++)
+                {
+                    string material_line_only = line_material.Rows[j][1].ToString();
+                    string line_line_only = line_material.Rows[j][2].ToString();
+
+                    if (material_line_only == material)
+                    {
+                        if (line == null || line == "")
+                        {
+                            if (!line.Contains(line_line_only))
+                            {
+                                compile_Data_aggr.Rows[i][2] = compile_Data_aggr.Rows[i][2].ToString() + " " + line_material.Rows[j][2].ToString();
+                            }
+
+                        }
+                    }
+                }
+
+            }
+
+            DataTable stock_location = new DataTable();
+            compile_Data_aggr.Columns.Add("LOCATION", typeof(string));
+            compile_Data_aggr.Columns.Add("CURRENT STOCK", typeof(decimal));
+            compile_Data_aggr.Columns.Add("BALANCE", typeof(string));
+
+
+            for (int i = 0; i < compile_Data_aggr.Rows.Count; i++)
+            {
+                STOCK_FROM_MATERIAL.get_part_quantity_from_binSoapClient STOCK_FROM_MATERIAL = new STOCK_FROM_MATERIAL.get_part_quantity_from_binSoapClient();
+                string matrial = compile_Data_aggr.Rows[i][1].ToString();
+                try
+                {
+                    stock_location = STOCK_FROM_MATERIAL.GET_STOCK_FROM_MATERIAL(matrial);
+
+                }
+                catch (Exception ex)
+                {
+                    string d = ex.Message.ToString();
+                }
+
+
+                string location_combined = "";
+                if (stock_location.Rows.Count > 0)
+                {
+
+                    DataTable stock_location_aggr = stock_location.AsEnumerable().
+                            GroupBy(r => r.Field<string>("material")).
+                            Select(g =>
+                            {
+                                var row = stock_location.NewRow();
+                                row["material"] = g.Key;
+                                row["qty"] = g.Sum(r => r.Field<decimal>("qty"));
+                                return row;
+                            }).CopyToDataTable();
+
+                    for (int j = 0; j < stock_location.Rows.Count; j++)
+                    {
+                        location_combined = location_combined + stock_location.Rows[j][1].ToString() + "_" + stock_location.Rows[j][2].ToString() + " ";
+
+                    }
+
+                    if (stock_location_aggr.Rows.Count > 0)
+                    {
+                        for (int j = 0; j < stock_location_aggr.Rows.Count; j++)
+                        {
+                            if (matrial == stock_location_aggr.Rows[0][j].ToString())
+                            {
+                                compile_Data_aggr.Rows[i][7] = stock_location_aggr.Rows[j][2];
+                                compile_Data_aggr.Rows[i][8] = decimal.Parse(stock_location_aggr.Rows[j][2].ToString()) - decimal.Parse(compile_Data_aggr.Rows[i][4].ToString());
+
+                            }
+
+                        }
+                    }
+
+
+                }
+                else
+                {
+                    compile_Data_aggr.Rows[i][8] = 0.0m;
+                }
+
+                compile_Data_aggr.Rows[i][6] = location_combined;
+                stock_location.Clear();
+            }
+
+            DataView view = compile_Data_aggr.AsDataView();
+
+            view.Sort = "COMPONENT ASC";
+
+            DataTable compile_Data_aggr_SORTED = view.ToTable();
+
+
+            PdfDocument document = new PdfDocument();
+            document.Info.Title = "Created with PDFsharp";
+            PdfPage page = document.AddPage();
+            page.Orientation = PdfSharp.PageOrientation.Landscape;
+            page.Size = PdfSharp.PageSize.A4;
+
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+            XPen pen = new XPen(XColors.Black, 1.5);
+            XSolidBrush br = new XSolidBrush(XColor.FromArgb(162, 255, 255, 1));
+
+            XStringFormat format = new XStringFormat();
+            format.LineAlignment = XLineAlignment.Near;
+            format.Alignment = XStringAlignment.Near;
+            var tf = new XTextFormatter(gfx);
+
+            XFont fontParagraph = new XFont("Verdana", 8, XFontStyle.Regular);
+
+            double row_height = XUnit.FromMillimeter(12);
+            double row_width = XUnit.FromMillimeter(23);
+            double line_row_width = XUnit.FromMillimeter(15);
+            double req_qty_row_width = XUnit.FromMillimeter(25);
+            double withdraw_qty_row_width = XUnit.FromMillimeter(56);
+            double location_row_width = XUnit.FromMillimeter(90);
+            double title_width = row_width * 4 + line_row_width + req_qty_row_width + withdraw_qty_row_width + location_row_width;
+            double prod_order_width = row_width + line_row_width;
+            double prod_order_val_width = row_width * 4 + withdraw_qty_row_width + location_row_width;
+
+
+            double row_model_horizontal_position = 20;
+
+            double row_line_horizontal_position = row_model_horizontal_position + row_width;
+
+            double row_withdraw_qty_horizontal_position = row_line_horizontal_position + line_row_width;
+            double prod_order_val_horizontal_position = row_withdraw_qty_horizontal_position;
+            double row_req_qty_horizontal_position = row_withdraw_qty_horizontal_position + withdraw_qty_row_width;
+
+            double row_order_qty_horizontal_position = row_req_qty_horizontal_position + req_qty_row_width;
+
+
+            double location_horizontal_position = row_order_qty_horizontal_position + row_width;
+            double cur_stock_horizontal_position = location_horizontal_position + location_row_width;
+            double balance_horizontal_position = cur_stock_horizontal_position + row_width;
+
+            double row_model_vertical_position = 180;
+            double row_line_vertical_position = row_model_vertical_position;
+            double row_order_qty_vertical_position = row_line_vertical_position;
+            double row_req_qty_vertical_position = row_order_qty_vertical_position;
+            double row_withdraw_qty_vertical_position = row_req_qty_vertical_position;
+            double location_vertical_position = row_withdraw_qty_vertical_position;
+            double cur_stock_vertical_position = location_vertical_position;
+            double balance_vertical_position = cur_stock_vertical_position;
+
+
+            XRect rect = new XRect(20, 40, title_width, row_height + 20);
+            XPoint rp = new XPoint(20 + (title_width / 2), 40 + ((row_height + 20) / 2));
+            gfx.DrawRectangle(pen, br, 20, 40, title_width, row_height + 20);
+            gfx.DrawString("PICKLIST FOR SERVICES LOT/SLOW MOVING", new XFont("Arial", 18), XBrushes.Black, rp, XStringFormats.Center);
+
+            tf = new XTextFormatter(gfx);
+            XRect rect2 = new XRect(25, 120, prod_order_width, row_height);
+            rect = new XRect(20, 110, prod_order_width, row_height);
+            gfx.DrawRectangle(pen, rect);
+            tf.DrawString("Production Orders", new XFont("Arial", 12), XBrushes.Black, rect2, XStringFormats.TopLeft);
+
+            tf = new XTextFormatter(gfx);
+            rect = new XRect(prod_order_val_horizontal_position, 110, prod_order_val_width, row_height);
+            rect2 = new XRect(prod_order_val_horizontal_position + 10, 111, prod_order_val_width, row_height);
+            gfx.DrawRectangle(pen, rect);
+            tf.DrawString(prod_orders, new XFont("Arial", 12), XBrushes.Black, rect2, XStringFormats.TopLeft);
+
+            tf = new XTextFormatter(gfx);
+            rect2 = new XRect(30, 120 + row_height, prod_order_width, row_height);
+            rect = new XRect(20, 110 + row_height, prod_order_width, row_height);
+            gfx.DrawRectangle(pen, rect);
+            tf.DrawString("Quantity", new XFont("Arial", 12), XBrushes.Black, rect2, XStringFormats.TopLeft);
+
+            tf = new XTextFormatter(gfx);
+            rect = new XRect(prod_order_val_horizontal_position, 110 + row_height, prod_order_val_width, row_height);
+            rect2 = new XRect(prod_order_val_horizontal_position + 10, 120 + row_height, prod_order_val_width, row_height);
+            gfx.DrawRectangle(pen, rect);
+            tf.DrawString(orderqty, new XFont("Arial", 12), XBrushes.Black, rect2, XStringFormats.TopLeft);
+
+            gfx.DrawRectangle(pen, row_model_horizontal_position, row_model_vertical_position, row_width, row_height);
+            rect = new XRect(row_model_horizontal_position + 15, row_model_vertical_position + 5, row_width, row_height);
+            XPoint points = new XPoint(row_model_horizontal_position + (row_width / 2), row_model_vertical_position + row_height / 2);
+            //gfx.DrawString("PART NUMBER", new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+            tf.DrawString("PART\nNUMBER", new XFont("Arial", 8), XBrushes.Black, rect, XStringFormats.TopLeft);
+
+            gfx.DrawRectangle(pen, row_withdraw_qty_horizontal_position, row_withdraw_qty_vertical_position, withdraw_qty_row_width, row_height);
+            points = new XPoint(row_withdraw_qty_horizontal_position + (withdraw_qty_row_width / 2), row_withdraw_qty_vertical_position + row_height / 2);
+            gfx.DrawString("DESCRIPTION", new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+
+            gfx.DrawRectangle(pen, row_line_horizontal_position, row_line_vertical_position, line_row_width, row_height);
+            points = new XPoint(row_line_horizontal_position + (line_row_width / 2), row_line_vertical_position + row_height / 2);
+            gfx.DrawString("LINE", new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+
+            gfx.DrawRectangle(pen, row_order_qty_horizontal_position, row_order_qty_vertical_position, row_width, row_height);
+            rect = new XRect(row_order_qty_horizontal_position + 15, row_order_qty_vertical_position + 5, row_width, row_height);
+            points = new XPoint(row_order_qty_horizontal_position + (row_width / 2), row_order_qty_vertical_position + row_height / 2);
+            //gfx.DrawString("ORDER QUANTITY", new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+            tf.DrawString("ORDER\nQUANTITY", new XFont("Arial", 8), XBrushes.Black, rect, XStringFormats.TopLeft);
+
+            gfx.DrawRectangle(pen, row_req_qty_horizontal_position, row_req_qty_vertical_position, req_qty_row_width, row_height);
+            rect = new XRect(row_req_qty_horizontal_position + 15, row_req_qty_vertical_position + 5, req_qty_row_width, row_height);
+            points = new XPoint(row_req_qty_horizontal_position + (req_qty_row_width / 2), row_req_qty_vertical_position + row_height / 2);
+            //gfx.DrawString("OPEN QUANTITY", new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+            tf.DrawString("OPEN\nQUANTITY", new XFont("Arial", 8), XBrushes.Black, rect, XStringFormats.TopLeft);
+
+            gfx.DrawRectangle(pen, location_horizontal_position, location_vertical_position, location_row_width, row_height);
+            points = new XPoint(location_horizontal_position + (location_row_width / 2), location_vertical_position + row_height / 2);
+            gfx.DrawString("LOCATION", new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+
+            gfx.DrawRectangle(pen, cur_stock_horizontal_position, cur_stock_vertical_position, row_width, row_height);
+            rect = new XRect(cur_stock_horizontal_position + 15, cur_stock_vertical_position + 5, row_width, row_height);
+            points = new XPoint(cur_stock_horizontal_position + (row_width / 2), cur_stock_vertical_position + row_height / 2);
+            //gfx.DrawString("CURRENT STOCK", new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+            tf.DrawString("CURRENT\nSTOCK", new XFont("Arial", 8), XBrushes.Black, rect, XStringFormats.TopLeft);
+
+            gfx.DrawRectangle(pen, balance_horizontal_position, balance_vertical_position, row_width, row_height);
+            points = new XPoint(balance_horizontal_position + (row_width / 2), balance_vertical_position + row_height / 2);
+            gfx.DrawString("BALANCE", new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+
+            Controllers.getIbusinessData GIB = new Controllers.getIbusinessData();
+
+            int count_page = 1;
+            int rows_per_page = 0;
+            int count_rows_per_doc = 0;
+
+            for (int i = 0; i < compile_Data_aggr_SORTED.Rows.Count; i++)
+            {
+                row_model_vertical_position = row_model_vertical_position + row_height;
+                row_line_vertical_position = row_line_vertical_position + row_height;
+                row_order_qty_vertical_position = row_order_qty_vertical_position + row_height;
+                row_req_qty_vertical_position = row_req_qty_vertical_position + row_height;
+                row_withdraw_qty_vertical_position = row_withdraw_qty_vertical_position + row_height;
+                location_vertical_position = location_vertical_position + row_height;
+                cur_stock_vertical_position = cur_stock_vertical_position + row_height;
+                balance_vertical_position = balance_vertical_position + row_height;
+
+                gfx.DrawRectangle(pen, row_model_horizontal_position, row_model_vertical_position, row_width, row_height);
+                points = new XPoint(row_model_horizontal_position + (row_width / 2), row_model_vertical_position + row_height / 2);
+                gfx.DrawString(compile_Data_aggr_SORTED.Rows[i][1].ToString(), new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+
+                gfx.DrawRectangle(pen, row_line_horizontal_position, row_line_vertical_position, line_row_width, row_height);
+                points = new XPoint(row_line_horizontal_position + (line_row_width / 2), row_line_vertical_position + row_height / 2);
+                gfx.DrawString(compile_Data_aggr_SORTED.Rows[i][2].ToString(), new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+
+                gfx.DrawRectangle(pen, row_order_qty_horizontal_position, row_order_qty_vertical_position, row_width, row_height);
+                points = new XPoint(row_order_qty_horizontal_position + (row_width / 2), row_order_qty_vertical_position + row_height / 2);
+                gfx.DrawString(compile_Data_aggr_SORTED.Rows[i][3].ToString(), new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+
+                gfx.DrawRectangle(pen, row_req_qty_horizontal_position, row_req_qty_vertical_position, req_qty_row_width, row_height);
+                points = new XPoint(row_req_qty_horizontal_position + (req_qty_row_width / 2), row_req_qty_vertical_position + row_height / 2);
+                gfx.DrawString(compile_Data_aggr_SORTED.Rows[i][4].ToString(), new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+
+                gfx.DrawRectangle(pen, row_withdraw_qty_horizontal_position, row_withdraw_qty_vertical_position, withdraw_qty_row_width, row_height);
+                points = new XPoint(row_withdraw_qty_horizontal_position + (withdraw_qty_row_width / 2), row_withdraw_qty_vertical_position + row_height / 2);
+                gfx.DrawString(GIB.get_part_description(compile_Data_aggr_SORTED.Rows[i][1].ToString()), new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+
+                string loc_bin = compile_Data_aggr_SORTED.Rows[i][6].ToString();
+                string[] loc_bin_split = loc_bin.Split(' ');
+
+                tf = new XTextFormatter(gfx);
+                rect = new XRect(location_horizontal_position + 5, location_vertical_position + 2, location_row_width - 10, row_height);
+                gfx.DrawRectangle(pen, location_horizontal_position, location_vertical_position, location_row_width, row_height);
+                points = new XPoint(location_horizontal_position + (location_row_width / 2), location_vertical_position + row_height / 2);
+                tf.DrawString(loc_bin, new XFont("Arial", 8), XBrushes.Black, rect, XStringFormats.TopLeft);
+
+                gfx.DrawRectangle(pen, cur_stock_horizontal_position, cur_stock_vertical_position, row_width, row_height);
+                points = new XPoint(cur_stock_horizontal_position + (row_width / 2), cur_stock_vertical_position + row_height / 2);
+                gfx.DrawString(compile_Data_aggr_SORTED.Rows[i][7].ToString(), new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+
+                gfx.DrawRectangle(pen, balance_horizontal_position, balance_vertical_position, row_width, row_height);
+                points = new XPoint(balance_horizontal_position + (row_width / 2), balance_vertical_position + row_height / 2);
+                gfx.DrawString(compile_Data_aggr_SORTED.Rows[i][8].ToString(), new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+
+                if (count_page == 1)
+                {
+                    rows_per_page = 10;
+                }
+                else
+                {
+
+                    rows_per_page = 15;
+                }
+
+
+                if ((count_rows_per_doc + 1) % rows_per_page == 0)
+                {
+
+                    row_model_vertical_position = 20;
+                    row_line_vertical_position = row_model_vertical_position;
+                    row_order_qty_vertical_position = row_line_vertical_position;
+                    row_req_qty_vertical_position = row_order_qty_vertical_position;
+                    row_withdraw_qty_vertical_position = row_req_qty_vertical_position;
+                    location_vertical_position = row_withdraw_qty_vertical_position;
+                    cur_stock_vertical_position = location_vertical_position;
+                    balance_vertical_position = cur_stock_vertical_position;
+
+                    page = document.AddPage();
+                    page.Orientation = PdfSharp.PageOrientation.Landscape;
+                    page.Size = PdfSharp.PageSize.A4;
+                    gfx = XGraphics.FromPdfPage(page);
+                    tf = new XTextFormatter(gfx);
+
+                    gfx.DrawRectangle(pen, row_model_horizontal_position, row_model_vertical_position, row_width, row_height);
+                    rect = new XRect(row_model_horizontal_position + 15, row_model_vertical_position + 5, row_width, row_height);
+                    points = new XPoint(row_model_horizontal_position + (row_width / 2), row_model_vertical_position + row_height / 2);
+                    //gfx.DrawString("PART NUMBER", new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+                    tf.DrawString("PART\nNUMBER", new XFont("Arial", 8), XBrushes.Black, rect, XStringFormats.TopLeft);
+
+                    gfx.DrawRectangle(pen, row_withdraw_qty_horizontal_position, row_withdraw_qty_vertical_position, withdraw_qty_row_width, row_height);
+                    points = new XPoint(row_withdraw_qty_horizontal_position + (withdraw_qty_row_width / 2), row_withdraw_qty_vertical_position + row_height / 2);
+                    gfx.DrawString("DESCRIPTION", new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+
+                    gfx.DrawRectangle(pen, row_line_horizontal_position, row_line_vertical_position, line_row_width, row_height);
+                    points = new XPoint(row_line_horizontal_position + (line_row_width / 2), row_line_vertical_position + row_height / 2);
+                    gfx.DrawString("LINE", new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+
+                    gfx.DrawRectangle(pen, row_order_qty_horizontal_position, row_order_qty_vertical_position, row_width, row_height);
+                    rect = new XRect(row_order_qty_horizontal_position + 15, row_order_qty_vertical_position + 5, row_width, row_height);
+                    points = new XPoint(row_order_qty_horizontal_position + (row_width / 2), row_order_qty_vertical_position + row_height / 2);
+                    //gfx.DrawString("ORDER QUANTITY", new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+                    tf.DrawString("ORDER\nQUANTITY", new XFont("Arial", 8), XBrushes.Black, rect, XStringFormats.TopLeft);
+
+                    gfx.DrawRectangle(pen, row_req_qty_horizontal_position, row_req_qty_vertical_position, req_qty_row_width, row_height);
+                    rect = new XRect(row_req_qty_horizontal_position + 15, row_req_qty_vertical_position + 5, req_qty_row_width, row_height);
+                    points = new XPoint(row_req_qty_horizontal_position + (req_qty_row_width / 2), row_req_qty_vertical_position + row_height / 2);
+                    //gfx.DrawString("OPEN QUANTITY", new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+                    tf.DrawString("OPEN\nQUANTITY", new XFont("Arial", 8), XBrushes.Black, rect, XStringFormats.TopLeft);
+
+                    gfx.DrawRectangle(pen, location_horizontal_position, location_vertical_position, location_row_width, row_height);
+                    points = new XPoint(location_horizontal_position + (location_row_width / 2), location_vertical_position + row_height / 2);
+                    gfx.DrawString("LOCATION", new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+
+                    gfx.DrawRectangle(pen, cur_stock_horizontal_position, cur_stock_vertical_position, row_width, row_height);
+                    rect = new XRect(cur_stock_horizontal_position + 15, cur_stock_vertical_position + 5, row_width, row_height);
+                    points = new XPoint(cur_stock_horizontal_position + (row_width / 2), cur_stock_vertical_position + row_height / 2);
+                    //gfx.DrawString("CURRENT STOCK", new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+                    tf.DrawString("CURRENT\nSTOCK", new XFont("Arial", 8), XBrushes.Black, rect, XStringFormats.TopLeft);
+
+                    gfx.DrawRectangle(pen, balance_horizontal_position, balance_vertical_position, row_width, row_height);
+                    points = new XPoint(balance_horizontal_position + (row_width / 2), balance_vertical_position + row_height / 2);
+                    gfx.DrawString("BALANCE", new XFont("Arial", 8), XBrushes.Black, points, XStringFormats.Center);
+
+                    count_page++;
+                    if (count_page == 2)
+                    {
+                        count_rows_per_doc = 15;
+                    }
+                }
+
+                count_rows_per_doc++;
+            }
+
+            return document;
+        }
+
+        public PdfDocument create_smt_bin_label(List<RACK_MATERIAL> rmp)
+        {
+            PdfDocument document = new PdfDocument();
+            document.Info.Title = "Created with PDFsharp";
+            PdfPage page = document.AddPage();
+            page.Orientation = PdfSharp.PageOrientation.Portrait;
+            page.Size = PdfSharp.PageSize.A4;
+
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+            XPen main_pen = new XPen(XColors.Black, 3);
+            XPen sub_pen = new XPen(XColors.Black, 1.5);
+            var tf = new XTextFormatter(gfx);
+
+            //set width
+            double label_width = XUnit.FromMillimeter(190);
+            double rack_box_width = XUnit.FromMillimeter(150);
+            double pn_box_width = XUnit.FromMillimeter(150);
+
+            //set height
+            double label_height = XUnit.FromMillimeter(36);
+            double rack_box_height = label_height / 2.8;
+            double pn_box_height = label_height - rack_box_height;
+
+            //set horizontal position
+            double label_horizontal_position = 20;
+            double rack_box_horizontal_position = label_horizontal_position;
+            double pn_box_horizontal_position = rack_box_horizontal_position;
+
+            //set vertical position
+            double label_vertical_position = 20;
+            double rack_box_vertical_position = label_vertical_position;
+            double pn_box_vertical_position = rack_box_vertical_position + rack_box_height;
+            foreach (var K in rmp)
+            {
+                var QCwriter = new BarcodeWriter();
+                QCwriter.Format = BarcodeFormat.QR_CODE;
+                QCwriter.Options.Height = 170;
+                QCwriter.Options.Width = 170;
+                QCwriter.Options.Margin = 0;
+                var result = QCwriter.Write(K.RACK);
+                var barcodeBitmap = new Bitmap(result);
+                barcodeBitmap.SetResolution(140.0F, 140.0F);
+                System.Drawing.Image part_number_barcode = barcodeBitmap;
+                XImage part__number_barcode_image = XImage.FromGdiPlusImage(part_number_barcode);
+
+                //draw label main box
+                gfx.DrawRectangle(main_pen, label_horizontal_position, label_vertical_position, label_width, label_height);
+                gfx.DrawRectangle(sub_pen, rack_box_horizontal_position, rack_box_vertical_position, rack_box_width, rack_box_height);
+                XRect rect = new XRect(rack_box_horizontal_position, rack_box_vertical_position - 10, rack_box_width, rack_box_height);
+                tf.Alignment = XParagraphAlignment.Center;
+                tf.DrawString(K.RACK, new XFont("Calibri", 44, XFontStyle.Bold), XBrushes.Black, rect, XStringFormats.TopLeft);
+                gfx.DrawRectangle(sub_pen, pn_box_horizontal_position, pn_box_vertical_position, pn_box_width, pn_box_height);
+                rect = new XRect(pn_box_horizontal_position, pn_box_vertical_position + pn_box_height / 8.5, pn_box_width, pn_box_height);
+                if (K.MATERIAL.Length <= 13)
+                {
+                    rect = new XRect(pn_box_horizontal_position, pn_box_vertical_position - 10, pn_box_width, pn_box_height);
+                    tf.DrawString(K.MATERIAL, new XFont("Calibri", 62, XFontStyle.Bold), XBrushes.Black, rect, XStringFormats.TopLeft);
+                }
+                else
+                {
+                    tf.DrawString(K.MATERIAL, new XFont("Calibri", 44, XFontStyle.Bold), XBrushes.Black, rect, XStringFormats.TopLeft);
+                }
+
+                gfx.DrawImage(part__number_barcode_image, rack_box_horizontal_position + rack_box_width + 15, rack_box_vertical_position + 8);
+
+                label_vertical_position = label_vertical_position + label_height + 18;
+                rack_box_vertical_position = rack_box_vertical_position + label_height + 18;
+                pn_box_vertical_position = pn_box_vertical_position + label_height + 18;
+
+
+            }
+
+
+
+
+            return document;
+        }
+
+        public PdfDocument createrm_work_ara_kanban(KANBAN_MASTER kANBAN_MASTER, string wa_rack, string l_quantity)
+        {
+            Controllers.getIbusinessData gib = new Controllers.getIbusinessData();
+            string vendor = gib.get_part_vendor_name(kANBAN_MASTER.PART_NO);
+
+            //set kanban sizes horizontal
+            double kanban_width = XUnit.FromCentimeter(11);
+            double pn_desc_width = XUnit.FromCentimeter(1.75);
+            double pn_val_width = XUnit.FromCentimeter(7.2);
+            double wa_desc_width = XUnit.FromCentimeter(2.05);
+            double pn_des_desc_width = pn_desc_width;
+            double pn_des_val_width = pn_val_width;
+            double wa_barc_width = wa_desc_width;
+            double qty_desc_width = pn_des_desc_width;
+            double qty_val_width = XUnit.FromCentimeter(1.55);
+            double pn_barc_width = qty_val_width + qty_desc_width;
+            double bintype_desc_width = (pn_des_val_width - qty_val_width) / 2;
+            double bintype_val_width = (pn_des_val_width - qty_val_width) / 2;
+            double slider_no_desc_width = qty_desc_width;
+            double slider_no_val_width = qty_val_width;
+            double line_desc_width = slider_no_desc_width;
+            double line_val_width = qty_val_width;
+            double supplier_desc_width = line_desc_width;
+            double supplier_val_width = line_val_width;
+            double kanban_master_desc_width = supplier_desc_width;
+            double kanban_master_value_width = line_val_width / 2;
+            int kanban_image_width = 275;
+
+            //set kanban sizes vertical
+            double kanban_height = XUnit.FromCentimeter(9.6);
+            double pn_desc_height = XUnit.FromCentimeter(0.7);
+            double pn_val_height = pn_desc_height;
+            double wa_desc_height = pn_val_height;
+            double pn_des_desc_height = wa_desc_height;
+            double qty_desc_height = pn_des_desc_height;
+            double qty_val_height = pn_des_desc_height;
+            double pn_des_val_height = pn_des_desc_height;
+            double wa_barc_height = pn_des_desc_height + qty_desc_height;
+            double pn_barc_height = pn_barc_width;
+            double bintype_desc_height = qty_desc_height;
+            double bintype_val_height = qty_desc_height;
+            double slider_no_desc_height = pn_desc_height * 3;
+            double slider_no_val_height = slider_no_desc_height;
+            double line_desc_height = qty_desc_height;
+            double line_val_height = qty_val_height;
+            double supplier_desc_height = line_desc_height;
+            double supplier_val_height = line_val_height;
+            double kanban_master_desc_height = supplier_desc_height;
+            double kanban_master_value_height = kanban_master_desc_height;
+            int kanban_image_height = 265;
+
+            //set kanban horizontal position
+            double kanban_horizontal_position = 50;
+            double pn_desc_horizontal_position = kanban_horizontal_position;
+            double pn_value_horizontal_position = pn_desc_horizontal_position + pn_desc_width;
+            double wa_desc_horizontal_position = kanban_horizontal_position + pn_desc_width;
+            double pn_des_desc_horizontal_position = kanban_horizontal_position;
+            double pn_des_val_horizontal_position = kanban_horizontal_position + pn_des_desc_width; ;
+            double wa_barc_horizontal_position = kanban_horizontal_position + pn_des_val_width + pn_des_desc_width;
+            double qty_desc_horizontal_position = pn_des_desc_horizontal_position;
+            double qty_val_horizontal_position = qty_desc_horizontal_position + qty_desc_width;
+            double pn_barc_horizontal_position = kanban_horizontal_position;
+            double bintype_desc_horizontal_position = qty_val_horizontal_position + qty_val_width;
+            double bintype_val_horizontal_position = bintype_desc_horizontal_position + bintype_desc_width;
+            double slider_no_desc_horizontal_position = kanban_horizontal_position;
+            double slider_no_val_horizontal_position = slider_no_desc_horizontal_position + slider_no_desc_width;
+            double line_desc_horizontal_position = slider_no_desc_horizontal_position;
+            double line_val_horizontal_position = line_desc_horizontal_position + line_desc_width;
+            double supplier_desc_horizontal_position = slider_no_desc_horizontal_position;
+            double supplier_val_horizontal_position = line_val_horizontal_position;
+            double kanban_master_desc_horizontal_position = supplier_desc_horizontal_position;
+            double kanban_master_value_horizontal_position = kanban_master_desc_horizontal_position + kanban_master_desc_width;
+            double kanban_master2_value_horizontal_position = kanban_master_value_horizontal_position + kanban_master_value_width;
+            double kanban_photo_horizontal_position = pn_barc_horizontal_position + pn_barc_width;
+
+            //set kanban vertical position
+            double kanban_vertical_position = 10;
+            double pn_desc_vertical_position = kanban_vertical_position;
+            double pn_value_vertical_position = kanban_vertical_position;
+            double wa_desc_vertical_position = kanban_vertical_position;
+            double pn_des_desc_vertical_position = kanban_vertical_position + pn_desc_height;
+            double pn_des_val_vertical_position = kanban_vertical_position + pn_desc_height;
+            double wa_barc_vertical_position = kanban_vertical_position + wa_desc_height;
+            double qty_desc_vertical_position = wa_barc_vertical_position + pn_desc_height;
+            double qty_val_vertical_position = pn_des_val_vertical_position + pn_des_val_height;
+            double pn_barc_vertical_position = qty_desc_vertical_position + qty_desc_height;
+            double bintype_desc_vertical_position = pn_des_val_vertical_position + pn_des_val_height;
+            double bintype_val_vertical_position = pn_des_val_vertical_position + pn_des_val_height;
+            double slider_no_desc_vertical_position = pn_barc_vertical_position + pn_barc_height;
+            double slider_no_val_vertical_position = pn_barc_vertical_position + pn_barc_height;
+            double line_desc_vertical_position = slider_no_desc_vertical_position + slider_no_desc_height;
+            double line_val_vertical_position = line_desc_vertical_position;
+            double supplier_desc_vertical_position = line_desc_vertical_position + line_desc_height;
+            double supplier_val_vertical_position = line_val_vertical_position + line_val_height;
+            double kanban_master_desc_vertical_position = supplier_desc_vertical_position + supplier_desc_height;
+            double kanban_master_value_vertical_position = kanban_master_desc_vertical_position;
+            double kanban_photo_vertical_position = bintype_desc_vertical_position + bintype_desc_height + 5;
+
+
+            PdfDocument document = new PdfDocument();
+            document.Info.Title = "Created with PDFsharp";
+            PdfPage page = document.AddPage();
+            page.Orientation = PdfSharp.PageOrientation.Landscape;
+            page.Size = PdfSharp.PageSize.A4;
+
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+            XPen main_pen = new XPen(XColors.Black, 1.5);
+            XPen sub_pen = new XPen(XColors.Black, 1);
+
+            XColor topkanbanColor = XColor.FromArgb(250, 191, 143);
+
+            XBrush brush = new XSolidBrush(topkanbanColor);
+
+            var QCwriter = new BarcodeWriter();
+            QCwriter.Format = BarcodeFormat.QR_CODE;
+            QCwriter.Options.Height = 200;
+            QCwriter.Options.Width = 200;
+            QCwriter.Options.Margin = 0;
+            var result = QCwriter.Write(kANBAN_MASTER.PART_NO);
+            var barcodeBitmap = new Bitmap(result);
+            barcodeBitmap.SetResolution(170.0F, 170.0F);
+            System.Drawing.Image part_number_barcode = barcodeBitmap;
+            XImage part__number_barcode_image = XImage.FromGdiPlusImage(part_number_barcode);
+
+            Stream ms = new MemoryStream(kANBAN_MASTER.PHOTO);
+
+            System.Drawing.Image images = new Bitmap(ms);
+            System.Drawing.Image photo = resizeImage(images, new Size(kanban_image_width, kanban_image_height));
+            XImage pho = XImage.FromGdiPlusImage(photo);
+
+            QCwriter.Options.Height = 100;
+            QCwriter.Options.Width = 100;
+            QCwriter.Options.Margin = 0;
+            var result_bin = QCwriter.Write(wa_rack);
+            var barcodeBitmapbin = new Bitmap(result_bin);
+            barcodeBitmapbin.SetResolution(200.0F, 200.0F);
+            System.Drawing.Image bin_wa_rm_barcode = barcodeBitmapbin;
+            XImage wh_bin_wa_barcode_image = XImage.FromGdiPlusImage(barcodeBitmapbin);
+            int count = 0;
+            for (int i = 0; i < 2; i++)
+            {
+                kanban_horizontal_position = 50;
+                pn_desc_horizontal_position = kanban_horizontal_position;
+                pn_value_horizontal_position = kanban_horizontal_position + pn_desc_width;
+                wa_desc_horizontal_position = pn_value_horizontal_position + pn_val_width;
+                pn_des_desc_horizontal_position = kanban_horizontal_position;
+                pn_des_val_horizontal_position = kanban_horizontal_position + pn_des_desc_width;
+                wa_barc_horizontal_position = kanban_horizontal_position + pn_des_val_width + pn_des_desc_width;
+                qty_desc_horizontal_position = pn_des_desc_horizontal_position;
+                qty_val_horizontal_position = qty_desc_horizontal_position + qty_desc_width;
+                pn_barc_horizontal_position = kanban_horizontal_position;
+                bintype_desc_horizontal_position = qty_val_horizontal_position + qty_val_width;
+                bintype_val_horizontal_position = bintype_desc_horizontal_position + bintype_desc_width;
+                slider_no_desc_horizontal_position = kanban_horizontal_position;
+                slider_no_val_horizontal_position = slider_no_desc_horizontal_position + slider_no_desc_width;
+                line_desc_horizontal_position = slider_no_desc_horizontal_position;
+                line_val_horizontal_position = line_desc_horizontal_position + line_desc_width;
+                supplier_desc_horizontal_position = slider_no_desc_horizontal_position;
+                supplier_val_horizontal_position = line_val_horizontal_position;
+                kanban_master_desc_horizontal_position = supplier_desc_horizontal_position;
+                kanban_master_value_horizontal_position = kanban_master_desc_horizontal_position + kanban_master_desc_width;
+                kanban_master2_value_horizontal_position = kanban_master_value_horizontal_position + kanban_master_value_width;
+                kanban_photo_horizontal_position = pn_barc_horizontal_position + pn_barc_width;
+
+                for (int j = 0; j < 2; j++)
+                {
+                    count++;
+                    //draw main box
+                    gfx.DrawRectangle(main_pen, kanban_horizontal_position, kanban_vertical_position, kanban_width, kanban_height);
+                    //draw part number description box
+                    gfx.DrawRectangle(sub_pen, brush, pn_desc_horizontal_position, pn_desc_vertical_position, pn_desc_width, pn_des_desc_height);
+                    XPoint points = new XPoint(pn_desc_horizontal_position + 2, pn_desc_vertical_position + pn_des_desc_height / 2);
+                    gfx.DrawString("P/N", new XFont("Arial", 14), XBrushes.Black, points, XStringFormats.CenterLeft);
+                    //draw part number value box
+                    gfx.DrawRectangle(sub_pen, brush, pn_value_horizontal_position, pn_value_vertical_position, pn_val_width, pn_val_height);
+                    points = new XPoint(pn_value_horizontal_position + 5, pn_value_vertical_position + pn_val_height / 2);
+                    gfx.DrawString(kANBAN_MASTER.PART_NO, new XFont("Arial", 14, XFontStyle.Bold), XBrushes.Black, points, XStringFormats.CenterLeft);
+                    //draw work ara secription box
+                    gfx.DrawRectangle(sub_pen, brush, wa_desc_horizontal_position, wa_desc_vertical_position, wa_desc_width, wa_desc_height);
+                    points = new XPoint(wa_desc_horizontal_position + (wa_desc_width / 2), wa_desc_vertical_position + wa_desc_height / 2);
+                    gfx.DrawString(wa_rack, new XFont("Arial", 12, XFontStyle.Bold), XBrushes.Black, points, XStringFormats.Center);
+                    //draw description description box
+                    gfx.DrawRectangle(sub_pen, brush, pn_des_desc_horizontal_position, pn_des_desc_vertical_position, pn_des_desc_width, pn_des_desc_height);
+                    points = new XPoint(pn_des_desc_horizontal_position + 2, pn_des_desc_vertical_position + pn_des_desc_height / 2);
+                    gfx.DrawString("Des ", new XFont("Arial", 12), XBrushes.Black, points, XStringFormats.CenterLeft);
+                    //draw description value box
+                    gfx.DrawRectangle(sub_pen, brush, pn_des_val_horizontal_position, pn_des_val_vertical_position, pn_des_val_width, pn_des_val_height);
+                    points = new XPoint(pn_des_val_horizontal_position + 5, pn_des_val_vertical_position + pn_des_val_height / 2);
+                    gfx.DrawString("Part number description ", new XFont("Arial", 12), XBrushes.Black, points, XStringFormats.CenterLeft);
+                    //draw barcode box
+                    gfx.DrawRectangle(sub_pen, wa_barc_horizontal_position, wa_barc_vertical_position, wa_barc_width, wa_barc_height);
+                    gfx.DrawImage(wh_bin_wa_barcode_image, wa_barc_horizontal_position + 12, wa_barc_vertical_position + 2);
+                    //draw quantity description
+                    gfx.DrawRectangle(sub_pen, brush, qty_desc_horizontal_position, qty_desc_vertical_position, qty_desc_width, qty_desc_height);
+                    points = new XPoint(qty_desc_horizontal_position + 2, qty_desc_vertical_position + qty_desc_height / 2);
+                    gfx.DrawString("Qty :", new XFont("Arial", 12), XBrushes.Black, points, XStringFormats.CenterLeft);
+                    //draw quantity description
+                    gfx.DrawRectangle(sub_pen, brush, qty_val_horizontal_position, qty_val_vertical_position, qty_val_width, qty_val_height);
+                    points = new XPoint(qty_val_horizontal_position + qty_val_width / 2, qty_val_vertical_position + qty_val_height / 2);
+                    gfx.DrawString(l_quantity, new XFont("Arial", 12), XBrushes.Black, points, XStringFormats.Center);
+                    //draw part number barcode box
+                    gfx.DrawRectangle(sub_pen, pn_barc_horizontal_position, pn_barc_vertical_position, pn_barc_width, pn_barc_height);
+                    gfx.DrawImage(part__number_barcode_image, pn_barc_horizontal_position + 5, pn_barc_vertical_position + 5);
+                    //draw part number barcode box
+                    gfx.DrawRectangle(sub_pen, brush, bintype_desc_horizontal_position, bintype_desc_vertical_position, bintype_desc_width, bintype_desc_height);
+                    points = new XPoint(bintype_desc_horizontal_position + bintype_desc_width / 2, bintype_desc_vertical_position + bintype_desc_height / 2);
+                    gfx.DrawString("Bin type", new XFont("Arial", 12), XBrushes.Black, points, XStringFormats.Center);
+                    //draw part number barcode box
+                    gfx.DrawRectangle(sub_pen, brush, bintype_val_horizontal_position, bintype_val_vertical_position, bintype_val_width, bintype_val_height);
+                    points = new XPoint(bintype_val_horizontal_position + bintype_val_width / 2, bintype_val_vertical_position + bintype_val_height / 2);
+                    gfx.DrawString(kANBAN_MASTER.BIN_TYPE, new XFont("Arial", 12), XBrushes.Black, points, XStringFormats.Center);
+                    //draw slider number description
+                    gfx.DrawRectangle(sub_pen, brush, slider_no_desc_horizontal_position, slider_no_desc_vertical_position, slider_no_desc_width, slider_no_desc_height);
+                    points = new XPoint(slider_no_desc_horizontal_position + slider_no_desc_width / 2, slider_no_desc_vertical_position + slider_no_desc_height / 2);
+                    gfx.DrawString("Slider No:", new XFont("Arial", 9), XBrushes.Black, points, XStringFormats.Center);
+
+
+                    //draw slider number description
+                    var tf = new XTextFormatter(gfx);
+                    tf.Alignment = XParagraphAlignment.Center;
+                    gfx.DrawRectangle(sub_pen, brush, slider_no_val_horizontal_position, slider_no_val_vertical_position, slider_no_val_width, slider_no_val_height);
+                    XRect rect = new XRect(slider_no_val_horizontal_position, slider_no_val_vertical_position, slider_no_val_width, slider_no_val_height);
+
+                    try
+                    {
+                        var split_slider_address = kANBAN_MASTER.SLIDER_ADDRESS.Replace(' ', '\n');
+                        tf.DrawString(split_slider_address, new XFont("Arial", 8, XFontStyle.Bold), XBrushes.Black, rect, XStringFormats.TopLeft);
+
+                    }
+                    catch
+                    {
+                        tf.DrawString(kANBAN_MASTER.SLIDER_ADDRESS, new XFont("Arial", 8, XFontStyle.Bold), XBrushes.Black, rect, XStringFormats.TopLeft);
+                    }
+                    //draw slider number description
+                    gfx.DrawRectangle(sub_pen, brush, line_desc_horizontal_position, line_desc_vertical_position, line_desc_width, line_desc_height);
+                    points = new XPoint(line_desc_horizontal_position + line_desc_width / 2, line_desc_vertical_position + line_desc_height / 2);
+                    gfx.DrawString("Line:", new XFont("Arial", 9), XBrushes.Black, points, XStringFormats.Center);
+
+
+
+                    //draw slider number description
+                    gfx.DrawRectangle(sub_pen, brush, line_val_horizontal_position, line_val_vertical_position, line_val_width, line_val_height);
+                    rect = new XRect(line_val_horizontal_position, line_val_vertical_position, line_val_width, line_val_height);
+                    points = new XPoint(line_val_horizontal_position + line_val_width / 2, line_val_vertical_position + line_val_height / 2);
+                    try
+                    {
+                        var spli_line = kANBAN_MASTER.LINE.Replace(' ', '\n');
+                        tf.DrawString(spli_line, new XFont("Arial", 8, XFontStyle.Bold), XBrushes.Black, rect, XStringFormats.TopLeft);
+
+                    }
+                    catch
+                    {
+                        gfx.DrawString(kANBAN_MASTER.LINE, new XFont("Arial", 9), XBrushes.Black, points, XStringFormats.Center);
+                    }
+
+
+                    //draw supplier description 
+                    gfx.DrawRectangle(sub_pen, brush, supplier_desc_horizontal_position, supplier_desc_vertical_position, supplier_desc_width, supplier_desc_height);
+                    points = new XPoint(supplier_desc_horizontal_position + supplier_desc_width / 2, supplier_desc_vertical_position + supplier_desc_height / 2);
+                    gfx.DrawString("Suppplier:", new XFont("Arial", 9), XBrushes.Black, points, XStringFormats.Center);
+                    //draw supplier value
+                    gfx.DrawRectangle(sub_pen, brush, supplier_val_horizontal_position, supplier_val_vertical_position, supplier_val_width, supplier_val_height);
+                    points = new XPoint(supplier_val_horizontal_position + supplier_val_width / 2, supplier_val_vertical_position + supplier_val_height / 2);
+                    gfx.DrawString(vendor.Substring(0, 5), new XFont("Arial", 9), XBrushes.Black, points, XStringFormats.Center);
+                    //draw supplier value
+                    gfx.DrawRectangle(sub_pen, brush, kanban_master_desc_horizontal_position, kanban_master_desc_vertical_position, kanban_master_desc_width, kanban_master_desc_height);
+                    points = new XPoint(kanban_master_desc_horizontal_position + kanban_master_desc_width / 2, kanban_master_desc_vertical_position + kanban_master_desc_height / 2);
+                    gfx.DrawString("Kanban Card:", new XFont("Arial", 7), XBrushes.Black, points, XStringFormats.Center);
+                    //draw supplier value
+                    gfx.DrawRectangle(sub_pen, brush, kanban_master_value_horizontal_position, kanban_master_value_vertical_position, kanban_master_value_width, kanban_master_value_height);
+                    points = new XPoint(kanban_master_value_horizontal_position + kanban_master_value_width / 2, kanban_master_value_vertical_position + kanban_master_value_height / 2);
+                    gfx.DrawString("1", new XFont("Arial", 7), XBrushes.Black, points, XStringFormats.Center);
+                    //draw supplier value
+                    gfx.DrawRectangle(sub_pen, brush, kanban_master2_value_horizontal_position, kanban_master_value_vertical_position, kanban_master_value_width, kanban_master_value_height);
+                    points = new XPoint(kanban_master2_value_horizontal_position + kanban_master_value_width / 2, kanban_master_value_vertical_position + kanban_master_value_height / 2);
+                    gfx.DrawString(count.ToString(), new XFont("Arial", 7), XBrushes.Black, points, XStringFormats.Center);
+                    //draw photo on kanban
+                    gfx.DrawImage(pho, kanban_photo_horizontal_position + 5, kanban_photo_vertical_position);
+
+                    //set kanban vertical position
+                    kanban_horizontal_position = kanban_horizontal_position + 50 + kanban_width;
+                    pn_desc_horizontal_position = pn_desc_horizontal_position + 50 + kanban_width;
+                    pn_value_horizontal_position = pn_value_horizontal_position + 50 + kanban_width;
+                    wa_desc_horizontal_position = wa_desc_horizontal_position + 50 + kanban_width;
+                    pn_des_desc_horizontal_position = pn_des_desc_horizontal_position + 50 + kanban_width;
+                    pn_des_val_horizontal_position = pn_des_val_horizontal_position + 50 + kanban_width;
+                    wa_barc_horizontal_position = wa_barc_horizontal_position + 50 + kanban_width;
+                    qty_desc_horizontal_position = qty_desc_horizontal_position + 50 + kanban_width;
+                    qty_val_horizontal_position = qty_val_horizontal_position + 50 + kanban_width;
+                    pn_barc_horizontal_position = pn_barc_horizontal_position + 50 + kanban_width;
+                    bintype_desc_horizontal_position = bintype_desc_horizontal_position + 50 + kanban_width;
+                    bintype_val_horizontal_position = bintype_val_horizontal_position + 50 + kanban_width;
+                    slider_no_desc_horizontal_position = slider_no_desc_horizontal_position + 50 + kanban_width;
+                    slider_no_val_horizontal_position = slider_no_val_horizontal_position + 50 + kanban_width;
+                    line_desc_horizontal_position = line_desc_horizontal_position + 50 + kanban_width;
+                    line_val_horizontal_position = line_val_horizontal_position + 50 + kanban_width;
+                    supplier_desc_horizontal_position = supplier_desc_horizontal_position + 50 + kanban_width;
+                    supplier_val_horizontal_position = supplier_val_horizontal_position + 50 + kanban_width;
+                    kanban_master_desc_horizontal_position = kanban_master_desc_horizontal_position + 50 + kanban_width;
+                    kanban_master_value_horizontal_position = kanban_master_value_horizontal_position + 50 + kanban_width;
+                    kanban_master2_value_horizontal_position = kanban_master2_value_horizontal_position + 50 + kanban_width;
+                    kanban_photo_horizontal_position = kanban_photo_horizontal_position + 50 + kanban_width;
+                }
+                kanban_vertical_position = kanban_vertical_position + kanban_height + 10;
+                pn_desc_vertical_position = pn_desc_vertical_position + kanban_height + 10;
+                pn_value_vertical_position = pn_value_vertical_position + kanban_height + 10;
+                wa_desc_vertical_position = wa_desc_vertical_position + kanban_height + 10;
+                pn_des_desc_vertical_position = pn_des_desc_vertical_position + kanban_height + 10;
+                pn_des_val_vertical_position = pn_des_val_vertical_position + kanban_height + 10;
+                wa_barc_vertical_position = wa_barc_vertical_position + kanban_height + 10;
+                qty_desc_vertical_position = qty_desc_vertical_position + kanban_height + 10;
+                qty_val_vertical_position = qty_val_vertical_position + kanban_height + 10;
+                pn_barc_vertical_position = pn_barc_vertical_position + kanban_height + 10;
+                bintype_desc_vertical_position = bintype_desc_vertical_position + kanban_height + 10;
+                bintype_val_vertical_position = bintype_val_vertical_position + kanban_height + 10;
+                slider_no_desc_vertical_position = slider_no_desc_vertical_position + kanban_height + 10;
+                slider_no_val_vertical_position = slider_no_val_vertical_position + kanban_height + 10;
+                line_desc_vertical_position = line_desc_vertical_position + kanban_height + 10;
+                line_val_vertical_position = line_val_vertical_position + kanban_height + 10;
+                supplier_desc_vertical_position = supplier_desc_vertical_position + kanban_height + 10;
+                supplier_val_vertical_position = supplier_val_vertical_position + kanban_height + 10;
+                kanban_master_desc_vertical_position = kanban_master_desc_vertical_position + kanban_height + 10;
+                kanban_master_value_vertical_position = kanban_master_value_vertical_position + kanban_height + 10;
+                kanban_photo_vertical_position = kanban_photo_vertical_position + kanban_height + 10;
+            }
+
+
 
 
             return document;

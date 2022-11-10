@@ -10,106 +10,126 @@
         padding: 5px;
         border: solid 1px;
         text-align: center;
-        font-family:'Times New Roman';
+        font-size: 28px;
     }
     th {
         background-color: blue;
-        border:solid 1px black;
+        border: solid 1px black;
+        font-family: 'Rockwell';
+        font-weight: bolder;
+        font-size: 32px;
     }
-    table_width{
+    img {
+        width: 1500px;
+        height: auto
+    }
 
+    table_width {
     }
+
+    .tr_custom {
+        font-weight: bolder;
+    }
+    a {
+    }
+    g g g text {
+        fill: black;
+    }
+    h4{
+        font-size:72px;
+    }
+
 </style>
 
-<table style="width: 200%; border:none;">
-    <tr style = "border:none;">
-        <td style="text-align:center;border:none;" colspan="2">
+<table style="width: 100%;">
+    <tr>
+        <td style="text-align:center;" colspan="2">
             <img src="~/IMAGES/SupermarketTracking.JPG" />
-            <table style="width: 50%">
+            <table style="width: 100%">
                 <tr>
                     <td>
-                        <table style="width: 50%">
+                        <table style="width: 100%">
                             <thead>
                                 <tr>
-                                    <th colspan="2"><a style="color:white">ROOM 1</a></th>
+                                    <th colspan="2"><a style="color: white;">ROOM 1</a></th>
                                 </tr>
                             </thead>
 
-                            <tr>
+                            <tr class="tr_custom">
                                 <td style="background-color: rgb(191, 191, 191);">Capacity</td>
                                 <td>@ViewBag.Room1</td>
                             </tr>
-                            <tr>
+                            <tr class="tr_custom">
                                 <td style="background-color: rgb(191, 191, 191);">Use</td>
                                 <td>@ViewBag.Room1Use</td>
                             </tr>
-                            <tr>
+                            <tr class="tr_custom">
                                 <td style="background-color: rgb(191, 191, 191);">Empty</td>
                                 <td>@ViewBag.Room1Empty</td>
                             </tr>
                         </table>
                     </td>
                     <td>
-                        <table style="width: 50%">
+                        <table style="width: 100%">
                             <thead>
                                 <tr>
                                     <th colspan="2"><a style="color:white">ROOM 2</a></th>
                                 </tr>
                             </thead>
 
-                            <tr>
+                            <tr class="tr_custom">
                                 <td style="background-color: rgb(191, 191, 191);">Capacity</td>
                                 <td>@ViewBag.Room2</td>
                             </tr>
-                            <tr>
+                            <tr class="tr_custom">
                                 <td style="        background-color: rgb(191, 191, 191);">Use</td>
                                 <td>@ViewBag.Room2Use</td>
                             </tr>
-                            <tr>
+                            <tr class="tr_custom">
                                 <td style="background-color: rgb(191, 191, 191);">Empty</td>
                                 <td>@ViewBag.Room2Empty</td>
                             </tr>
                         </table>
                     </td>
                     <td>
-                        <table style="width: 50%">
+                        <table style="width: 100%">
                             <thead>
                                 <tr>
-                                    <th colspan="2"><a style="color:white">SMALL PART</a></th>
+                                    <th colspan="2"><a style="color:white">A0 ROOM</a></th>
                                 </tr>
                             </thead>
 
-                            <tr>
+                            <tr class="tr_custom">
                                 <td style="background-color: rgb(191, 191, 191);">Capacity</td>
                                 <td>@ViewBag.A0Room</td>
                             </tr>
-                            <tr>
+                            <tr class="tr_custom">
                                 <td style="background-color: rgb(191, 191, 191);">Use</td>
                                 <td>@ViewBag.A0RoomUse</td>
                             </tr>
-                            <tr>
+                            <tr class="tr_custom">
                                 <td style="background-color: rgb(191, 191, 191);">Empty</td>
                                 <td>@ViewBag.A0RoomEmpty</td>
                             </tr>
                         </table>
                     </td>
                     <td>
-                        <table style="width: 50%">
+                        <table style="width: 100%">
                             <thead>
                                 <tr>
                                     <th colspan="2"><a style="color:white">TOTAL</a></th>
                                 </tr>
                             </thead>
 
-                            <tr>
+                            <tr class="tr_custom">
                                 <td style="background-color: rgb(191, 191, 191);">Capacity</td>
                                 <td>@ViewBag.total_res</td>
                             </tr>
-                            <tr>
+                            <tr class="tr_custom">
                                 <td style="background-color: rgb(191, 191, 191);">Use</td>
                                 <td>@ViewBag.totalUse</td>
                             </tr>
-                            <tr>
+                            <tr class="tr_custom">
                                 <td style="background-color: rgb(191, 191, 191);">Empty</td>
                                 <td>@ViewBag.totalEmpty</td>
                             </tr>
@@ -118,7 +138,7 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <table style="width: 50%">
+                        <table style="width: 100%">
                             <thead>
                                 <tr style="background-color: rgb(191, 191, 191);">
                                     <th colspan="9"><a style="color:white">BIN TYPE ROOM 1 & 2</a></th>
@@ -155,10 +175,10 @@
                             </tr>
                             <tr>
                                 <td style="background-color: rgb(191, 191, 191);">
-                                    <a style="font-weight:700;white-space:pre-wrap;">@ViewBag.bins_of_rack_1A_1B_2D</a>
+                                    <a style="font-weight:700;">BE / B1P</a>
                                 </td>
                                 <td style="background-color: rgb(191, 191, 191);">
-                                    <a style="font-weight:700">1A/1B/2D</a>
+                                    <a style="font-weight: 700;">@ViewBag.racksof_BE_DB</a>
                                 </td>
                                 <td>
                                     @ViewBag.use_rack_1A_1B_2D
@@ -167,12 +187,10 @@
                                     @ViewBag.empty_rack_1A_1B_2D
                                 </td>
                                 <td style="background-color: rgb(191, 191, 191);">
-                                    <a style="font-weight:700;white-space:pre-wrap;">@ViewBag.bins_of_rack_2E_2F_2G_2H_2M</a>
+                                    <a style="font-weight:700;">B1P/B2P/B3P</a>
                                 </td>
                                 <td style="background-color: rgb(191, 191, 191);">
-                                    <a style="font-weight:700">2E/2F/2G/</a>
-                                    <br />
-                                    <a style="font-weight:700">2H/2M</a>
+                                    <a style="font-weight: 700; ">@ViewBag.racksof_B1P_B2P_B3P</a>
                                 </td>
                                 <td>
                                     @ViewBag.use_rack_2E_2F_2G_2H_2M
@@ -183,934 +201,938 @@
                             </tr>
                             <tr>
                                 <td style="background-color: rgb(191, 191, 191);">
-                                    <a style="font-weight:700;white-space:pre-wrap;">@ViewBag.bins_of_rack_1C_1D_1E_2D_2N_2P</a>
+                                    <a style="font-weight:700;">BD</a>
                                 </td>
                                 <td style="background-color: rgb(191, 191, 191);">
-                                    <a style="font-weight:700">1C/1D/1E</a>
-                                    <br />
-                                    <a style="font-weight:700">2D/2N/2P</a>
+                                    <a style="font-weight: 700;">
+                                        @ViewBag.racksof_BD
+                                    </a>
                                 </td>
                                 <td>
                                     @ViewBag.use_rack_1C_1D_1E_2D_2N_2P
                                 </td>
                                 <td>
                                     @ViewBag.empty_rack_1C_1D_1E_2D_2N_2P
-                            </td>
-                            <td style="background-color: rgb(191, 191, 191);" rowspan="2">
-                                <a style="font-weight:700;white-space:pre-wrap;">@ViewBag.bins_of_rack_1F_1G_1H_1J_1K_1L_1M_2J_2K_2Q</a>
-                            </td>
-                            <td style="background-color: rgb(191, 191, 191);" rowspan="2">
-                                <a style="font-weight:700">1F/1G/1H/1J</a>
-                                <br />
-                                <a style="font-weight:700">1K/1L/1M/</a>
-                                <br />
-                                <a style="font-weight:700">2J/2K/2Q</a>
-                            </td>
-                            <td rowspan="2">
-                                @ViewBag.use_rack_1F_1G_1H_1J_1K_1L_1M_2J_2K_2Q
-                            </td>
-                            <td rowspan="2">
-                                @ViewBag.empty_rack_1F_1G_1H_1J_1K_1L_1M_2J_2K_2Q
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="background-color: rgb(191, 191, 191);">
-                                <a style="font-weight:700;white-space:pre-wrap;">@ViewBag.bins_of_rack_2A_2B_2C</a>
-                            </td>
-                            <td style="background-color: rgb(191, 191, 191);">
-                                <a style="font-weight:700">2A/2B/2C</a>
-                            </td>
-                            <td>
-                                @ViewBag.use_rack_2A_2B_2C
-                            </td>
-                            <td>
-                                @ViewBag.empty_rack_2A_2B_2C
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-                <td>
-                    <table style="width: 100%">
-                        <thead>
-                            <tr style="background-color: rgb(191, 191, 191);">
-                                <th colspan="4"><a style="color:white">BIN TYPE SMALL PART</a></th>
-                            </tr>
-                        </thead>
-                        <tr>
-                            <td style="background-color: rgb(191, 191, 191);">
-                                <a style="font-weight:900">Bin Type</a>
-                            </td>
-                            <td style="background-color: rgb(191, 191, 191);">
-                                <a style="font-weight:900">Rack No.</a>
-                            </td>
-                            <td style="background-color: rgb(191, 191, 191);">
-                                <a style="font-weight:900">Use</a>
-                            </td>
-                            <td style="background-color: rgb(191, 191, 191);">
-                                <a style="font-weight:900">Empty</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="background-color: rgb(191, 191, 191);">
-                                <a style="font-weight:700;white-space:pre-wrap;">@ViewBag.bins_of_rack_SA_SB</a>
-                            </td>
-                            <td style="background-color: rgb(191, 191, 191);">
-                                <a style="font-weight:700">SA / SB</a>
-                            </td>
-                            <td>
-                                @ViewBag.use_rack_SA_SB
-                            </td>
-                            <td>
-                                @ViewBag.empty_rack_SA_SB
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="background-color: rgb(191, 191, 191);">
-                                <a style="font-weight:700;white-space:pre-wrap;">@ViewBag.bins_of_rack_SC_SD</a>
-                            </td>
-                            <td style="background-color: rgb(191, 191, 191);">
-                                <a style="font-weight:700">SC / SD</a>
-                            </td>
-                            <td>
-                                @ViewBag.use_rack_SC_SD
-                            </td>
-                            <td>
-                                @ViewBag.empty_rack_SC_SD
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-    </td>
-    <!--Right side of column-->
-    <td style="text-align:center;border:none;" rowspan="2">
-        <table style="width:100%">
-            <tr>
-                <td style="background-color: rgb(116,181,228)">
-                    <h2>Slider Status VS Rack/Bin</h2>
-                </td>
-            </tr>
-        </table>
-        <br />
-        <table style="width:100%">
-            <thead>
-                <tr>
-                    <th style="background-color: rgb(119, 205, 238);">ROOM</th>
-                    @{
-                        int colons = ViewBag.racksinroom1.Length;
-
-
-                        <td colspan="@colons" style="background-color: rgb(125, 226, 232); font-weight:bold;">ROOM 1</td>
-                    }
-                    <td rowspan="4" style="background-color: rgb(119, 205, 238); font-weight:bold;">TOTAL</td>
-                </tr>
-                <tr>
-                    <th style="background-color: rgb(119, 205, 238);">RACK NO.#</th>
-                    @{
-                        foreach (var r in ViewBag.racksinroom1)
-                        {
-                            <th style="background-color: rgb(125, 226, 232);">@r.Substring(5, 2)</th>
-                        }
-                    }
-
-                </tr>
-                <tr>
-                    <th style="background-color: rgb(119, 205, 238);">BIN TYPE</th>
-                    @{
-
-                        foreach (var k in ViewBag.condensed_racks_bin_color2)
-                        {
-
-                            <th style="background-color: rgb(125, 226, 232);"><a style="white-space:pre-wrap">@k.BIN</a></th>
-
-                        }
-                    }
-                </tr>
-                <tr>
-                    <th style="background-color: rgb(119, 205, 238);">SLIDER COLOR</th>
-                    @{
-                        foreach (var k in ViewBag.condensed_racks_bin_color2)
-                        {
-
-                            <th style="background-color: rgb(125, 226, 232);"><a style="white-space:pre-wrap">@k.COLOR</a></th>
-                        }
-                    }
-                </tr>
-                <tr>
-                    <th style="background-color: rgb(208, 231, 247);">
-                        ACTIVE
-                    </th>
-                    @{
-                        int TOTAL = 0;
-                        foreach (var r in ViewBag.racksinroom1)
-                        {
-
-                            string count = "0";
-                            foreach (var a_1 in ViewBag.racks_in_room_1)
-                            {
-                                if (r == a_1.RACK && a_1.STATUS == "MOVING")
-                                {
-                                    count = a_1.COUNT.ToString();
-                                    TOTAL = TOTAL + a_1.COUNT;
-                                }
-
-
-                            }
-                            <td>
-                                @count
-                            </td>
-                        }
-
-                        <td style=" font-weight: bold;">
-                            @TOTAL
-                        </td>
-                    }
-                </tr>
-                <tr>
-                    <th style="background-color: rgb(208, 231, 247);">
-                        SLOW MOVING
-                    </th>
-                    @{
-                        TOTAL = 0;
-                        foreach (var r in ViewBag.racksinroom1)
-                        {
-                            string count = "0";
-                            foreach (var a_1 in ViewBag.racks_in_room_1)
-                            {
-                                if (r == a_1.RACK && a_1.STATUS == "SLOW MOVING")
-                                {
-                                    count = a_1.COUNT.ToString();
-                                    TOTAL = TOTAL + a_1.COUNT;
-                                }
-
-
-                            }
-                            <td>
-                                @count
-                            </td>
-                        }
-
-                        <td style=" font-weight: bold;">
-                            @TOTAL
-                        </td>
-                    }
-                </tr>
-                <tr>
-                    <th style="background-color: rgb(208, 231, 247);">
-                        EOL
-                    </th>
-                    @{
-                        TOTAL = 0;
-                        foreach (var r in ViewBag.racksinroom1)
-                        {
-                            string count = "0";
-                            foreach (var a_1 in ViewBag.racks_in_room_1)
-                            {
-                                if (r == a_1.RACK && a_1.STATUS == "EOL")
-                                {
-                                    count = a_1.COUNT.ToString();
-                                    TOTAL = TOTAL + a_1.COUNT;
-                                }
-
-
-                            }
-                            <td>
-                                @count
-                            </td>
-                        }
-                        <td style=" font-weight: bold;">
-                            @TOTAL
-                        </td>
-                    }
-                </tr>
-                <tr>
-                    <th style="background-color: rgb(208, 231, 247);">
-                        EMPTY
-                    </th>
-                    @{
-                        TOTAL = 0;
-                        foreach (var r in ViewBag.racksinroom1)
-                        {
-                            string count = "0";
-                            foreach (var a_1 in ViewBag.racks_in_room_1)
-                            {
-                                if (r == a_1.RACK && a_1.STATUS == "EMPTY")
-                                {
-                                    count = a_1.COUNT.ToString();
-                                    TOTAL = TOTAL + a_1.COUNT;
-                                }
-
-
-                            }
-                            <td>
-                                @count
-                            </td>
-                        }
-                        <td style=" font-weight: bold;">
-                            @TOTAL
-                        </td>
-                    }
-
-                </tr>
-                <tr style=" font-weight: bold;">
-                    <th style="background-color: rgb(119, 205, 238);">
-                        TOTAL SLIDER
-                    </th>
-                    @{
-                        TOTAL = 0;
-                        foreach (var t in ViewBag.totalallracks)
-                        {
-                            <td>
-                                @t.COUNT
-                            </td>
-                            TOTAL = TOTAL + t.COUNT;
-                        }
-
-                        <td>
-                            @TOTAL
-                        </td>
-                    }
-                </tr>
-</table>
-        <br />
-        <table style="width:100%">
-            <thead>
-                <tr>
-                    <th style="background-color: rgb(119, 205, 238);">ROOM</th>
-                    @{
-                        colons = ViewBag.racksinroom2.Length;
-
-
-                        <td colspan="@colons" style="background-color: rgb(125, 226, 232); font-weight:bold;">ROOM 2</td>
-                    }
-                    <td rowspan="4" style="background-color: rgb(119, 205, 238); font-weight:bold;">TOTAL</td>
-                </tr>
-                <tr>
-                    <th style="background-color: rgb(119, 205, 238);">RACK NO.#</th>
-                    @{
-                        foreach (var r in ViewBag.racksinroom2)
-                        {
-                            <th style="background-color: rgb(125, 226, 232);">@r.Substring(5, 2)</th>
-                        }
-                    }
-
-                </tr>
-
-                <tr>
-                    <th style="background-color: rgb(119, 205, 238);">BIN TYPE</th>
-                    @{
-
-                        foreach (var k in ViewBag.condensed_racks_bin_color)
-                        {
-                                
-                                <th style="background-color: rgb(125, 226, 232);"><a style="white-space:pre-wrap">@k.BIN</a></th>
-
-                        }
-                    }
-                </tr>
-                <tr>
-                    <th style="background-color: rgb(119, 205, 238);">SLIDER COLOR</th>
-                    @{
-                        foreach (var k in ViewBag.condensed_racks_bin_color)
-                        {
-
-                                <th style="background-color: rgb(125, 226, 232);"><a style="white-space:pre-wrap">@k.COLOR</a></th>
-                        }
-                    }
-                </tr>
-                <tr>
-                    <th style="background-color: rgb(208, 231, 247);">
-                        ACTIVE
-                    </th>
-                    @{
-                        TOTAL = 0;
-                        foreach (var r in ViewBag.racksinroom2)
-                        {
-
-                            string count = "0";
-                            foreach (var a_1 in ViewBag.racks_in_room_2)
-                            {
-                                if (r == a_1.RACK && a_1.STATUS == "MOVING")
-                                {
-                                    count = a_1.COUNT.ToString();
-                                    TOTAL = TOTAL + a_1.COUNT;
-                                }
-
-
-                            }
-                            <td>
-                                @count
-                            </td>
-                        }
-
-                        <td style=" font-weight: bold;">
-                            @TOTAL
-                        </td>
-                    }
-                </tr>
-                <tr>
-                    <th style="background-color: rgb(208, 231, 247);">
-                        SLOW MOVING
-                    </th>
-                    @{
-                        TOTAL = 0;
-                        foreach (var r in ViewBag.racksinroom2)
-                        {
-                            string count = "0";
-                            foreach (var a_1 in ViewBag.racks_in_room_2)
-                            {
-                                if (r == a_1.RACK && a_1.STATUS == "SLOW MOVING")
-                                {
-                                    count = a_1.COUNT.ToString();
-                                    TOTAL = TOTAL + a_1.COUNT;
-                                }
-
-
-                            }
-                            <td>
-                                @count
-                            </td>
-                        }
-
-                        <td style=" font-weight: bold;">
-                            @TOTAL
-                        </td>
-                    }
-                </tr>
-                <tr>
-                    <th style="background-color: rgb(208, 231, 247);">
-                        EOL
-                    </th>
-                    @{
-                        TOTAL = 0;
-                        foreach (var r in ViewBag.racksinroom2)
-                        {
-                            string count = "0";
-                            foreach (var a_1 in ViewBag.racks_in_room_2)
-                            {
-                                if (r == a_1.RACK && a_1.STATUS == "EOL")
-                                {
-                                    count = a_1.COUNT.ToString();
-                                    TOTAL = TOTAL + a_1.COUNT;
-                                }
-
-
-                            }
-                            <td>
-                                @count
-                            </td>
-                        }
-                        <td style=" font-weight: bold;">
-                            @TOTAL
-                        </td>
-                    }
-                </tr>
-                <tr>
-                    <th style="background-color: rgb(208, 231, 247);">
-                        EMPTY
-                    </th>
-                    @{
-                        TOTAL = 0;
-                        foreach (var r in ViewBag.racksinroom2)
-                        {
-                            string count = "0";
-                            foreach (var a_1 in ViewBag.racks_in_room_2)
-                            {
-                                if (r == a_1.RACK && a_1.STATUS == "EMPTY")
-                                {
-                                    count = a_1.COUNT.ToString();
-                                    TOTAL = TOTAL + a_1.COUNT;
-                                }
-
-
-                            }
-                            <td>
-                                @count
-                            </td>
-                        }
-                        <td style=" font-weight: bold;">
-                            @TOTAL
-                        </td>
-                    }
-
-                </tr>
-                <tr style=" font-weight: bold;">
-                    <th style="background-color: rgb(119, 205, 238);">
-                        TOTAL SLIDER
-                    </th>
-                    @{
-                        TOTAL = 0;
-                        foreach (var t in ViewBag.totalallracks2)
-                        {
-                            <td>
-                                @t.COUNT
-                            </td>
-                            TOTAL = TOTAL + t.COUNT;
-                        }
-
-                        <td>
-                            @TOTAL
-                        </td>
-                    }
-                </tr>
-</table>
-        <br />
-        <table>
-            <tr>
-                <td>
-                    <table style="width:100%">
-                        <thead>
-                            <tr>
-                                <th style="background-color: rgb(119, 205, 238);">ROOM</th>
-                                @{
-                                    colons = ViewBag.racksinsubwork.Length;
-
-
-                                    <td colspan="@colons" style="background-color: rgb(125, 226, 232); font-weight:bold;">SUBWORK</td>
-                                }
-                                <td rowspan="3" style="background-color: rgb(119, 205, 238); font-weight:bold;">TOTAL</td>
+                                </td>
+                                <td style="background-color: rgb(191, 191, 191);" rowspan="2">
+                                    <a style="font-weight:700;">BA/BB B6P/B7P/B9P</a>
+                                    <br />
+                                    <a style="font-weight:700;">BS/B9P</a>
+                                </td>
+                                <td style="background-color: rgb(191, 191, 191);" rowspan="2">
+                                    <a style="font-weight: 700;">@ViewBag.racksof_BA_BB_B6P</a>
+                                </td>
+                                <td rowspan="2">
+                                    @ViewBag.use_rack_1F_1G_1H_1J_1K_1L_1M_2J_2K_2Q
+                                </td>
+                                <td rowspan="2">
+                                    @ViewBag.empty_rack_1F_1G_1H_1J_1K_1L_1M_2J_2K_2Q
+                                </td>
                             </tr>
                             <tr>
-                                <th style="background-color: rgb(119, 205, 238);">RACK NO.#</th>
-                                @{
-                                    foreach (var r in ViewBag.racksinsubwork)
-                                    {
-                                        <th style="background-color: rgb(125, 226, 232);">@r.Substring(5, 2)</th>
-                                    }
-                                }
-
+                                <td style="background-color: rgb(191, 191, 191);">
+                                    <a style="font-weight:700;">BC / BC/B10P</a>
+                                </td>
+                                <td style="background-color: rgb(191, 191, 191);">
+                                    <a style="font-weight:700">@ViewBag.racksof_BC_B10P</a>
+                                </td>
+                                <td>
+                                    @ViewBag.use_rack_2A_2B_2C
+                                </td>
+                                <td>
+                                    @ViewBag.empty_rack_2A_2B_2C
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table style="width: 100%">
+                            <thead>
+                                <tr style="background-color: rgb(191, 191, 191);">
+                                    <th colspan="4"><a style="color:white">A0 ROOM</a></th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td style="background-color: rgb(191, 191, 191);">
+                                    <a style="font-weight:900">Bin Type</a>
+                                </td>
+                                <td style="background-color: rgb(191, 191, 191);">
+                                    <a style="font-weight:900">Rack No.</a>
+                                </td>
+                                <td style="background-color: rgb(191, 191, 191);">
+                                    <a style="font-weight:900">Use</a>
+                                </td>
+                                <td style="background-color: rgb(191, 191, 191);">
+                                    <a style="font-weight:900">Empty</a>
+                                </td>
                             </tr>
                             <tr>
-                                <th style="background-color: rgb(119, 205, 238);">BIN TYPE</th>
-                                @{
-
-                                    foreach (var k in ViewBag.condensed_racks_bin_subwaork)
-                                    {
-
-                                        <th style="background-color: rgb(125, 226, 232);"><a style="white-space:pre-wrap">@k.BIN</a></th>
-
-                                    }
-                                }
+                                <td style="background-color: rgb(191, 191, 191);">
+                                    <a style="font-weight:700;white-space:pre-wrap;">BC</a>
+                                </td>
+                                <td style="background-color: rgb(191, 191, 191);">
+                                    <a style="font-weight:700">@ViewBag.racksof_A0_ROOM_1</a>
+                                </td>
+                                <td>
+                                    @ViewBag.use_rack_SA_SB
+                                </td>
+                                <td>
+                                    @ViewBag.empty_rack_SA_SB
+                                </td>
                             </tr>
                             <tr>
-                                <th style="background-color: rgb(208, 231, 247);">
-                                    ACTIVE
-                                </th>
-                                @{
-                                    TOTAL = 0;
-                                    foreach (var r in ViewBag.racksinsubwork)
-                                    {
-
-                                        string count = "0";
-                                        foreach (var a_1 in ViewBag.racksinsubworkcount)
-                                        {
-                                            if (r == a_1.RACK && a_1.STATUS == "MOVING")
-                                            {
-                                                count = a_1.COUNT.ToString();
-                                                TOTAL = TOTAL + a_1.COUNT;
-                                            }
-
-
-                                        }
-                                        <td>
-                                            @count
-                                        </td>
-                                    }
-
-                                    <td style=" font-weight: bold;">
-                                        @TOTAL
-                                    </td>
-                                }
+                                <td style="background-color: rgb(191, 191, 191);">
+                                    <a style="font-weight:700;white-space:pre-wrap;">BD</a>
+                                </td>
+                                <td style="background-color: rgb(191, 191, 191);">
+                                    <a style="font-weight:700">@ViewBag.racksof_A0_ROOM_2</a>
+                                </td>
+                                <td>
+                                    @ViewBag.use_rack_SC_SD
+                                </td>
+                                <td>
+                                    @ViewBag.empty_rack_SC_SD
+                                </td>
                             </tr>
-                            <tr>
-                                <th style="background-color: rgb(208, 231, 247);">
-                                    SLOW MOVING
-                                </th>
-                                @{
-                                    TOTAL = 0;
-                                    foreach (var r in ViewBag.racksinsubwork)
-                                    {
-                                        string count = "0";
-                                        foreach (var a_1 in ViewBag.racksinsubworkcount)
-                                        {
-                                            if (r == a_1.RACK && a_1.STATUS == "SLOW MOVING")
-                                            {
-                                                count = a_1.COUNT.ToString();
-                                                TOTAL = TOTAL + a_1.COUNT;
-                                            }
-
-
-                                        }
-                                        <td>
-                                            @count
-                                        </td>
-                                    }
-
-                                    <td style=" font-weight: bold;">
-                                        @TOTAL
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <th style="background-color: rgb(208, 231, 247);">
-                                    EOL
-                                </th>
-                                @{
-                                    TOTAL = 0;
-                                    foreach (var r in ViewBag.racksinsubwork)
-                                    {
-                                        string count = "0";
-                                        foreach (var a_1 in ViewBag.racksinsubworkcount)
-                                        {
-                                            if (r == a_1.RACK && a_1.STATUS == "EOL")
-                                            {
-                                                count = a_1.COUNT.ToString();
-                                                TOTAL = TOTAL + a_1.COUNT;
-                                            }
-
-
-                                        }
-                                        <td>
-                                            @count
-                                        </td>
-                                    }
-                                    <td style=" font-weight: bold;">
-                                        @TOTAL
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <th style="background-color: rgb(208, 231, 247);">
-                                    EMPTY
-                                </th>
-                                @{
-                                    TOTAL = 0;
-                                    foreach (var r in ViewBag.racksinsubwork)
-                                    {
-                                        string count = "0";
-                                        foreach (var a_1 in ViewBag.racksinsubworkcount)
-                                        {
-                                            if (r == a_1.RACK && a_1.STATUS == "EMPTY")
-                                            {
-                                                count = a_1.COUNT.ToString();
-                                                TOTAL = TOTAL + a_1.COUNT;
-                                            }
-
-
-                                        }
-                                        <td>
-                                            @count
-                                        </td>
-                                    }
-                                    <td style=" font-weight: bold;">
-                                        @TOTAL
-                                    </td>
-                                }
-
-                            </tr>
-                            <tr style=" font-weight: bold;">
-                                <th style="background-color: rgb(119, 205, 238);">
-                                    TOTAL SLIDER
-                                </th>
-                                @{
-                                    TOTAL = 0;
-                                    foreach (var t in ViewBag.totalallsubworkrack)
-                                    {
-                                        <td>
-                                            @t.COUNT
-                                        </td>
-                                        TOTAL = TOTAL + t.COUNT;
-                                    }
-
-                                    <td>
-                                        @TOTAL
-                                    </td>
-                                }
-                            </tr>
-                    </table>
-                </td>
-                <td width="100px">
-                    &nbsp;
-                </td>
-                <td>
-                    <table style="width:100%">
-                        <thead>
-                            <tr>
-                                <th style="background-color: rgb(119, 205, 238);">ROOM</th>
-                                @{
-                                    colons = ViewBag.racksinA0.Length;
-
-
-                                    <td colspan="@colons" style="background-color: rgb(125, 226, 232); font-weight:bold;">AO ROOM</td>
-                                }
-                                <td rowspan="3" style="background-color: rgb(119, 205, 238); font-weight:bold;">TOTAL</td>
-                            </tr>
-                            <tr>
-                                <th style="background-color: rgb(119, 205, 238);">RACK NO.#</th>
-                                @{
-                                    foreach (var r in ViewBag.racksinA0)
-                                    {
-                                        <th style="background-color: rgb(125, 226, 232);">@r.Substring(5, 2)</th>
-                                    }
-                                }
-
-                            </tr>
-                            <tr>
-                                <th style="background-color: rgb(119, 205, 238);">BIN TYPE</th>
-                                @{
-
-                                    foreach (var k in ViewBag.condensed_racks_bin_A0)
-                                    {
-
-                                        <th style="background-color: rgb(125, 226, 232);"><a style="white-space:pre-wrap">@k.BIN</a></th>
-
-                                    }
-                                }
-                            </tr>
-                            <tr>
-                                <th style="background-color: rgb(208, 231, 247);">
-                                    ACTIVE
-                                </th>
-                                @{
-                                    TOTAL = 0;
-                                    foreach (var r in ViewBag.racksinA0)
-                                    {
-
-                                        string count = "0";
-                                        foreach (var a_1 in ViewBag.racksinA0count)
-                                        {
-                                            if (r == a_1.RACK && a_1.STATUS == "MOVING")
-                                            {
-                                                count = a_1.COUNT.ToString();
-                                                TOTAL = TOTAL + a_1.COUNT;
-                                            }
-
-
-                                        }
-                                        <td>
-                                            @count
-                                        </td>
-                                    }
-
-                                    <td style=" font-weight: bold;">
-                                        @TOTAL
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <th style="background-color: rgb(208, 231, 247);">
-                                    SLOW MOVING
-                                </th>
-                                @{
-                                    TOTAL = 0;
-                                    foreach (var r in ViewBag.racksinA0)
-                                    {
-                                        string count = "0";
-                                        foreach (var a_1 in ViewBag.racksinA0count)
-                                        {
-                                            if (r == a_1.RACK && a_1.STATUS == "SLOW MOVING")
-                                            {
-                                                count = a_1.COUNT.ToString();
-                                                TOTAL = TOTAL + a_1.COUNT;
-                                            }
-
-
-                                        }
-                                        <td>
-                                            @count
-                                        </td>
-                                    }
-
-                                    <td style=" font-weight: bold;">
-                                        @TOTAL
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <th style="background-color: rgb(208, 231, 247);">
-                                    EOL
-                                </th>
-                                @{
-                                    TOTAL = 0;
-                                    foreach (var r in ViewBag.racksinA0)
-                                    {
-                                        string count = "0";
-                                        foreach (var a_1 in ViewBag.racksinA0count)
-                                        {
-                                            if (r == a_1.RACK && a_1.STATUS == "EOL")
-                                            {
-                                                count = a_1.COUNT.ToString();
-                                                TOTAL = TOTAL + a_1.COUNT;
-                                            }
-
-
-                                        }
-                                        <td>
-                                            @count
-                                        </td>
-                                    }
-                                    <td style=" font-weight: bold;">
-                                        @TOTAL
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <th style="background-color: rgb(208, 231, 247);">
-                                    EMPTY
-                                </th>
-                                @{
-                                    TOTAL = 0;
-                                    foreach (var r in ViewBag.racksinA0)
-                                    {
-                                        string count = "0";
-                                        foreach (var a_1 in ViewBag.racksinA0count)
-                                        {
-                                            if (r == a_1.RACK && a_1.STATUS == "EMPTY")
-                                            {
-                                                count = a_1.COUNT.ToString();
-                                                TOTAL = TOTAL + a_1.COUNT;
-                                            }
-
-
-                                        }
-                                        <td>
-                                            @count
-                                        </td>
-                                    }
-                                    <td style=" font-weight: bold;">
-                                        @TOTAL
-                                    </td>
-                                }
-
-                            </tr>
-                            <tr style=" font-weight: bold;">
-                                <th style="background-color: rgb(119, 205, 238);">
-                                    TOTAL SLIDER
-                                </th>
-                                @{
-                                    TOTAL = 0;
-                                    foreach (var t in ViewBag.totalallA0rack)
-                                    {
-                                        <td>
-                                            @t.COUNT
-                                        </td>
-                                        TOTAL = TOTAL + t.COUNT;
-                                    }
-
-                                    <td>
-                                        @TOTAL
-                                    </td>
-                                }
-                            </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-    </td>
-    <!--Right side of column-->
-
-</tr>
-<tr style = "border:none;">
-    <td style = "border:none;"><h4 style="text-decoration: underline">SLIDER STATUS</h4><br /><div id="pieChart"></div></td>
-    <td style = "border:none;"><h4 style="text-decoration: underline">CUSTOMER REQUIREMENT</h4><br /><div id="SecondpieChart"></div></td>
-</tr>
-<tr style = "border:none;">
-    <td style = "border:none;">
-        <table style="width: 25%">
-            <thead>
-                <tr>
-                    <td colspan="2" style="background-color: rgb(116, 181, 228);">
-                        <a style="font-weight:900;">BIN TYPE</a>
+                        </table>
                     </td>
                 </tr>
-            </thead>
-            @{
-                int total = 0;
+            </table>
+        </td>
+        <!--Right side of column-->
+        <td style="text-align:center;border:none;" rowspan="2">
+        </td>
+        <!--Right side of column-->
 
-                foreach (var item in ViewBag.bc)
-                {
+    </tr>
+    <tr>
+        <!-- <td style="border:none;"><h4 style="text-decoration: underline">SLIDER STATUS</h4><br /><div id="pieChart"></div></td> -->
+        <td><h4 style="text-decoration: underline">SLIDER STATUS</h4><div id="piechart_3d_2" style="width: 1800px; height: 1100px;border:solid;"></div></td>
+        <!-- <td style="border:none;"><h4 style="text-decoration: underline">CUSTOMER REQUIREMENT</h4><br /><div id="SecondpieChart"></div></td> -->
+        <td><h4 style="text-decoration: underline">USED BY CUSTOMERS</h4><div id="piechart_3d" style="width: 1800px; height: 1100px; border: solid;"></div></td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <table style="width:100%">
+                <tr>
+                    <td style="background-color: rgb(116,181,228)">
+                        <h2>Slider Status VS Rack/Bin</h2>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <table style="width:100%">
+                <thead>
                     <tr>
-                        <td style="background-color: rgb(116, 181, 228);">
-                            <a style="font-weight:700;">
-                                @item.BIN
-                            </a>
-                        </td>
-                        <td>
-                            <a>
-                                @item.COUNT
-                            </a>
+                        <th style="background-color: rgb(119, 205, 238);">ROOM</th>
+                        @{
+                            int colons = ViewBag.racksinroom1.Length;
 
+
+                            <td colspan="@colons" style="background-color: rgb(125, 226, 232); font-weight:bold;">ROOM 1</td>
+                        }
+                        <td rowspan="4" style="background-color: rgb(119, 205, 238); font-weight:bold;">TOTAL</td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: rgb(119, 205, 238);">RACK NO.#</th>
+                        @{
+                            foreach (var r in ViewBag.racksinroom1)
+                            {
+                                <th style="background-color: rgb(125, 226, 232);">@r.Substring(5, 2)</th>
+                            }
+                        }
+
+                    </tr>
+                    <tr>
+                        <th style="background-color: rgb(119, 205, 238);">BIN TYPE</th>
+                        @{
+
+                            foreach (var k in ViewBag.condensed_racks_bin_color2)
+                            {
+
+                                <th style="background-color: rgb(125, 226, 232);"><a style="white-space:pre-wrap">@k.BIN</a></th>
+
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <th style="background-color: rgb(119, 205, 238);">SLIDER COLOR</th>
+                        @{
+                            foreach (var k in ViewBag.condensed_racks_bin_color2)
+                            {
+
+                                <th style="background-color: rgb(125, 226, 232);"><a style="white-space:pre-wrap">@k.COLOR</a></th>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <th style="background-color: rgb(208, 231, 247);">
+                            ACTIVE
+                        </th>
+                        @{
+                            int TOTAL = 0;
+                            foreach (var r in ViewBag.racksinroom1)
+                            {
+
+                                string count = "0";
+                                foreach (var a_1 in ViewBag.racks_in_room_1)
+                                {
+                                    if (r == a_1.RACK && a_1.STATUS == "MOVING")
+                                    {
+                                        count = a_1.COUNT.ToString();
+                                        TOTAL = TOTAL + a_1.COUNT;
+                                    }
+
+
+                                }
+                                <td>
+                                    @count
+                                </td>
+                            }
+
+                            <td style=" font-weight: bold;">
+                                @TOTAL
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <th style="background-color: rgb(208, 231, 247);">
+                            SLOW MOVING
+                        </th>
+                        @{
+                            TOTAL = 0;
+                            foreach (var r in ViewBag.racksinroom1)
+                            {
+                                string count = "0";
+                                foreach (var a_1 in ViewBag.racks_in_room_1)
+                                {
+                                    if (r == a_1.RACK && a_1.STATUS == "SLOW MOVING")
+                                    {
+                                        count = a_1.COUNT.ToString();
+                                        TOTAL = TOTAL + a_1.COUNT;
+                                    }
+
+
+                                }
+                                <td>
+                                    @count
+                                </td>
+                            }
+
+                            <td style=" font-weight: bold;">
+                                @TOTAL
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <th style="background-color: rgb(208, 231, 247);">
+                            EOL
+                        </th>
+                        @{
+                            TOTAL = 0;
+                            foreach (var r in ViewBag.racksinroom1)
+                            {
+                                string count = "0";
+                                foreach (var a_1 in ViewBag.racks_in_room_1)
+                                {
+                                    if (r == a_1.RACK && a_1.STATUS == "EOL")
+                                    {
+                                        count = a_1.COUNT.ToString();
+                                        TOTAL = TOTAL + a_1.COUNT;
+                                    }
+
+
+                                }
+                                <td>
+                                    @count
+                                </td>
+                            }
+                            <td style=" font-weight: bold;">
+                                @TOTAL
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <th style="background-color: rgb(208, 231, 247);">
+                            EMPTY
+                        </th>
+                        @{
+                            TOTAL = 0;
+                            foreach (var r in ViewBag.racksinroom1)
+                            {
+                                string count = "0";
+                                foreach (var a_1 in ViewBag.racks_in_room_1)
+                                {
+                                    if (r == a_1.RACK && a_1.STATUS == "EMPTY")
+                                    {
+                                        count = a_1.COUNT.ToString();
+                                        TOTAL = TOTAL + a_1.COUNT;
+                                    }
+
+
+                                }
+                                <td>
+                                    @count
+                                </td>
+                            }
+                            <td style=" font-weight: bold;">
+                                @TOTAL
+                            </td>
+                        }
+
+                    </tr>
+                    <tr style=" font-weight: bold;">
+                        <th style="background-color: rgb(119, 205, 238);">
+                            TOTAL SLIDER
+                        </th>
+                        @{
+                            TOTAL = 0;
+                            foreach (var t in ViewBag.totalallracks)
+                            {
+                                <td>
+                                    @t.COUNT
+                                </td>
+                                TOTAL = TOTAL + t.COUNT;
+                            }
+
+                            <td>
+                                @TOTAL
+                            </td>
+                        }
+                    </tr>
+            </table>
+            <br />
+            <table style="width:100%">
+                <thead>
+                    <tr>
+                        <th style="background-color: rgb(119, 205, 238);">ROOM</th>
+                        @{
+                            colons = ViewBag.racksinroom2.Length;
+
+
+                            <td colspan="@colons" style="background-color: rgb(125, 226, 232); font-weight:bold;">ROOM 2</td>
+                        }
+                        <td rowspan="4" style="background-color: rgb(119, 205, 238); font-weight:bold;">TOTAL</td>
+                    </tr>
+                    <tr>
+                        <th style="background-color: rgb(119, 205, 238);">RACK NO.#</th>
+                        @{
+                            foreach (var r in ViewBag.racksinroom2)
+                            {
+                                <th style="background-color: rgb(125, 226, 232);">@r.Substring(5, 2)</th>
+                            }
+                        }
+
+                    </tr>
+
+                    <tr>
+                        <th style="background-color: rgb(119, 205, 238);">BIN TYPE</th>
+                        @{
+
+                            foreach (var k in ViewBag.condensed_racks_bin_color)
+                            {
+
+                                <th style="background-color: rgb(125, 226, 232);"><a style="white-space:pre-wrap">@k.BIN</a></th>
+
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <th style="background-color: rgb(119, 205, 238);">SLIDER COLOR</th>
+                        @{
+                            foreach (var k in ViewBag.condensed_racks_bin_color)
+                            {
+
+                                <th style="background-color: rgb(125, 226, 232);"><a style="white-space:pre-wrap">@k.COLOR</a></th>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <th style="background-color: rgb(208, 231, 247);">
+                            ACTIVE
+                        </th>
+                        @{
+                            TOTAL = 0;
+                            foreach (var r in ViewBag.racksinroom2)
+                            {
+
+                                string count = "0";
+                                foreach (var a_1 in ViewBag.racks_in_room_2)
+                                {
+                                    if (r == a_1.RACK && a_1.STATUS == "MOVING")
+                                    {
+                                        count = a_1.COUNT.ToString();
+                                        TOTAL = TOTAL + a_1.COUNT;
+                                    }
+
+
+                                }
+                                <td>
+                                    @count
+                                </td>
+                            }
+
+                            <td style=" font-weight: bold;">
+                                @TOTAL
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <th style="background-color: rgb(208, 231, 247);">
+                            SLOW MOVING
+                        </th>
+                        @{
+                            TOTAL = 0;
+                            foreach (var r in ViewBag.racksinroom2)
+                            {
+                                string count = "0";
+                                foreach (var a_1 in ViewBag.racks_in_room_2)
+                                {
+                                    if (r == a_1.RACK && a_1.STATUS == "SLOW MOVING")
+                                    {
+                                        count = a_1.COUNT.ToString();
+                                        TOTAL = TOTAL + a_1.COUNT;
+                                    }
+
+
+                                }
+                                <td>
+                                    @count
+                                </td>
+                            }
+
+                            <td style=" font-weight: bold;">
+                                @TOTAL
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <th style="background-color: rgb(208, 231, 247);">
+                            EOL
+                        </th>
+                        @{
+                            TOTAL = 0;
+                            foreach (var r in ViewBag.racksinroom2)
+                            {
+                                string count = "0";
+                                foreach (var a_1 in ViewBag.racks_in_room_2)
+                                {
+                                    if (r == a_1.RACK && a_1.STATUS == "EOL")
+                                    {
+                                        count = a_1.COUNT.ToString();
+                                        TOTAL = TOTAL + a_1.COUNT;
+                                    }
+
+
+                                }
+                                <td>
+                                    @count
+                                </td>
+                            }
+                            <td style=" font-weight: bold;">
+                                @TOTAL
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <th style="background-color: rgb(208, 231, 247);">
+                            EMPTY
+                        </th>
+                        @{
+                            TOTAL = 0;
+                            foreach (var r in ViewBag.racksinroom2)
+                            {
+                                string count = "0";
+                                foreach (var a_1 in ViewBag.racks_in_room_2)
+                                {
+                                    if (r == a_1.RACK && a_1.STATUS == "EMPTY")
+                                    {
+                                        count = a_1.COUNT.ToString();
+                                        TOTAL = TOTAL + a_1.COUNT;
+                                    }
+
+
+                                }
+                                <td>
+                                    @count
+                                </td>
+                            }
+                            <td style=" font-weight: bold;">
+                                @TOTAL
+                            </td>
+                        }
+
+                    </tr>
+                    <tr style=" font-weight: bold;">
+                        <th style="background-color: rgb(119, 205, 238);">
+                            TOTAL SLIDER
+                        </th>
+                        @{
+                            TOTAL = 0;
+                            foreach (var t in ViewBag.totalallracks2)
+                            {
+                                <td>
+                                    @t.COUNT
+                                </td>
+                                TOTAL = TOTAL + t.COUNT;
+                            }
+
+                            <td>
+                                @TOTAL
+                            </td>
+                        }
+                    </tr>
+            </table>
+            <br />
+            <table>
+                <tr>
+                    <td>
+                        <table style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th style="background-color: rgb(119, 205, 238);">ROOM</th>
+                                    @{
+                                        colons = ViewBag.racksinsubwork.Length;
+
+
+                                        <td colspan="@colons" style="background-color: rgb(125, 226, 232); font-weight:bold;">SUBWORK</td>
+                                    }
+                                    <td rowspan="3" style="background-color: rgb(119, 205, 238); font-weight:bold;">TOTAL</td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: rgb(119, 205, 238);">RACK NO.#</th>
+                                    @{
+                                        foreach (var r in ViewBag.racksinsubwork)
+                                        {
+                                            <th style="background-color: rgb(125, 226, 232);">@r.Substring(5, 2)</th>
+                                        }
+                                    }
+
+                                </tr>
+                                <tr>
+                                    <th style="background-color: rgb(119, 205, 238);">BIN TYPE</th>
+                                    @{
+
+                                        foreach (var k in ViewBag.condensed_racks_bin_subwaork)
+                                        {
+
+                                            <th style="background-color: rgb(125, 226, 232);"><a style="white-space:pre-wrap">@k.BIN</a></th>
+
+                                        }
+                                    }
+                                </tr>
+                                <tr>
+                                    <th style="background-color: rgb(208, 231, 247);">
+                                        ACTIVE
+                                    </th>
+                                    @{
+                                        TOTAL = 0;
+                                        foreach (var r in ViewBag.racksinsubwork)
+                                        {
+
+                                            string count = "0";
+                                            foreach (var a_1 in ViewBag.racksinsubworkcount)
+                                            {
+                                                if (r == a_1.RACK && a_1.STATUS == "MOVING")
+                                                {
+                                                    count = a_1.COUNT.ToString();
+                                                    TOTAL = TOTAL + a_1.COUNT;
+                                                }
+
+
+                                            }
+                                            <td>
+                                                @count
+                                            </td>
+                                        }
+
+                                        <td style=" font-weight: bold;">
+                                            @TOTAL
+                                        </td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <th style="background-color: rgb(208, 231, 247);">
+                                        SLOW MOVING
+                                    </th>
+                                    @{
+                                        TOTAL = 0;
+                                        foreach (var r in ViewBag.racksinsubwork)
+                                        {
+                                            string count = "0";
+                                            foreach (var a_1 in ViewBag.racksinsubworkcount)
+                                            {
+                                                if (r == a_1.RACK && a_1.STATUS == "SLOW MOVING")
+                                                {
+                                                    count = a_1.COUNT.ToString();
+                                                    TOTAL = TOTAL + a_1.COUNT;
+                                                }
+
+
+                                            }
+                                            <td>
+                                                @count
+                                            </td>
+                                        }
+
+                                        <td style=" font-weight: bold;">
+                                            @TOTAL
+                                        </td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <th style="background-color: rgb(208, 231, 247);">
+                                        EOL
+                                    </th>
+                                    @{
+                                        TOTAL = 0;
+                                        foreach (var r in ViewBag.racksinsubwork)
+                                        {
+                                            string count = "0";
+                                            foreach (var a_1 in ViewBag.racksinsubworkcount)
+                                            {
+                                                if (r == a_1.RACK && a_1.STATUS == "EOL")
+                                                {
+                                                    count = a_1.COUNT.ToString();
+                                                    TOTAL = TOTAL + a_1.COUNT;
+                                                }
+
+
+                                            }
+                                            <td>
+                                                @count
+                                            </td>
+                                        }
+                                        <td style=" font-weight: bold;">
+                                            @TOTAL
+                                        </td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <th style="background-color: rgb(208, 231, 247);">
+                                        EMPTY
+                                    </th>
+                                    @{
+                                        TOTAL = 0;
+                                        foreach (var r in ViewBag.racksinsubwork)
+                                        {
+                                            string count = "0";
+                                            foreach (var a_1 in ViewBag.racksinsubworkcount)
+                                            {
+                                                if (r == a_1.RACK && a_1.STATUS == "EMPTY")
+                                                {
+                                                    count = a_1.COUNT.ToString();
+                                                    TOTAL = TOTAL + a_1.COUNT;
+                                                }
+
+
+                                            }
+                                            <td>
+                                                @count
+                                            </td>
+                                        }
+                                        <td style=" font-weight: bold;">
+                                            @TOTAL
+                                        </td>
+                                    }
+
+                                </tr>
+                                <tr style=" font-weight: bold;">
+                                    <th style="background-color: rgb(119, 205, 238);">
+                                        TOTAL SLIDER
+                                    </th>
+                                    @{
+                                        TOTAL = 0;
+                                        foreach (var t in ViewBag.totalallsubworkrack)
+                                        {
+                                            <td>
+                                                @t.COUNT
+                                            </td>
+                                            TOTAL = TOTAL + t.COUNT;
+                                        }
+
+                                        <td>
+                                            @TOTAL
+                                        </td>
+                                    }
+                                </tr>
+                        </table>
+                    </td>
+                    <td width="100px">
+                        &nbsp;
+                    </td>
+                    <td>
+                        <table style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th style="background-color: rgb(119, 205, 238);">ROOM</th>
+                                    @{
+                                        colons = ViewBag.racksinA0.Length;
+
+
+                                        <td colspan="@colons" style="background-color: rgb(125, 226, 232); font-weight:bold;">AO ROOM</td>
+                                    }
+                                    <td rowspan="3" style="background-color: rgb(119, 205, 238); font-weight:bold;">TOTAL</td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: rgb(119, 205, 238);">RACK NO.#</th>
+                                    @{
+                                        foreach (var r in ViewBag.racksinA0)
+                                        {
+                                            <th style="background-color: rgb(125, 226, 232);">@r.Substring(5, 2)</th>
+                                        }
+                                    }
+
+                                </tr>
+                                <tr>
+                                    <th style="background-color: rgb(119, 205, 238);">BIN TYPE</th>
+                                    @{
+
+                                        foreach (var k in ViewBag.condensed_racks_bin_A0)
+                                        {
+
+                                            <th style="background-color: rgb(125, 226, 232);"><a style="white-space:pre-wrap">@k.BIN</a></th>
+
+                                        }
+                                    }
+                                </tr>
+                                <tr>
+                                    <th style="background-color: rgb(208, 231, 247);">
+                                        ACTIVE
+                                    </th>
+                                    @{
+                                        TOTAL = 0;
+                                        foreach (var r in ViewBag.racksinA0)
+                                        {
+
+                                            string count = "0";
+                                            foreach (var a_1 in ViewBag.racksinA0count)
+                                            {
+                                                if (r == a_1.RACK && a_1.STATUS == "MOVING")
+                                                {
+                                                    count = a_1.COUNT.ToString();
+                                                    TOTAL = TOTAL + a_1.COUNT;
+                                                }
+
+
+                                            }
+                                            <td>
+                                                @count
+                                            </td>
+                                        }
+
+                                        <td style=" font-weight: bold;">
+                                            @TOTAL
+                                        </td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <th style="background-color: rgb(208, 231, 247);">
+                                        SLOW MOVING
+                                    </th>
+                                    @{
+                                        TOTAL = 0;
+                                        foreach (var r in ViewBag.racksinA0)
+                                        {
+                                            string count = "0";
+                                            foreach (var a_1 in ViewBag.racksinA0count)
+                                            {
+                                                if (r == a_1.RACK && a_1.STATUS == "SLOW MOVING")
+                                                {
+                                                    count = a_1.COUNT.ToString();
+                                                    TOTAL = TOTAL + a_1.COUNT;
+                                                }
+
+
+                                            }
+                                            <td>
+                                                @count
+                                            </td>
+                                        }
+
+                                        <td style=" font-weight: bold;">
+                                            @TOTAL
+                                        </td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <th style="background-color: rgb(208, 231, 247);">
+                                        EOL
+                                    </th>
+                                    @{
+                                        TOTAL = 0;
+                                        foreach (var r in ViewBag.racksinA0)
+                                        {
+                                            string count = "0";
+                                            foreach (var a_1 in ViewBag.racksinA0count)
+                                            {
+                                                if (r == a_1.RACK && a_1.STATUS == "EOL")
+                                                {
+                                                    count = a_1.COUNT.ToString();
+                                                    TOTAL = TOTAL + a_1.COUNT;
+                                                }
+
+
+                                            }
+                                            <td>
+                                                @count
+                                            </td>
+                                        }
+                                        <td style=" font-weight: bold;">
+                                            @TOTAL
+                                        </td>
+                                    }
+                                </tr>
+                                <tr>
+                                    <th style="background-color: rgb(208, 231, 247);">
+                                        EMPTY
+                                    </th>
+                                    @{
+                                        TOTAL = 0;
+                                        foreach (var r in ViewBag.racksinA0)
+                                        {
+                                            string count = "0";
+                                            foreach (var a_1 in ViewBag.racksinA0count)
+                                            {
+                                                if (r == a_1.RACK && a_1.STATUS == "EMPTY")
+                                                {
+                                                    count = a_1.COUNT.ToString();
+                                                    TOTAL = TOTAL + a_1.COUNT;
+                                                }
+
+
+                                            }
+                                            <td>
+                                                @count
+                                            </td>
+                                        }
+                                        <td style=" font-weight: bold;">
+                                            @TOTAL
+                                        </td>
+                                    }
+
+                                </tr>
+                                <tr style=" font-weight: bold;">
+                                    <th style="background-color: rgb(119, 205, 238);">
+                                        TOTAL SLIDER
+                                    </th>
+                                    @{
+                                        TOTAL = 0;
+                                        foreach (var t in ViewBag.totalallA0rack)
+                                        {
+                                            <td>
+                                                @t.COUNT
+                                            </td>
+                                            TOTAL = TOTAL + t.COUNT;
+                                        }
+
+                                        <td>
+                                            @TOTAL
+                                        </td>
+                                    }
+                                </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table style="width: 25%">
+                <thead>
+                    <tr>
+                        <td colspan="2" style="background-color: rgb(116, 181, 228);">
+                            <a style="font-weight:900;">BIN TYPE</a>
                         </td>
                     </tr>
-                    total = total + item.COUNT;
+                </thead>
+                @{
+                    int total = 0;
+
+                    foreach (var item in ViewBag.bc)
+                    {
+                        <tr>
+                            <td style="background-color: rgb(116, 181, 228);">
+                                <a style="font-weight:700;">
+                                    @item.BIN
+                                </a>
+                            </td>
+                            <td>
+                                <a>
+                                    @item.COUNT
+                                </a>
+
+                            </td>
+                        </tr>
+                        total = total + item.COUNT;
+                    }
+
+                    <tr style="background-color: rgb(116, 181, 228);">
+                        <td>
+                            <a style="font-weight:700;">TOTAL</a>
+                        </td>
+                        <td>
+                            <a style="font-weight:700;">@total.ToString()</a>
+                        </td>
+                    </tr>
                 }
 
-                <tr style="background-color: rgb(116, 181, 228);">
+            </table>
+        </td>
+
+        <td style="border:none;">
+            <table style="width:25%">
+                <thead>
+                    <tr>
+                        <th style="background-color: rgb(116, 181, 228);" colspan="2">
+                            <a style="font-weight:700;">PROCESS CLASS</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td style="background-color: rgb(164, 222, 244);">
+                        H0
+                    </td>
                     <td>
+                        @ViewBag.H0PROCESSCLASS
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: rgb(164, 222, 244);">
+                        A0
+                    </td>
+                    <td>
+                        @ViewBag.A0PROCESSCLASS
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: rgb(164, 222, 244);">
+                        H0 A0
+                    </td>
+                    <td>
+                        @ViewBag.A0H0PROCESSCLASS
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: rgb(164, 222, 244);">
+                        SUBWORK
+                    </td>
+                    <td>
+                        @ViewBag.SUBPROCESSCLASS
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color: rgb(116, 181, 228);">
                         <a style="font-weight:700;">TOTAL</a>
                     </td>
                     <td>
-                        <a style="font-weight:700;">@total.ToString()</a>
+                        <a style="font-weight:700;">@ViewBag.totalallprocessclass</a>
                     </td>
                 </tr>
-            }
-
-        </table>
-    </td>
-
-    <td style = "border:none;">
-        <table style="width:25%">
-            <thead>
-                <tr>
-                    <th style="background-color: rgb(116, 181, 228);" colspan="2">
-                        <a style="font-weight:700;">PROCESS CLASS</a>
-                    </th>
-                </tr>
-            </thead>
-            <tr>
-                <td style="background-color: rgb(164, 222, 244);">
-                    H0
-                </td>
-                <td>
-                    @ViewBag.H0PROCESSCLASS
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: rgb(164, 222, 244);">
-                    A0
-                </td>
-                <td>
-                    @ViewBag.A0PROCESSCLASS
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: rgb(164, 222, 244);">
-                    H0 A0
-                </td>
-                <td>
-                    @ViewBag.A0H0PROCESSCLASS
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: rgb(164, 222, 244);">
-                    SUBWORK
-                </td>
-                <td>
-                    @ViewBag.SUBPROCESSCLASS
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color: rgb(116, 181, 228);">
-                    <a style="font-weight:700;">TOTAL</a>
-                </td>
-                <td>
-                    <a style="font-weight:700;">@ViewBag.totalallprocessclass</a>
-                </td>
-            </tr>
-        </table>
-    </td>
-</tr>
+            </table>
+        </td>
+    </tr>
 </table>
 
 
@@ -1147,8 +1169,8 @@
                     pattern: ['#1f77b4', '#aec7e8', '#ff7f0e', '#ffbb78', '#2ca02c', '#98df8a', '#d62728', '#ff9896', '#9467bd', '#c5b0d5', '#8c564b', '#c49c94', '#e377c2', '#f7b6d2', '#7f7f7f', '#c7c7c7', '#bcbd22', '#dbdb8d', '#17becf', '#9edae5']
                 },
                 size: {
-                    width: 400,
-                    height: 400
+                    width: 1000,
+                    height: 1000
 
                 },
                 legend: {
@@ -1183,8 +1205,8 @@
             var data = {};
             var MODELs = [];
             jsondata.forEach(function (e) {
-                MODELs.push(e.MODEL);
-                data[e.MODEL] = e.COUNT;
+                MODELs.push(e.CUSTOMER);
+                data[e.CUSTOMER] = e.COUNT;
             })
             var chart = c3.generate({
                 bindto: '#SecondpieChart',
@@ -1195,17 +1217,16 @@
                     },
                     type: 'pie'
                 },
-
                 color: {
                     pattern: ['#1f77b4', '#aec7e8', '#ff7f0e', '#ffbb78', '#2ca02c', '#98df8a', '#d62728', '#ff9896', '#9467bd', '#c5b0d5', '#8c564b', '#c49c94', '#e377c2', '#f7b6d2', '#7f7f7f', '#c7c7c7', '#bcbd22', '#dbdb8d', '#17becf', '#9edae5']
                 },
                 size: {
-                    width: 400,
-                    height: 400
+                    width: 1000,
+                    height: 1000,
 
                 },
                 legend: {
-                    show: false,
+                    show: true,
                     position: 'inset',
                     inset: {
                         anchor: 'top-right',
@@ -1217,4 +1238,131 @@
             });
         }
     });
-</script> 
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load("current", { packages: ["corechart"] });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+
+        var colors = ["#49bce9", "#479edc", "#52d9e0", "#1cabe4", "#2683c6", "#27c8d7", "#42ba97", "#3e8853", "#62a39f", "#106989", "#174f77", "#177c81",
+            "#28705c", "#255232", "#3a6360", "#3285a8", "#324ea8", "#32a877", "#a4a832","#32a836"];
+        var jsonData = $.ajax({
+            url: "SecondPieChart",
+            dataType: "json",
+            async: false
+        }).responseText;
+
+        var parsedjsonData = JSON.parse(jsonData);
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'CUSTOMER');
+        data.addColumn('number', 'COUNT');
+        var arr = new Array();
+
+        for (var i = 0; i < parsedjsonData.length; i++) {
+
+            var cust = parsedjsonData[i].CUSTOMER;
+            var ct = parsedjsonData[i].COUNT;
+            var arr2 = new Array();
+            arr2 = [cust, ct];
+            arr.push(arr2);
+
+        }
+
+        data.addRows(arr);
+
+        var options = {
+            is3D: true,
+            slices: {
+                1: { offset: 0.2 },
+                2: { offset: 0.2 },
+                3: { offset: 0.2 },
+                4: { offset: 0.2 },
+                5: { offset: 0.2 },
+                6: { offset: 0.2 },
+                7: { offset: 0.2 },
+                8: { offset: 0.2 },
+                9: { offset: 0.2 },
+                10: { offset: 0.2 },
+                11: { offset: 0.2 },
+                12: { offset: 0.2 },
+                13: { offset: 0.2 },
+                14: { offset: 0.2 },
+                15: { offset: 0.2 },
+                16: { offset: 0.2 },
+                17: { offset: 0.2 },
+                18: { offset: 0.2 },
+                19: { offset: 0.2 },
+                20: { offset: 0.2 },
+            },
+            legend: {
+                position: 'labeled', textStyle: { color: 'black', fontSize: 20, bold: true }
+            },
+            titleTextStyle: { fontSize: 48},
+            colors: colors,
+            pieSliceText: 'none',
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+    google.charts.load("current", { packages: ["corechart"] });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+
+        var colors = ["#00B050", "#FFFF00", "#000000", "#FF3300",];
+
+        var jsonData = $.ajax({
+            url: "PieChart",
+            dataType: "json",
+            async: false
+        }).responseText;
+
+        var parsedjsonData = JSON.parse(jsonData);
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'STATUS');
+        data.addColumn('number', 'COUNT');
+        var arr = new Array();
+
+        for (var i = 0; i < parsedjsonData.length; i++) {
+
+            var cust = parsedjsonData[i].STATUS;
+            var ct = parsedjsonData[i].COUNT;
+            var arr2 = new Array();
+            arr2 = [cust, ct];
+            arr.push(arr2);
+
+        }
+
+        data.addRows(arr);
+
+        var options = {
+            is3D: true,
+            slices: {
+                1: { offset: 0.2 },
+                2: { offset: 0.1 },
+                3: { offset: 0.2 },
+            },
+            legend: {
+                position: 'labeled', textStyle: { color: 'black', fontSize: 28, bold: true }
+            },
+            titleTextStyle: {fontSize:48},
+            colors: colors,
+            pieSliceText: 'none',
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_2'));
+      
+        chart.draw(data, options);
+
+    }
+</script>

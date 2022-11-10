@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Data;
 using WebApplication1.Models;
@@ -17,13 +15,13 @@ namespace WebApplication1.Views
         private WebApplication1Context db = new WebApplication1Context();
 
         // GET: SUPERMARKET_SLIDER
-        public ActionResult Index(string SearchColor,string SearchRack,string SearchSliderAddress, string SearchPartNumber,string SearchBIN,string SearchArea,string SearchStatus)
+        public ActionResult Index(string SearchColor, string SearchRack, string SearchSliderAddress, string SearchPartNumber, string SearchBIN, string SearchArea, string SearchStatus)
         {
             var sliderList = db.SUPERMARKET_SLIDER.ToList();
 
             if (!String.IsNullOrEmpty(SearchColor))
-            { 
-                 sliderList = db.SUPERMARKET_SLIDER.Where(x => x.COLOR.Equals(SearchColor)).ToList();
+            {
+                sliderList = db.SUPERMARKET_SLIDER.Where(x => x.COLOR.Equals(SearchColor)).ToList();
             }
             else if (!String.IsNullOrEmpty(SearchStatus))
             {
@@ -49,7 +47,7 @@ namespace WebApplication1.Views
             {
                 sliderList = db.SUPERMARKET_SLIDER.Where(x => x.SLIDER_ADDRESS.Equals(SearchSliderAddress)).ToList();
             }
-                return View(sliderList.OrderBy(s => s.SLIDER_ADDRESS).ToList());
+            return View(sliderList.OrderBy(s => s.SLIDER_ADDRESS).ToList());
         }
 
         // GET: SUPERMARKET_SLIDER/Details/5

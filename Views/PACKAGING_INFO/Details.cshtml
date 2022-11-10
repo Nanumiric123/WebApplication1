@@ -1,0 +1,114 @@
+﻿@model WebApplication1.Models.PACKAGING_INFO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PACKAGING_INFO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PHOTO_A)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHOTO_A)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHOTO_B)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHOTO_B)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHOTO_C)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHOTO_C)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EXT_PCK_METHOD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EXT_PCK_METHOD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.INT_PACK_METHOD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INT_PACK_METHOD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EXT_PCK_SIZE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EXT_PCK_SIZE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.INT_PCK_QTY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INT_PCK_QTY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TOTAL_NUMBER_OF_INT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TOTAL_NUMBER_OF_INT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PCK_TOTAL_QTY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PCK_TOTAL_QTY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WEIGHT_KG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WEIGHT_KG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REMARKS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REMARKS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SAVE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SAVE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

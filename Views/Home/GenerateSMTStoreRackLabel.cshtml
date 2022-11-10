@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Generate SMT Store Rack Label";
+}
+
+<h2>Generate SMT Store Rack Label</h2>
+<br />
+<br />
+<br />
+@using (Html.BeginForm("smtlabelpdf", "Home", FormMethod.Get, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        Enter Part Number 1: @Html.TextBox("PN1") &nbsp;
+        Enter Rack 1: @Html.TextBox("RACK1")
+        <hr />
+        Enter Part Number 2: @Html.TextBox("PN2")&nbsp;
+        Enter Rack 2: @Html.TextBox("RACK2")
+        <hr />
+        Enter Part Number 3: @Html.TextBox("PN3") &nbsp;
+        Enter Rack 3: @Html.TextBox("RACK3")
+        <hr />
+        Enter Part Number 4: @Html.TextBox("PN4") &nbsp;
+        Enter Rack 4: @Html.TextBox("RACK4")
+        <hr />
+        Enter Part Number 5: @Html.TextBox("PN5") &nbsp;
+        Enter Rack 5: @Html.TextBox("RACK5")
+        <hr />
+        Enter Part Number 6: @Html.TextBox("PN6") &nbsp;
+        Enter Rack 6: @Html.TextBox("RACK6")
+        <hr />
+        Enter Part Number 7: @Html.TextBox("PN7") &nbsp;
+        Enter Rack 7: @Html.TextBox("RACK7")
+    </div>
+
+    <div>
+        <input id="GenerateSMTStoreRackLabel" type="submit" value="submit" />
+    </div>
+}

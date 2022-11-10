@@ -11,12 +11,25 @@
 
 
 <p>
+
     <hr />
-    @Html.ActionLink("Create New Kanban", "Create")
+    @{ if (ViewBag.role != "supervisor")
+        {
+            @Html.ActionLink("Create New Kanban", "Create")
+        }
+    }
     <hr />
-    @Html.ActionLink("Create Slider Address", "CreateSliderKanban")
-    <hr/>
-    @Html.ActionLink("Modify Line output","Index", "SUPERMARKET_LINE_CAPACITY")
+    @{ if (ViewBag.role != "supervisor")
+        {
+            @Html.ActionLink("Create Slider Address", "CreateSliderKanban")
+          }
+    }
+    <hr />
+    @{ if (ViewBag.role != "supervisor")
+        {
+           @Html.ActionLink("Modify Line output", "Index", "SUPERMARKET_LINE_CAPACITY")
+       }
+    }
     <hr />
 
 </p>
@@ -173,11 +186,25 @@
         <tbody>
             @foreach (var item in Model)
             {
+
+
             <tr>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @{ if (ViewBag.role != "supervisor")
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                        }
+                    }
+                    @{ if (ViewBag.role != "supervisor")
+                        {
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                        }
+                    }
+
+
+
+
                     @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
                     @Html.ActionLink("Create Store Kanban", "CreateStoreKanbanPdf", new { id = item.ID }) |
                     @Html.ActionLink("Create Prod Kanban", "CreateProdKanban", new { id = item.ID })
                 </td>

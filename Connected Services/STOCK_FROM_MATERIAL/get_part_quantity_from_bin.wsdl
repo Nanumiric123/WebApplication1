@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Transit_stock_2002">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stge_bin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Transit_stock_2002Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Transit_stock_2002Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="materials">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stge_bin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="materialsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="materialsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="materials_2002_2005">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stge_bin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="storage_location" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="materials_2002_2005Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="materials_2002_2005Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PART_FROM_STORAGE_TYPE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stge_type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PART_FROM_STORAGE_TYPEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PART_FROM_STORAGE_TYPEResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PART_FROM_STORAGE_TYPE_TO_EXCEL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stge_type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PART_FROM_STORAGE_TYPE_TO_EXCELResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PART_FROM_STORAGE_TYPE_TO_EXCELResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_PRODUCTION_QUANTITY_BY_ORDER">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="prod_order" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_PRODUCTION_QUANTITY_BY_ORDERResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_PRODUCTION_QUANTITY_BY_ORDERResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_PRODUCTION_QUANTITY">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dateFrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateTo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_PRODUCTION_QUANTITYResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_PRODUCTION_QUANTITYResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PART_FROM_STORAGE_TYPE_TO_EXCEL_00A">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stge_type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PART_FROM_STORAGE_TYPE_TO_EXCEL_00AResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PART_FROM_STORAGE_TYPE_TO_EXCEL_00AResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stge_loc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULEResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_MFRPN_TO_EXCEL">
+        <s:complexType />
+      </s:element>
+      <s:element name="GET_MFRPN_TO_EXCELResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_MFRPN_TO_EXCELResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE_EMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stge_loc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="year" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE_EMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE_EMSResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Submit_data_to_EMS_delivery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lot_num" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="part_num" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reel_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="qty" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="box_number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EMS" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Submit_data_to_EMS_deliveryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Submit_data_to_EMS_deliveryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckDuplicates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="batch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reel_num" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ems_num" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckDuplicatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckDuplicatesResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PART_FROM_STORAGE_TYPE_TO_EXCEL_008">
+        <s:complexType />
+      </s:element>
+      <s:element name="PART_FROM_STORAGE_TYPE_TO_EXCEL_008Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PART_FROM_STORAGE_TYPE_TO_EXCEL_008Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Tracebility_PACKING_SYSTEM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productionOrder" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="quantity" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="badge_number" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Tracebility_PACKING_SYSTEMResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Tracebility_PACKING_SYSTEMResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCB_SCAN_EMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="part_num" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="qty" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="batch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ems_loc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCB_SCAN_EMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCB_SCAN_EMSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PART_FROM_STORAGE_TYPE_STORAGE_BIN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stge_type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="stge_bin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PART_FROM_STORAGE_TYPE_STORAGE_BINResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PART_FROM_STORAGE_TYPE_STORAGE_BINResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_STOCK_FROM_MATERIAL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_STOCK_FROM_MATERIALResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_STOCK_FROM_MATERIALResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="Transit_stock_2002SoapIn">
+    <wsdl:part name="parameters" element="tns:Transit_stock_2002" />
+  </wsdl:message>
+  <wsdl:message name="Transit_stock_2002SoapOut">
+    <wsdl:part name="parameters" element="tns:Transit_stock_2002Response" />
+  </wsdl:message>
+  <wsdl:message name="materialsSoapIn">
+    <wsdl:part name="parameters" element="tns:materials" />
+  </wsdl:message>
+  <wsdl:message name="materialsSoapOut">
+    <wsdl:part name="parameters" element="tns:materialsResponse" />
+  </wsdl:message>
+  <wsdl:message name="materials_2002_2005SoapIn">
+    <wsdl:part name="parameters" element="tns:materials_2002_2005" />
+  </wsdl:message>
+  <wsdl:message name="materials_2002_2005SoapOut">
+    <wsdl:part name="parameters" element="tns:materials_2002_2005Response" />
+  </wsdl:message>
+  <wsdl:message name="PART_FROM_STORAGE_TYPESoapIn">
+    <wsdl:part name="parameters" element="tns:PART_FROM_STORAGE_TYPE" />
+  </wsdl:message>
+  <wsdl:message name="PART_FROM_STORAGE_TYPESoapOut">
+    <wsdl:part name="parameters" element="tns:PART_FROM_STORAGE_TYPEResponse" />
+  </wsdl:message>
+  <wsdl:message name="PART_FROM_STORAGE_TYPE_TO_EXCELSoapIn">
+    <wsdl:part name="parameters" element="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL" />
+  </wsdl:message>
+  <wsdl:message name="PART_FROM_STORAGE_TYPE_TO_EXCELSoapOut">
+    <wsdl:part name="parameters" element="tns:PART_FROM_STORAGE_TYPE_TO_EXCELResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_PRODUCTION_QUANTITY_BY_ORDERSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_PRODUCTION_QUANTITY_BY_ORDER" />
+  </wsdl:message>
+  <wsdl:message name="GET_PRODUCTION_QUANTITY_BY_ORDERSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_PRODUCTION_QUANTITY_BY_ORDERResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_PRODUCTION_QUANTITYSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_PRODUCTION_QUANTITY" />
+  </wsdl:message>
+  <wsdl:message name="GET_PRODUCTION_QUANTITYSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_PRODUCTION_QUANTITYResponse" />
+  </wsdl:message>
+  <wsdl:message name="PART_FROM_STORAGE_TYPE_TO_EXCEL_00ASoapIn">
+    <wsdl:part name="parameters" element="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL_00A" />
+  </wsdl:message>
+  <wsdl:message name="PART_FROM_STORAGE_TYPE_TO_EXCEL_00ASoapOut">
+    <wsdl:part name="parameters" element="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL_00AResponse" />
+  </wsdl:message>
+  <wsdl:message name="PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULESoapIn">
+    <wsdl:part name="parameters" element="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE" />
+  </wsdl:message>
+  <wsdl:message name="PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULESoapOut">
+    <wsdl:part name="parameters" element="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULEResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_MFRPN_TO_EXCELSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_MFRPN_TO_EXCEL" />
+  </wsdl:message>
+  <wsdl:message name="GET_MFRPN_TO_EXCELSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_MFRPN_TO_EXCELResponse" />
+  </wsdl:message>
+  <wsdl:message name="PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE_EMSSoapIn">
+    <wsdl:part name="parameters" element="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE_EMS" />
+  </wsdl:message>
+  <wsdl:message name="PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE_EMSSoapOut">
+    <wsdl:part name="parameters" element="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE_EMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="Submit_data_to_EMS_deliverySoapIn">
+    <wsdl:part name="parameters" element="tns:Submit_data_to_EMS_delivery" />
+  </wsdl:message>
+  <wsdl:message name="Submit_data_to_EMS_deliverySoapOut">
+    <wsdl:part name="parameters" element="tns:Submit_data_to_EMS_deliveryResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckDuplicatesSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckDuplicates" />
+  </wsdl:message>
+  <wsdl:message name="CheckDuplicatesSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckDuplicatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="PART_FROM_STORAGE_TYPE_TO_EXCEL_008SoapIn">
+    <wsdl:part name="parameters" element="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL_008" />
+  </wsdl:message>
+  <wsdl:message name="PART_FROM_STORAGE_TYPE_TO_EXCEL_008SoapOut">
+    <wsdl:part name="parameters" element="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL_008Response" />
+  </wsdl:message>
+  <wsdl:message name="Tracebility_PACKING_SYSTEMSoapIn">
+    <wsdl:part name="parameters" element="tns:Tracebility_PACKING_SYSTEM" />
+  </wsdl:message>
+  <wsdl:message name="Tracebility_PACKING_SYSTEMSoapOut">
+    <wsdl:part name="parameters" element="tns:Tracebility_PACKING_SYSTEMResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCB_SCAN_EMSSoapIn">
+    <wsdl:part name="parameters" element="tns:PCB_SCAN_EMS" />
+  </wsdl:message>
+  <wsdl:message name="PCB_SCAN_EMSSoapOut">
+    <wsdl:part name="parameters" element="tns:PCB_SCAN_EMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="PART_FROM_STORAGE_TYPE_STORAGE_BINSoapIn">
+    <wsdl:part name="parameters" element="tns:PART_FROM_STORAGE_TYPE_STORAGE_BIN" />
+  </wsdl:message>
+  <wsdl:message name="PART_FROM_STORAGE_TYPE_STORAGE_BINSoapOut">
+    <wsdl:part name="parameters" element="tns:PART_FROM_STORAGE_TYPE_STORAGE_BINResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_STOCK_FROM_MATERIALSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_STOCK_FROM_MATERIAL" />
+  </wsdl:message>
+  <wsdl:message name="GET_STOCK_FROM_MATERIALSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_STOCK_FROM_MATERIALResponse" />
+  </wsdl:message>
+  <wsdl:portType name="get_part_quantity_from_binSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Transit_stock_2002">
+      <wsdl:input message="tns:Transit_stock_2002SoapIn" />
+      <wsdl:output message="tns:Transit_stock_2002SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="materials">
+      <wsdl:input message="tns:materialsSoapIn" />
+      <wsdl:output message="tns:materialsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="materials_2002_2005">
+      <wsdl:input message="tns:materials_2002_2005SoapIn" />
+      <wsdl:output message="tns:materials_2002_2005SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE">
+      <wsdl:input message="tns:PART_FROM_STORAGE_TYPESoapIn" />
+      <wsdl:output message="tns:PART_FROM_STORAGE_TYPESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_TO_EXCEL">
+      <wsdl:input message="tns:PART_FROM_STORAGE_TYPE_TO_EXCELSoapIn" />
+      <wsdl:output message="tns:PART_FROM_STORAGE_TYPE_TO_EXCELSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_PRODUCTION_QUANTITY_BY_ORDER">
+      <wsdl:input message="tns:GET_PRODUCTION_QUANTITY_BY_ORDERSoapIn" />
+      <wsdl:output message="tns:GET_PRODUCTION_QUANTITY_BY_ORDERSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_PRODUCTION_QUANTITY">
+      <wsdl:input message="tns:GET_PRODUCTION_QUANTITYSoapIn" />
+      <wsdl:output message="tns:GET_PRODUCTION_QUANTITYSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_TO_EXCEL_00A">
+      <wsdl:input message="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL_00ASoapIn" />
+      <wsdl:output message="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL_00ASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE">
+      <wsdl:input message="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULESoapIn" />
+      <wsdl:output message="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_MFRPN_TO_EXCEL">
+      <wsdl:input message="tns:GET_MFRPN_TO_EXCELSoapIn" />
+      <wsdl:output message="tns:GET_MFRPN_TO_EXCELSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE_EMS">
+      <wsdl:input message="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE_EMSSoapIn" />
+      <wsdl:output message="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE_EMSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Submit_data_to_EMS_delivery">
+      <wsdl:input message="tns:Submit_data_to_EMS_deliverySoapIn" />
+      <wsdl:output message="tns:Submit_data_to_EMS_deliverySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckDuplicates">
+      <wsdl:input message="tns:CheckDuplicatesSoapIn" />
+      <wsdl:output message="tns:CheckDuplicatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_TO_EXCEL_008">
+      <wsdl:input message="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL_008SoapIn" />
+      <wsdl:output message="tns:PART_FROM_STORAGE_TYPE_TO_EXCEL_008SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Tracebility_PACKING_SYSTEM">
+      <wsdl:input message="tns:Tracebility_PACKING_SYSTEMSoapIn" />
+      <wsdl:output message="tns:Tracebility_PACKING_SYSTEMSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCB_SCAN_EMS">
+      <wsdl:input message="tns:PCB_SCAN_EMSSoapIn" />
+      <wsdl:output message="tns:PCB_SCAN_EMSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_STORAGE_BIN">
+      <wsdl:input message="tns:PART_FROM_STORAGE_TYPE_STORAGE_BINSoapIn" />
+      <wsdl:output message="tns:PART_FROM_STORAGE_TYPE_STORAGE_BINSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_STOCK_FROM_MATERIAL">
+      <wsdl:input message="tns:GET_STOCK_FROM_MATERIALSoapIn" />
+      <wsdl:output message="tns:GET_STOCK_FROM_MATERIALSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="get_part_quantity_from_binSoap" type="tns:get_part_quantity_from_binSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Transit_stock_2002">
+      <soap:operation soapAction="http://tempuri.org/Transit_stock_2002" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="materials">
+      <soap:operation soapAction="http://tempuri.org/materials" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="materials_2002_2005">
+      <soap:operation soapAction="http://tempuri.org/materials_2002_2005" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE">
+      <soap:operation soapAction="http://tempuri.org/PART_FROM_STORAGE_TYPE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_TO_EXCEL">
+      <soap:operation soapAction="http://tempuri.org/PART_FROM_STORAGE_TYPE_TO_EXCEL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_PRODUCTION_QUANTITY_BY_ORDER">
+      <soap:operation soapAction="http://tempuri.org/GET_PRODUCTION_QUANTITY_BY_ORDER" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_PRODUCTION_QUANTITY">
+      <soap:operation soapAction="http://tempuri.org/GET_PRODUCTION_QUANTITY" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_TO_EXCEL_00A">
+      <soap:operation soapAction="http://tempuri.org/PART_FROM_STORAGE_TYPE_TO_EXCEL_00A" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE">
+      <soap:operation soapAction="http://tempuri.org/PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_MFRPN_TO_EXCEL">
+      <soap:operation soapAction="http://tempuri.org/GET_MFRPN_TO_EXCEL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE_EMS">
+      <soap:operation soapAction="http://tempuri.org/PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE_EMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Submit_data_to_EMS_delivery">
+      <soap:operation soapAction="http://tempuri.org/Submit_data_to_EMS_delivery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckDuplicates">
+      <soap:operation soapAction="http://tempuri.org/CheckDuplicates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_TO_EXCEL_008">
+      <soap:operation soapAction="http://tempuri.org/PART_FROM_STORAGE_TYPE_TO_EXCEL_008" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Tracebility_PACKING_SYSTEM">
+      <soap:operation soapAction="http://tempuri.org/Tracebility_PACKING_SYSTEM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCB_SCAN_EMS">
+      <soap:operation soapAction="http://tempuri.org/PCB_SCAN_EMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_STORAGE_BIN">
+      <soap:operation soapAction="http://tempuri.org/PART_FROM_STORAGE_TYPE_STORAGE_BIN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_STOCK_FROM_MATERIAL">
+      <soap:operation soapAction="http://tempuri.org/GET_STOCK_FROM_MATERIAL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="get_part_quantity_from_binSoap12" type="tns:get_part_quantity_from_binSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Transit_stock_2002">
+      <soap12:operation soapAction="http://tempuri.org/Transit_stock_2002" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="materials">
+      <soap12:operation soapAction="http://tempuri.org/materials" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="materials_2002_2005">
+      <soap12:operation soapAction="http://tempuri.org/materials_2002_2005" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE">
+      <soap12:operation soapAction="http://tempuri.org/PART_FROM_STORAGE_TYPE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_TO_EXCEL">
+      <soap12:operation soapAction="http://tempuri.org/PART_FROM_STORAGE_TYPE_TO_EXCEL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_PRODUCTION_QUANTITY_BY_ORDER">
+      <soap12:operation soapAction="http://tempuri.org/GET_PRODUCTION_QUANTITY_BY_ORDER" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_PRODUCTION_QUANTITY">
+      <soap12:operation soapAction="http://tempuri.org/GET_PRODUCTION_QUANTITY" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_TO_EXCEL_00A">
+      <soap12:operation soapAction="http://tempuri.org/PART_FROM_STORAGE_TYPE_TO_EXCEL_00A" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE">
+      <soap12:operation soapAction="http://tempuri.org/PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_MFRPN_TO_EXCEL">
+      <soap12:operation soapAction="http://tempuri.org/GET_MFRPN_TO_EXCEL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE_EMS">
+      <soap12:operation soapAction="http://tempuri.org/PART_FROM_STORAGE_TYPE_TO_EXCEL_IM_MODULE_EMS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Submit_data_to_EMS_delivery">
+      <soap12:operation soapAction="http://tempuri.org/Submit_data_to_EMS_delivery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckDuplicates">
+      <soap12:operation soapAction="http://tempuri.org/CheckDuplicates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_TO_EXCEL_008">
+      <soap12:operation soapAction="http://tempuri.org/PART_FROM_STORAGE_TYPE_TO_EXCEL_008" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Tracebility_PACKING_SYSTEM">
+      <soap12:operation soapAction="http://tempuri.org/Tracebility_PACKING_SYSTEM" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCB_SCAN_EMS">
+      <soap12:operation soapAction="http://tempuri.org/PCB_SCAN_EMS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PART_FROM_STORAGE_TYPE_STORAGE_BIN">
+      <soap12:operation soapAction="http://tempuri.org/PART_FROM_STORAGE_TYPE_STORAGE_BIN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_STOCK_FROM_MATERIAL">
+      <soap12:operation soapAction="http://tempuri.org/GET_STOCK_FROM_MATERIAL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="get_part_quantity_from_bin">
+    <wsdl:port name="get_part_quantity_from_binSoap" binding="tns:get_part_quantity_from_binSoap">
+      <soap:address location="http://172.16.206.19/PART_INFO/get_part_quantity_from_bin.asmx" />
+    </wsdl:port>
+    <wsdl:port name="get_part_quantity_from_binSoap12" binding="tns:get_part_quantity_from_binSoap12">
+      <soap12:address location="http://172.16.206.19/PART_INFO/get_part_quantity_from_bin.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

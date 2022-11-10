@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Generate Workara Kanban";
+}
+
+<h2>Generate Workara Kanban</h2>
+
+@using (Html.BeginForm("workaraKanbanPdf", "KANBAN_MASTER", FormMethod.Get, new { enctype = "multipart/form-data" }))
+{
+    <hr />
+    <div class="form-group">
+        Enter Part Number 1: @Html.TextBox("part_number")
+        <br />
+        Enter work ara rack : @Html.TextBox("work_ara")
+        <br />
+        Enter quantity : @Html.TextBox("quantity")
+    </div>
+    <div>
+        <input id="CreateSliderKanban" type="submit" value="submit" />
+    </div>
+}

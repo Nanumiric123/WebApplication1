@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Generate Picking List for Warehouse";
+}
+
+<h2>Generate Picking List for Warehouse</h2>
+@using (Html.BeginForm("GENERATE_PICKINGLIST_PDF_WAREHOUSE", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div>
+    <p>Enter production order : </p>
+    <input id="Text1" type="text" name="Text1" />
+    <br />
+    <input id="Text2" type="text" name="Text2" />
+    <br />
+    <input id="Text3" type="text" name="Text3" />
+    <br />
+    <input id="Text4" type="text" name="Text4" />
+    <br />
+    <input id="Text5" type="text" name="Text5" />
+    <br />
+    <input id="Text6" type="text" name="Text6" />
+    <br />
+    <input id="Text7" type="text" name="Text7" />
+    <br />
+    <input id="Text8" type="text" name="Text8" />
+    <br />
+    <input id="Text9" type="text" name="Text9" />
+    <br />
+    <input id="Text10" type="text" name="Text10" />
+    <br />
+    <input id="Submit1" type="submit" value="Generate" />
+</div>
+}

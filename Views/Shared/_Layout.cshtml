@@ -104,6 +104,7 @@
                             </ul>
                         </li>
                         <li><a class="dropdown-item" href="http://172.16.206.29/iBusiness2/Account/Login.aspx?ReturnUrl=%2fiBusiness2%2f">IBusiness System</a></li>
+                        <li>@Html.ActionLink("Generate Workara Kanban", "GENERATE_WORKARA_KANBAN", "KANBAN_MASTER", new { area = "" }, new { @class = "dropdown-item" })</li>
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle" href="#">Production Monitor</a>
                             <ul class="dropdown-menu">
@@ -122,19 +123,29 @@
                                         <li><a class="dropdown-item" href="http://172.16.206.19/Supermarket_Triggering/FileUpload_Workara.aspx">2002 RM WORKARA File upload</a></li>
                                     </ul>
                                 </li>
+
                                 <li class="dropdown-submenu">
                                     <a class="dropdown-item dropdown-toggle" href="#">2002 Trigerring</a>
                                     <ul class="dropdown-menu dropdown-submenu">
                                         <li><a class="dropdown-item" href="http://172.16.206.19/RM_2002_TRIGERRING/WH_2002.aspx">2002 Triggering</a></li>
                                         <li><a class="dropdown-item" href="http://172.16.206.19/RM_2002_TRIGERRING/File_Upload.aspx">2002 Triggering File Upload</a></li>
+                                        <li><a class="dropdown-item" href="http://172.16.206.19/RM_2002_TRIGERRING/TF001_monitoring.aspx">2002 TF001 Monitoring</a></li>
                                     </ul>
                                 </li>
                             </ul>
 
                         </li>
+                        <li>@Html.ActionLink("Generate Warehouse Picklist", "GENERATE_PICKINGLIST_WAREHOUSE", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                        <li><a class="dropdown-item" href="http://172.16.206.19/BIN_MONITOR/BIN_MONITOR_2002.aspx">Material Store Aging</a></li>
                     </ul>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> SMT Store </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li>@Html.ActionLink("Generate Rack Label", "GenerateSMTStoreRackLabel", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                    </ul>
 
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Work Instruction </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

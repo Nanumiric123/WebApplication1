@@ -1,0 +1,86 @@
+﻿@model IEnumerable<WebApplication1.Models.PACKAGING_INFO_INDEX>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXT_PCK_METHOD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INT_PACK_METHOD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXT_PCK_SIZE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INT_PCK_QTY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TOTAL_NUMBER_OF_INT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PCK_TOTAL_QTY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WEIGHT_KG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REMARKS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SAVE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXT_PCK_METHOD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INT_PACK_METHOD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXT_PCK_SIZE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INT_PCK_QTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TOTAL_NUMBER_OF_INT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PCK_TOTAL_QTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WEIGHT_KG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REMARKS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SAVE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

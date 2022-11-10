@@ -2,6 +2,12 @@
 
 @{
     ViewBag.Title = "sliderAddress";
+    if (ViewBag.role != null)
+    {
+        TempData["role"] = ViewBag.role;
+    }
+
+
 }
 <br />
 <h2>Supermarket Slider Address</h2>
@@ -116,7 +122,12 @@
 </style>
 
 <div>
-    @Html.ActionLink("Update Slider", "update_slider") <a>: to update Slider Part Number assignment Click this Link </a>
+    @{ if (ViewBag.role != "supervisor")
+        {
+            @Html.ActionLink("Update Slider", "update_slider")
+        }
+    }
+    <a>: to update Slider Part Number assignment Click this Link </a>
     <br />
     <a style="color:red;">Important! This will take a long time to update</a>
 
@@ -126,7 +137,12 @@
     <br />
     Click to Maintain Slider Adress Color
     <br />
-    @Html.ActionLink("Maintain Slider Color", "Index", "SUPERMARKET_SLIDER")
+    @{ if (ViewBag.role != "supervisor")
+        {
+            @Html.ActionLink("Maintain Slider Color", "Index", "SUPERMARKET_SLIDER")
+        }
+    }
+
     <br />
 </div>
 <br />
@@ -140,8 +156,10 @@
             <div class="table">
                 @using (Html.BeginForm("sliderAddress", "KANBAN_MASTER", FormMethod.Get))
                 {
+
                     @Html.DropDownList("ddlRacks", new SelectList(ViewBag.rack_lists, "RACK"))
-                    <input type="submit" value="Generate" />
+
+                    <input type="submit" value = "Generate" />
                 }
                 @{
 
@@ -293,20 +311,26 @@
 
                                             }
 
-											@Html.ActionLink("Change Slider Color", "Edit", "SUPERMARKET_SLIDER", new { id = item.ID }, null)
 
-                                            
+
+                                            @{ if (ViewBag.role != "supervisor")
+                                                {
+                                                    @Html.ActionLink("Change Slider Color", "Edit", "SUPERMARKET_SLIDER", new { id = item.ID }, null)
+                                                }
+                                            }
+
+
                                         </td>
-                                    }
-                                }
+                                                    }
+                                                }
 
                             </tr>
 
                         </table>
-                    }
+                                                }
                 }
             </div>
         </div>
     </div>
-
+    @{TempData["role"] = null;}
 </div>
