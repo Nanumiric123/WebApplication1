@@ -1,0 +1,85 @@
+﻿@model IEnumerable<WebApplication1.Models.newBS_BIN_REGISTER>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Register Bin", "Register")
+</p>
+<p>
+    @Html.ActionLink("Clear Bin", "Clear")
+</p>
+@using (Html.BeginForm("Index", "BS_BIN_REGISTER", FormMethod.Get))
+{
+    <div class="form-group">
+        @Html.Label("Search by Part Number")
+        <br />
+        @Html.TextBox("SearchPart")
+        <input type="submit" value="Search" />
+    </div>
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            <a>Bin </a>
+        </th>
+        <th>
+            <a>Part Number</a>
+        </th>
+        <th>
+            <a>Bin Number End</a>
+        </th>
+        <th>
+            <a>Bin Number Start</a>
+        </th>
+        <th>
+            <a>Register date</a>
+        </th>
+        <th>
+            <a>Reprint Date</a>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REMARKS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PIC)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.STORAGE_BIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PART_NO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BIN_END)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BIN_START)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.REG_DATE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DATE_REP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.REMARKS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PIC)
+            </td>
+        </tr>
+    }
+
+</table>

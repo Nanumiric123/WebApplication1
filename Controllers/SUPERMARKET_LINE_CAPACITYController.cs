@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Data;
 using WebApplication1.Models;
 
-namespace WebApplication1.Views
+namespace WebApplication1.Controllers
 {
     public class SUPERMARKET_LINE_CAPACITYController : Controller
     {
@@ -15,9 +17,23 @@ namespace WebApplication1.Views
         private WebApplication1Context kanbandb = new WebApplication1Context();
 
         // GET: SUPERMARKET_LINE_CAPACITY
-        public ActionResult Index()
+        public ActionResult Index(string SearchH0,string SearchA0)
         {
-            return View(db.SUPERMARKET_LINE_CAPACITY.ToList());
+
+            if (!String.IsNullOrEmpty(SearchH0))
+            {
+                return View(db.SUPERMARKET_LINE_CAPACITY.Where(s => s.H0.Contains(SearchH0)).ToList());
+
+            }
+            else if (!String.IsNullOrEmpty(SearchA0))
+            {
+                return View(db.SUPERMARKET_LINE_CAPACITY.Where(s => s.A0.Contains(SearchA0)).ToList());
+            }
+            else
+            {
+                return View(db.SUPERMARKET_LINE_CAPACITY.ToList());
+            }
+
         }
 
         // GET: SUPERMARKET_LINE_CAPACITY/Details/5

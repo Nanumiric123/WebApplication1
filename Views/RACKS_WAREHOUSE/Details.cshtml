@@ -1,0 +1,42 @@
+﻿@model WebApplication1.Models.RACKS_WAREHOUSE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RACKS_WAREHOUSE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RACK_TYPE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RACK_TYPE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RACK_NUMBER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RACK_NUMBER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CYCLE_COUNT_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CYCLE_COUNT_DATE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,5 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
+using System.Data.SqlTypes;
+using System.Drawing;
 
 namespace WebApplication1.Models
 {
@@ -209,36 +213,131 @@ namespace WebApplication1.Models
         public int COUNT { get; set; }
     }
 
-        public class PACKAGING_INFO
-        {
-            public int ID { get; set; }
-            public byte[] PHOTO_A { get; set; }
-            public byte[] PHOTO_B { get; set; }
-            public byte[] PHOTO_C { get; set; }
-            public string EXT_PCK_METHOD { get; set; }
-            public string INT_PACK_METHOD { set; get; }
-            public string EXT_PCK_SIZE { get; set; }
-            public string INT_PCK_QTY { get; set; }
-            public int TOTAL_NUMBER_OF_INT { get; set; }
-            public int PCK_TOTAL_QTY { get; set; }
-            public int WEIGHT_KG { get; set; }
-            public string REMARKS { get; set; }
-            public string SAVE { get; set; }
-        }
-
-
-        public class PACKAGING_INFO_INDEX
-        {
-            public int ID { get; set; }
-            public string EXT_PCK_METHOD { get; set; }
-            public string INT_PACK_METHOD { set; get; }
-            public string EXT_PCK_SIZE { get; set; }
-            public string INT_PCK_QTY { get; set; }
-            public int TOTAL_NUMBER_OF_INT { get; set; }
-            public int PCK_TOTAL_QTY { get; set; }
-            public int WEIGHT_KG { get; set; }
-            public string REMARKS { get; set; }
-            public string SAVE { get; set; }
-        }
-
+    public class PACKAGING_INFO
+    {
+        public int ID { get; set; }
+        public byte[] PHOTO_A { get; set; }
+        public byte[] PHOTO_B { get; set; }
+        public byte[] PHOTO_C { get; set; }
+        public string PART_NUMBER { get; set; }
+        public string EXT_PCK_METHOD { get; set; }
+        public string INT_PACK_METHOD { set; get; }
+        public int EXT_PCK_HEIGHT { get; set; }
+        public int EXT_PCK_WIDTH { get; set; }
+        public int EXT_PCK_LENGTH { get; set; }
+        public int INT_PCK_HEIGHT { get; set; }
+        public int INT_PCK_WIDTH { get; set; }
+        public int INT_PCK_LENGTH { get; set; }
+        public int INT_PCK_QTY { get; set; }
+        public int TOTAL_NUMBER_OF_INT { get; set; }
+        public int PCK_TOTAL_QTY { get; set; }
+        public decimal WEIGHT_KG { get; set; }
+        public string REMARKS { get; set; }
+        public string SAVE { get; set; }
     }
+
+
+    public class PACKAGING_INFO_INDEX
+    {
+        public int ID { get; set; }
+        public string PART_NUMBER { get; set; }
+        public string EXT_PCK_METHOD { get; set; }
+        public string INT_PACK_METHOD { set; get; }
+        public int EXT_PCK_HEIGHT { get; set; }
+        public int EXT_PCK_WIDTH { get; set; }
+        public int EXT_PCK_LENGTH { get; set; }
+        public int INT_PCK_HEIGHT { get; set; }
+        public int INT_PCK_WIDTH { get; set; }
+        public int INT_PCK_LENGTH { get; set; }
+        public int INT_PCK_QTY { get; set; }
+        public int TOTAL_NUMBER_OF_INT { get; set; }
+        public int PCK_TOTAL_QTY { get; set; }
+        public decimal WEIGHT_KG { get; set; }
+        public string REMARKS { get; set; }
+        public string SAVE { get; set; }
+    }
+
+    public class BS_BIN_REGISTER
+    {
+        public int ID { get; set; }
+        public string STORAGE_BIN { get; set; }
+        public string PART_NO { get; set; }
+        public string BIN_END { get; set; }
+        public string BIN_START { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime REG_DATE { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime DATE_REP { get; set; }
+        public string REMARKS { get; set; }
+        public string PIC { get; set; }
+    }
+
+    public class newBS_BIN_REGISTER
+    {
+        public int ID { get; set; }
+        public string STORAGE_BIN { get; set; }
+        public string PART_NO { get; set; }
+        public string BIN_END { get; set; }
+        public string BIN_START { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime REG_DATE { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime DATE_REP { get; set; }
+        public string REMARKS { get; set; }
+        public string PIC { get; set; }
+    }
+
+    public class BSBINDATA
+    {
+        public int ID { get; set; }
+        public string STORAGE_BIN { get; set; }
+        public string PART_NO { get; set; }
+       
+    }
+
+    public class RMWKDS
+    {
+        public string STORAGE_BIN { get; set; }
+        public string PART_NO { get; set; }
+        public int QUANTITY { get; set; }
+        public string LOT_NO { get; set; }
+    }
+
+    public class SMT_PULLLIST
+    {
+        public int ID { get; set; }
+        public string PART_NUMBER { get; set; }
+        public int SHORTAGE_QTY { get; set; }
+        public int RECEIVED_QTY { get; set; }
+        public string REF_LOC { get; set; }
+        public string PRINTED { get; set; }
+        public int REF_NUM_REEL { get; set; }
+        public string BADGE { get; set; }
+        public DateTime DATE_TIME { get; set; }
+    }
+
+    public class WM2002DATA
+    {
+        public string MATERIAL { get; set; }
+        public string BIN { get; set; }
+        public string BATCH { get; set; }
+        public long QUANTITY { get; set; }
+        public string CYCLE_COUNT { get; set; }
+        public string COLOR { get; set; }
+    }
+
+    public class RACKS_WAREHOUSE
+    {
+        public int ID { get; set; }
+        public string RACK_TYPE { get; set; }
+        public string RACK_NUMBER { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime CYCLE_COUNT_DATE { get; set; }
+    }
+
+}

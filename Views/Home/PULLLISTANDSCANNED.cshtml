@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Pull List Request vs Scanned";
+}
+
+<h2>Pull List Request vs Scanned</h2>
+
+
+<div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const today = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateElement = document.getElementById("date-link");
+            //en-US
+            dateElement.innerText = today.toLocaleDateString('ms-MY', options);
+
+        });
+    </script>
+
+    <p class="lead">Scan and request quantity as of: <a id="date-link"></a></p>
+
+    <table class="table table-bordered">
+        <tr>
+            <th scope="col">
+                Material
+            </th>
+            <th scope="col">
+                PullList Quantity
+            </th>
+            <th scope="col">
+                Scan Quantity
+            </th>
+            <th scope="col">
+                Difference
+            </th>
+            <th scope="col">
+                Reason
+            </th>
+        </tr>
+
+        @{
+            foreach (var items in ViewBag.statisticsData)
+            {
+                <tr>
+                    <td>
+                        @items.ItemArray[0]
+                    </td>
+                    <td>
+                        @items.ItemArray[1]
+                    </td>
+                    <td>
+                        @items.ItemArray[2]
+                    </td>
+                    <td>
+                        @items.ItemArray[3]
+                    </td>
+                    <td>
+                        @items.ItemArray[4]
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+</div>

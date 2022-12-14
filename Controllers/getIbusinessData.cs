@@ -16,6 +16,7 @@ namespace WebApplication1.Controllers
             SqlDataAdapter adapter = new SqlDataAdapter("select * from [IBusiness].[dbo].[SAP_ITEM] where [MATERIAL] = @mat", cnn);
             p.ParameterName = "@mat";
             p.Value = material;
+
             adapter.SelectCommand.Parameters.Add(p);
             try
             {
@@ -28,6 +29,7 @@ namespace WebApplication1.Controllers
                 {
                     description = dt.Rows[0][1].ToString();
                 }
+                adapter.SelectCommand.Parameters.Clear();
 
             }
             catch (SqlException ex)

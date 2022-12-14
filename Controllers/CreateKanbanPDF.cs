@@ -7,8 +7,11 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Web.UI.WebControls;
 using WebApplication1.Models;
 using ZXing;
+
 
 
 namespace WebApplication1
@@ -1150,7 +1153,15 @@ namespace WebApplication1
 
                 if (string.IsNullOrEmpty(kANBAN_MASTER.SLIDER_ADDRESS) == false)
                 {
-                    slider_add_part = kANBAN_MASTER.SLIDER_ADDRESS.Substring(0, 2);
+                    try
+                    {
+                        slider_add_part = kANBAN_MASTER.SLIDER_ADDRESS.Substring(0, 2);
+                    }
+                    catch
+                    {
+                        slider_add_part = "N/A";
+                    }
+
 
                 }
                 else
@@ -1359,18 +1370,25 @@ namespace WebApplication1
             return (System.Drawing.Image)(new Bitmap(imgToResize, size));
         }
 
-        public PdfDocument create_Store_kanban_Large(KANBAN_MASTER kANBAN_MASTER)
+        public PdfDocument create_Store_kanban_Large(KANBAN_MASTER kANBAN_MASTER,List<BSBINDATA> bdt)
         {
+            int store_Qty = 0;
 
+            if (bdt.Count > 0)
+            {
+                store_Qty = bdt.Count;
+            }
+            else
+            {
+                store_Qty = kANBAN_MASTER.STORE_KANBAN_QTY;
+            }
 
-            int store_Qty = kANBAN_MASTER.STORE_KANBAN_QTY;
 
             int kanban_image_height = 200;
             int kanban_image_width = 300;
 
             int col_count = 0;
             int kanban_per_page_count = 0;
-            int kanban_of_number = 1;
             PdfDocument document = new PdfDocument();
             document.Info.Title = "Created with PDFsharp";
             PdfPage page = document.AddPage();
@@ -1699,16 +1717,23 @@ namespace WebApplication1
 
                 }
 
-
-
-                try
+                if (bdt.Count>0)
                 {
-                    string[] bin_split = kANBAN_MASTER.BIN_NUMBER_END.Split('S');
-                    bin_num = int.Parse(bin_split[1]);
-                    bin_num = bin_num - i;
-                    bin_number = "BS0" + bin_num;
+                    bin_number = bdt[i].STORAGE_BIN.ToString();
                 }
-                catch { bin_number = ""; }
+                else
+                {
+                    try
+                    {
+                        string[] bin_split = kANBAN_MASTER.BIN_NUMBER_END.Split('S');
+                        bin_num = int.Parse(bin_split[1]);
+                        bin_num = bin_num - i;
+                        bin_number = "BS0" + bin_num;
+                    }
+                    catch { bin_number = ""; }
+                }
+
+
 
                 var bin_number_qr_code = QCwriter.Write(bin_number);
                 var barcode_bin_numberBitmap = new Bitmap(bin_number_qr_code);
@@ -1905,8 +1930,186 @@ namespace WebApplication1
             return document;
         }
 
-        public PdfDocument create_slider_kanban(IEnumerable<WebApplication1.Models.KANBAN_MASTER> kANBAN_MASTER, List<string> empty_p_num)
+        public PdfDocument create_slider_kanbanWARJ(List<KANBAN_MASTER> data , List<string> empty_p_num,string Kcolor)
         {
+
+            //set height
+            double mainbox_height = XUnit.FromMillimeter(33);
+            double barcodebox_height = mainbox_height;
+            double part_numberbox_height = mainbox_height / 2;
+            double part_description_height = mainbox_height / 2;
+
+            int kanban_image_height = 90;
+
+            //set width
+            double mainbox_width = XUnit.FromMillimeter(157.0);
+            double barcodebox_width = XUnit.FromMillimeter(33);
+            double part_numberbox_width = XUnit.FromMillimeter(80);
+            double part_description_width = XUnit.FromMillimeter(80);
+
+
+            int kanban_image_width = 110;
+
+            //set horizontal Position
+            double mainbox_horizontal_position = 20;
+            double barcodebox_horizontal_position = mainbox_horizontal_position;
+            double part_numberbox_horizontal_position = barcodebox_horizontal_position + barcodebox_width;
+            double part_description_horizontal_position = barcodebox_horizontal_position + barcodebox_width;
+            double kanban_image_horizontal_position = part_numberbox_horizontal_position + part_numberbox_width + 5;
+            double part_number_barcode_horizontal_position = mainbox_horizontal_position + 5;
+            //set vertical Position
+            double mainbox_vertical_position = 20;
+            double barcodebox_vertical_position = mainbox_vertical_position;
+            double part_numberbox_vertical_position = mainbox_vertical_position;
+            double part_description_vertical_position = mainbox_vertical_position + part_numberbox_height;
+            double kanban_image_vertical_position = mainbox_vertical_position + 10;
+            double part_number_barcode_vertical_position = mainbox_vertical_position + 5;
+
+            PdfDocument document = new PdfDocument();
+            document.Info.Title = "Workara rack j";
+            PdfPage page = document.AddPage();
+            page.Orientation = PdfSharp.PageOrientation.Portrait;
+            page.Size = PdfSharp.PageSize.A4;
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+            XPen pen = new XPen(XColors.Black, 1);
+            XColor kanbanColor = new XColor();
+            if (Kcolor == "#F839FD")
+            {
+                kanbanColor = XColor.FromArgb(248, 57, 253);
+            }
+            else if (Kcolor == "#A6A6A6")
+            {
+                kanbanColor = XColor.FromArgb(166, 166, 166);
+            }
+            else
+            {
+                kanbanColor = XColor.FromArgb(102, 255, 51);
+            }
+
+
+
+
+            XBrush brush = new XSolidBrush(kanbanColor);
+            int count = 0;
+            foreach (var items in data)
+            {
+                //Generate barcode photo for part number
+                var QCwriter = new BarcodeWriter();
+                QCwriter.Format = BarcodeFormat.QR_CODE;
+                QCwriter.Options.Height = 500;
+                QCwriter.Options.Width = 500;
+                QCwriter.Options.Margin = 0;
+                var result = QCwriter.Write(items.PART_NO);
+                var barcodeBitmap = new Bitmap(result);
+                barcodeBitmap.SetResolution(450.0F, 450.0F);
+                System.Drawing.Image part_number_barcode = barcodeBitmap;
+                XImage part_number_barcode_image = XImage.FromGdiPlusImage(part_number_barcode);
+
+
+
+                //kanban card part Number photo
+                MemoryStream ms = new MemoryStream(items.PHOTO);
+                System.Drawing.Image images = new Bitmap(ms);
+                System.Drawing.Image photo = resizeImage(images, new Size(kanban_image_width, kanban_image_height));
+                XImage pho = XImage.FromGdiPlusImage(photo);
+
+                count++;
+                if (count < 9)
+                {
+                    XTextFormatter tf = new XTextFormatter(gfx);
+                    //draw main box
+                    gfx.DrawRectangle(pen, mainbox_horizontal_position, mainbox_vertical_position, mainbox_width, mainbox_height);
+                    //draw a box for barcode partnumber
+                    gfx.DrawRectangle(pen, barcodebox_horizontal_position, barcodebox_vertical_position, barcodebox_width, barcodebox_height);
+                    //draw a qr code
+                    gfx.DrawImage(part_number_barcode_image, part_number_barcode_horizontal_position, part_number_barcode_vertical_position);
+                    //draw a box for part number
+                    gfx.DrawRectangle(pen, brush, part_numberbox_horizontal_position, part_numberbox_vertical_position, part_numberbox_width, part_numberbox_height);
+                    //write part number 
+                    XPoint points = new XPoint(part_numberbox_horizontal_position + part_numberbox_width / 2, part_numberbox_vertical_position + part_numberbox_height / 2);
+                    gfx.DrawString(items.PART_NO, new XFont("Arial", 24, XFontStyle.Bold), XBrushes.Black, points, XStringFormats.Center);
+                    //draw a box for description of part number
+                    gfx.DrawRectangle(pen, brush, part_description_horizontal_position , part_description_vertical_position, part_description_width, part_description_height);
+                    //write description of part number
+                    points = new XPoint(part_description_horizontal_position , part_description_vertical_position);
+                    XRect rect = new XRect(part_description_horizontal_position + 5, part_description_vertical_position + part_description_height / 4, part_description_width, part_description_height);
+                    tf.DrawString(items.PART_NAME, new XFont("Arial", 14, XFontStyle.Bold), XBrushes.Black, rect, XStringFormats.TopLeft);
+                    //draw the image of the part number
+                    gfx.DrawImage(pho, kanban_image_horizontal_position, kanban_image_vertical_position);
+
+                    mainbox_vertical_position = mainbox_vertical_position + mainbox_height + 5;
+                    barcodebox_vertical_position = barcodebox_vertical_position + mainbox_height + 5;
+                    part_numberbox_vertical_position = part_numberbox_vertical_position + mainbox_height + 5;
+                    part_description_vertical_position = part_description_vertical_position + mainbox_height + 5;
+                    kanban_image_vertical_position = kanban_image_vertical_position + mainbox_height + 5;
+                    part_number_barcode_vertical_position = part_number_barcode_vertical_position + mainbox_height + 5;
+                }
+                else
+                {
+                    //reset position make new page
+                    //make new page
+                    page = document.AddPage();
+                    page.Orientation = PdfSharp.PageOrientation.Portrait;
+                    page.Size = PdfSharp.PageSize.A4;
+                    gfx = XGraphics.FromPdfPage(page);
+                    XTextFormatter tf = new XTextFormatter(gfx);
+                    //reset position
+                    //set horizontal Position
+                    mainbox_horizontal_position = 5;
+                    barcodebox_horizontal_position = mainbox_horizontal_position;
+                    part_numberbox_horizontal_position = barcodebox_horizontal_position + barcodebox_width;
+                    part_description_horizontal_position = barcodebox_horizontal_position + barcodebox_width;
+                    kanban_image_horizontal_position = part_numberbox_horizontal_position + part_numberbox_width + 5;
+                    part_number_barcode_horizontal_position = mainbox_horizontal_position + 5;
+                    //set vertical Position
+                    mainbox_vertical_position = 5;
+                    barcodebox_vertical_position = mainbox_vertical_position;
+                    part_numberbox_vertical_position = mainbox_vertical_position;
+                    part_description_vertical_position = mainbox_vertical_position + part_numberbox_height;
+                    kanban_image_vertical_position = mainbox_vertical_position + 10;
+                    part_number_barcode_vertical_position = mainbox_vertical_position + 5;
+
+
+                    //regenerate the kanban sliders
+
+                    //draw main box
+                    gfx.DrawRectangle(pen, mainbox_horizontal_position, mainbox_vertical_position, mainbox_width, mainbox_height);
+                    //draw a box for barcode partnumber
+                    gfx.DrawRectangle(pen, barcodebox_horizontal_position, barcodebox_vertical_position, barcodebox_width, barcodebox_height);
+                    //draw a qr code
+                    gfx.DrawImage(part_number_barcode_image, part_number_barcode_horizontal_position, part_number_barcode_vertical_position);
+                    //draw a box for part number
+                    gfx.DrawRectangle(pen, brush, part_numberbox_horizontal_position, part_numberbox_vertical_position, part_numberbox_width, part_numberbox_height);
+                    //write part number 
+                    XPoint points = new XPoint(part_numberbox_horizontal_position + part_numberbox_width / 2, part_numberbox_vertical_position + part_numberbox_height / 2);
+                    gfx.DrawString(items.PART_NO, new XFont("Arial", 24, XFontStyle.Bold), XBrushes.Black, points, XStringFormats.Center);
+                    //draw a box for description of part number
+                    gfx.DrawRectangle(pen, brush, part_description_horizontal_position, part_description_vertical_position, part_description_width, part_description_height);
+                    //write description of part number
+                    points = new XPoint(part_description_horizontal_position + part_description_width / 2, part_description_vertical_position + part_description_height / 2);
+                    XRect rect = new XRect(part_description_horizontal_position, part_description_vertical_position + part_description_height / 3, part_description_width, part_description_height);
+                    tf.DrawString(items.PART_NAME, new XFont("Arial", 16, XFontStyle.Bold), XBrushes.Black, rect, XStringFormats.TopLeft);
+                    //draw the image of the part number
+                    gfx.DrawImage(pho, kanban_image_horizontal_position, kanban_image_vertical_position);
+
+                    mainbox_vertical_position = mainbox_vertical_position + mainbox_height + 5;
+                    barcodebox_vertical_position = barcodebox_vertical_position + mainbox_height + 5;
+                    part_numberbox_vertical_position = part_numberbox_vertical_position + mainbox_height + 5;
+                    part_description_vertical_position = part_description_vertical_position + mainbox_height + 5;
+                    kanban_image_vertical_position = kanban_image_vertical_position + mainbox_height + 5;
+                    part_number_barcode_vertical_position = part_number_barcode_vertical_position + mainbox_height + 5;
+                    //reset counter
+                    count = 0;
+                }
+            }
+
+
+
+            return document;
+        }
+
+            public PdfDocument create_slider_kanban(IEnumerable<WebApplication1.Models.KANBAN_MASTER> kANBAN_MASTER, List<string> empty_p_num)
+            {
             DataTable dt = new DataTable();
             dt.Columns.Add("part_number", typeof(string));
             dt.Columns.Add("slider address", typeof(string));
@@ -1915,16 +2118,22 @@ namespace WebApplication1
             dt.Columns.Add("photo", typeof(MemoryStream));
             dt.Columns.Add("line", typeof(string));
 
+
             foreach (var item in kANBAN_MASTER)
             {
-                string[] slideraddresss = item.SLIDER_ADDRESS.Split(' ');
-                MemoryStream ms = new MemoryStream(item.PHOTO);
-                foreach (var addresses in slideraddresss)
+                if (item.SLIDER_ADDRESS != null)
                 {
+                    string[] slideraddresss = item.SLIDER_ADDRESS.Split(' ');
+                    MemoryStream ms = new MemoryStream(item.PHOTO);
+                    foreach (var addresses in slideraddresss)
+                    {
 
-                    dt.Rows.Add(item.PART_NO, addresses, item.PART_NAME, item.PROCESS, ms, item.LINE);
-                    dt.Rows.Add(item.PART_NO, addresses, item.PART_NAME, item.PROCESS, ms, item.LINE);
+                        dt.Rows.Add(item.PART_NO, addresses, item.PART_NAME, item.PROCESS, ms, item.LINE);
+                        dt.Rows.Add(item.PART_NO, addresses, item.PART_NAME, item.PROCESS, ms, item.LINE);
+                    }
                 }
+
+
 
             }
 
@@ -2837,6 +3046,9 @@ namespace WebApplication1
 
         public PdfDocument create_smt_bin_label(List<RACK_MATERIAL> rmp)
         {
+
+
+
             PdfDocument document = new PdfDocument();
             document.Info.Title = "Created with PDFsharp";
             PdfPage page = document.AddPage();
@@ -2900,9 +3112,9 @@ namespace WebApplication1
 
                 gfx.DrawImage(part__number_barcode_image, rack_box_horizontal_position + rack_box_width + 15, rack_box_vertical_position + 8);
 
-                label_vertical_position = label_vertical_position + label_height + 18;
-                rack_box_vertical_position = rack_box_vertical_position + label_height + 18;
-                pn_box_vertical_position = pn_box_vertical_position + label_height + 18;
+                label_vertical_position = label_vertical_position + label_height + XUnit.FromMillimeter(2);
+                rack_box_vertical_position = rack_box_vertical_position + label_height + XUnit.FromMillimeter(2);
+                pn_box_vertical_position = pn_box_vertical_position + label_height + XUnit.FromMillimeter(2);
 
 
             }

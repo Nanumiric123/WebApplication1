@@ -192,12 +192,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\THIRD_SERVICE\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\WH_PART_INFO_local_ws_second\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\BS_BIN_REGISTERController.cs" />
+    <Compile Include="Controllers\GeneratePullListPDF.cs" />
     <Compile Include="Controllers\getIbusinessData.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KANBAN_MASTERController.cs" />
     <Compile Include="Controllers\CreateKanbanPDF.cs" />
     <Compile Include="Controllers\PACKAGING_INFOController.cs" />
+    <Compile Include="Controllers\RACKS_WAREHOUSEController.cs" />
     <Compile Include="Controllers\Report_data.cs" />
+    <Compile Include="Controllers\SUPERMARKET_LINE_CAPACITYController.cs" />
     <Compile Include="Data\capacityContext.cs" />
     <Compile Include="Data\IbsuinessContext.cs" />
     <Compile Include="Data\sliderContext.cs" />
@@ -208,7 +222,6 @@
     <Compile Include="Models\KANBAN_MASTER.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\SUPERMARKET_SLIDERController.cs" />
-    <Compile Include="Controllers\SUPERMARKET_LINE_CAPACITYController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\PROD_ORDER\get_part_quantity_from_bin.disco" />
@@ -222,6 +235,21 @@
     <None Include="Connected Services\STOCK_FROM_MATERIAL\configuration91.svcinfo" />
     <None Include="Connected Services\STOCK_FROM_MATERIAL\configuration.svcinfo" />
     <None Include="Connected Services\STOCK_FROM_MATERIAL\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\THIRD_SERVICE\ThirdService.wsdl" />
+    <None Include="Connected Services\WH_PART_INFO_local_ws_second\Local_Ws_second.disco" />
+    <None Include="Connected Services\WH_PART_INFO_local_ws_second\configuration91.svcinfo" />
+    <None Include="Connected Services\WH_PART_INFO_local_ws_second\configuration.svcinfo" />
+    <None Include="Connected Services\WH_PART_INFO_local_ws_second\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\THIRD_SERVICE\ThirdService.disco" />
+    <None Include="Connected Services\THIRD_SERVICE\configuration91.svcinfo" />
+    <None Include="Connected Services\THIRD_SERVICE\configuration.svcinfo" />
+    <None Include="Connected Services\THIRD_SERVICE\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -282,6 +310,7 @@
     <None Include="Connected Services\PROD_ORDER\get_part_quantity_from_bin.wsdl" />
     <Content Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Connected Services\STOCK_FROM_MATERIAL\get_part_quantity_from_bin.wsdl" />
+    <None Include="Connected Services\WH_PART_INFO_local_ws_second\Local_Ws_second.wsdl" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -405,11 +434,6 @@
     <Content Include="Views\SUPERMARKET_SLIDER\Details.cshtml" />
     <Content Include="Views\SUPERMARKET_SLIDER\Edit.cshtml" />
     <Content Include="Views\SUPERMARKET_SLIDER\Index.cshtml" />
-    <Content Include="Views\SUPERMARKET_LINE_CAPACITY\Create.cshtml" />
-    <Content Include="Views\SUPERMARKET_LINE_CAPACITY\Delete.cshtml" />
-    <Content Include="Views\SUPERMARKET_LINE_CAPACITY\Details.cshtml" />
-    <Content Include="Views\SUPERMARKET_LINE_CAPACITY\Edit.cshtml" />
-    <Content Include="Views\SUPERMARKET_LINE_CAPACITY\Index.cshtml" />
     <Content Include="Views\Home\KANBAN_CARD_INFORMATION.cshtml" />
     <Content Include="Views\Home\SLIDER_INFORMATION.cshtml" />
     <Content Include="Views\Home\RECEIVING.cshtml" />
@@ -432,6 +456,30 @@
     <Content Include="Views\PACKAGING_INFO\Details.cshtml" />
     <Content Include="Views\PACKAGING_INFO\Edit.cshtml" />
     <Content Include="Views\PACKAGING_INFO\Index.cshtml" />
+    <Content Include="Views\BS_BIN_REGISTER\Create.cshtml" />
+    <Content Include="Views\BS_BIN_REGISTER\Delete.cshtml" />
+    <Content Include="Views\BS_BIN_REGISTER\Details.cshtml" />
+    <Content Include="Views\BS_BIN_REGISTER\Edit.cshtml" />
+    <Content Include="Views\BS_BIN_REGISTER\Index.cshtml" />
+    <Content Include="Views\BS_BIN_REGISTER\Register.cshtml" />
+    <Content Include="Views\BS_BIN_REGISTER\Clear.cshtml" />
+    <Content Include="Views\SUPERMARKET_LINE_CAPACITY\Create.cshtml" />
+    <Content Include="Views\SUPERMARKET_LINE_CAPACITY\Delete.cshtml" />
+    <Content Include="Views\SUPERMARKET_LINE_CAPACITY\Details.cshtml" />
+    <Content Include="Views\SUPERMARKET_LINE_CAPACITY\Edit.cshtml" />
+    <Content Include="Views\SUPERMARKET_LINE_CAPACITY\Index.cshtml" />
+    <Content Include="Views\Home\GENERATESMTRACKLABEL.cshtml" />
+    <Content Include="Views\Home\PullListIndex.cshtml" />
+    <Content Include="Views\Home\PULLLISTANDSCANNED.cshtml" />
+    <Content Include="Views\KANBAN_MASTER\COLORCHANGER.cshtml" />
+    <Content Include="Views\KANBAN_MASTER\GENERATE_RM_WAREHOUSE_STOCKS.cshtml" />
+    <Content Include="Views\KANBAN_MASTER\CreateRackJWAPdf.cshtml" />
+    <Content Include="Views\KANBAN_MASTER\WM2002.cshtml" />
+    <Content Include="Views\RACKS_WAREHOUSE\Create.cshtml" />
+    <Content Include="Views\RACKS_WAREHOUSE\Delete.cshtml" />
+    <Content Include="Views\RACKS_WAREHOUSE\Details.cshtml" />
+    <Content Include="Views\RACKS_WAREHOUSE\Edit.cshtml" />
+    <Content Include="Views\RACKS_WAREHOUSE\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -453,6 +501,8 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\PROD_ORDER\" />
     <WCFMetadataStorage Include="Connected Services\STOCK_FROM_MATERIAL\" />
+    <WCFMetadataStorage Include="Connected Services\THIRD_SERVICE\" />
+    <WCFMetadataStorage Include="Connected Services\WH_PART_INFO_local_ws_second\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

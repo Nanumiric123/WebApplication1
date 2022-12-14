@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "CreateRackJWAPdf";
+}
+
+<h2>Create Rack J and Workara Slider Kanban</h2>
+
+@using (Html.BeginForm("CreateRackJWAPdfG", "KANBAN_MASTER", FormMethod.Get, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+        <h2>CreateSliderKanban</h2>
+        <hr />
+        <hr />
+        <a>Enter EMPTY$Slider_address for empty slider address kanban</a>
+        <br />
+        <a>Example : EMPTY$2C301</a>
+        <hr />
+        <div>
+
+            @{
+                List<SelectListItem> colors = new List<SelectListItem>();
+
+                colors.Add(new SelectListItem { Text = "Rack J-Supermarket", Value = "#F839FD" });
+                colors.Add(new SelectListItem { Text = "Rack J-Subwork", Value = "#A6A6A6" });
+                colors.Add(new SelectListItem { Text = "Rack Workara", Value = "#66FF33" });
+            }
+            @Html.DropDownList("ddlColor", colors)
+        </div>
+        <hr />
+        <div class="form-group">
+            Enter Part Number 1: @Html.TextBox("PN1")
+            <hr />
+            Enter Part Number 2: @Html.TextBox("PN2")
+            <hr />
+            Enter Part Number 3: @Html.TextBox("PN3")
+            <hr />
+            Enter Part Number 4: @Html.TextBox("PN4")
+            <hr />
+            Enter Part Number 5: @Html.TextBox("PN5")
+            <hr />
+            Enter Part Number 6: @Html.TextBox("PN6")
+            <hr />
+            Enter Part Number 7: @Html.TextBox("PN7")
+            <hr />
+            Enter Part Number 8: @Html.TextBox("PN8")
+        </div>
+        <div>
+            <input id="CreateRackJWAPdf" type="submit" value="submit" />
+        </div>
+
+    </div>
+}

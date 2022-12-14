@@ -1,0 +1,86 @@
+﻿@model IEnumerable<WebApplication1.Models.SMT_PULLLIST>
+
+@{
+    ViewBag.Title = "PullListIndex";
+}
+
+<h2>PullListIndex</h2>
+
+<table class="table">
+    @using (Html.BeginForm("PullListIndex", "Home", FormMethod.Get))
+    {
+        <tr>
+            <th>
+                Part Number
+                <div class="form-group">
+                    @Html.TextBox("SearchPartNum")
+                    <input type="submit" value="Search" />
+                </div>
+            </th>
+            <th>
+                Shortage Quantity
+            </th>
+            <th>
+                Received Quantity
+            </th>
+            <th>
+                Reference Location
+            </th>
+            <th>
+                Printed
+            </th>
+            <th>
+                Reference Number of Reels
+            </th>
+            <th>
+                Badge Number
+                <div class="form-group">
+                    @Html.TextBox("SearchBadgeNum")
+                    <input type="submit" value="Search" />
+                </div>
+            </th>
+            <th>
+                Date and Time Requested
+                <div class="form-group">
+                    Value must be in yyyy-MM-dd HH:mm:ss<br />
+                    Example : 2023-03-10 09:00:00 <br/>
+                    @Html.TextBox("SearchDateTime")
+                    <input type="submit" value="Search" />
+                </div>
+            </th>
+        </tr>
+    }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PART_NUMBER)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SHORTAGE_QTY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RECEIVED_QTY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.REF_LOC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRINTED)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.REF_NUM_REEL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BADGE)
+                </td>
+                <td>
+                    @{
+                        string date = item.DATE_TIME.ToString();
+                    }
+                    @Html.DisplayFor(modelItem => date)
+                </td>
+            </tr>
+        }
+
+    </table>

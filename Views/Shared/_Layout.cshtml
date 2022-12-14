@@ -64,8 +64,8 @@
                                 <li class="dropdown-submenu">
                                     <a class="dropdown-item dropdown-toggle" href="#">Supermarket Trigerring</a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="http://172.16.206.19/Supermarket_Triggering/Trigerring.aspx">Supermarket Trigerring</a></li>
-                                        <li><a class="dropdown-item" href="http://172.16.206.19/Supermarket_Triggering/File_Upload.aspx">Supermarket Trigerring File Upload</a></li>
+                                        <li><a class="dropdown-item" href="http://172.16.206.19/ProdMonSplit/SupermarketTrigerring.aspx">Supermarket Trigerring</a></li>
+                                        <li><a class="dropdown-item" href="http://172.16.206.19/ProdMonSplit/File_Upload.aspx">Supermarket Trigerring File Upload</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -82,8 +82,8 @@
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle" href="#">BIN ID Registration</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item">Supplier Bin ID</a></li>
-                                <li><a class="dropdown-item">Supermarket Bin ID</a></li>
+                                <li><a>Supplier Bin ID</a></li>
+                                <li>@Html.ActionLink("Supermarket Bin ID", "Index", "BS_BIN_REGISTER", new { area = "" }, new { @class = "dropdown-item" })</li>
                             </ul>
                         </li>
                         <li>@Html.ActionLink("Slider Address Information", "SLIDER_INFORMATION", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
@@ -94,13 +94,15 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Material Warehouse </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="http://172.16.206.19/RM_WH/Warehouse.aspx">Warehouse(2001) Receiving Stock</a></li>
-                        <li><a class="dropdown-item" href="http://172.16.206.19/PART_INFO/RM_MAIN_WH.aspx">Warehouse(2002) Part Info</a></li>
+                        <li><a class="dropdown-item" href="http://pasmyapps/Warehouse/Warehouse.aspx">Warehouse(2001) Receiving Stock</a></li>
+                        <li><a class="dropdown-item" href="http://pasmyapps/PART_INFO/RM_MAIN_WH.aspx">Warehouse(2002) Part Info</a></li>
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle" href="#">Warehouse QTF</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="http://172.16.206.19/Warehouse%20QTF/Warehouse_QTF/Cashier.aspx">SUPERMARKET QTF LIST</a></li>
-                                <li><a class="dropdown-item" href="http://172.16.206.19/Warehouse%20QTF/Warehouse_QTF/Kitting_Screen.aspx">KITTING SCREEN</a></li>
+                                <li><a class="dropdown-item" href="http://172.16.206.19/WarehouseQTF/Cashier.aspx">SUPERMARKET QTF LIST</a></li>
+                                <li><a class="dropdown-item" href="http://172.16.206.19/WarehouseQTF/Kitting_Screen.aspx">KITTING SCREEN</a></li>
+                                <li><a class="dropdown-item" href="http://172.16.206.19/WarehouseQTF/Kitting_A0.aspx">KITTING A0</a></li>
+                                <li><a class="dropdown-item" href="http://172.16.206.19/WarehouseQTF/Upload_Image.aspx">Upload Image</a></li>
                             </ul>
                         </li>
                         <li><a class="dropdown-item" href="http://172.16.206.29/iBusiness2/Account/Login.aspx?ReturnUrl=%2fiBusiness2%2f">IBusiness System</a></li>
@@ -108,8 +110,8 @@
                         <li class="dropdown-submenu">
                             <a class="dropdown-item dropdown-toggle" href="#">Production Monitor</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="http://172.16.206.19/ProductionMonitorSplit/ProdMonT32.aspx">Supermarket Monitor</a></li>
-                                <li><a class="dropdown-item" href="http://172.16.206.19/ProductionMonitor/T32All.aspx">Kitting Monitor</a></li>
+                                <li><a class="dropdown-item" href="http://pasmyapps/Production%20Monitor/ProdutionMonitorT32/ProdutionMonitorT32/ProdMonT32.aspx">Supermarket Monitor</a></li>
+                                <li><a class="dropdown-item" href="http://pasmyapps/ProductionMonitor/T32All.aspx">Kitting Monitor</a></li>
 
                             </ul>
 
@@ -119,10 +121,10 @@
                                 <li class="dropdown-submenu">
                                     <a class="dropdown-item dropdown-toggle" href="#">RM WORKARA Trigerring</a>
                                     <ul class="dropdown-menu dropdown-submenu">
-                                        <li><a class="dropdown-item" href="http://172.16.206.19/Supermarket_Triggering/RM_WORKARA.aspx"> 2002 RM WORKARA Monitor</a></li>
-                                        <li><a class="dropdown-item" href="http://172.16.206.19/Supermarket_Triggering/FileUpload_Workara.aspx">2002 RM WORKARA File upload</a></li>
+                                        <li><a class="dropdown-item" href="http://172.16.206.19/ProdMonSplit/RM_WORKARA.aspx"> 2002 RM WORKARA Monitor</a></li>
+                                        <li><a class="dropdown-item" href="http://172.16.206.19/ProdMonSplit/FileUpload_Workara.aspx">2002 RM WORKARA File upload</a></li>
                                     </ul>
-                                </li>
+                                </li>RM_2002
 
                                 <li class="dropdown-submenu">
                                     <a class="dropdown-item dropdown-toggle" href="#">2002 Trigerring</a>
@@ -137,14 +139,33 @@
                         </li>
                         <li>@Html.ActionLink("Generate Warehouse Picklist", "GENERATE_PICKINGLIST_WAREHOUSE", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
                         <li><a class="dropdown-item" href="http://172.16.206.19/BIN_MONITOR/BIN_MONITOR_2002.aspx">Material Store Aging</a></li>
+                        <li>@Html.ActionLink("Create Rack J and Workara Slider Kanban", "CreateRackJWAPdf", "KANBAN_MASTER", new { area = "" }, new { @class = "dropdown-item" })</li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">Warehouse 2002 Live Layout</a>
+                            <ul class="dropdown-menu dropdown-submenu">
+                                <li>@Html.ActionLink("Warehouse 2002 Live Layout", "WM2002", "KANBAN_MASTER", new { area = "" }, new { @class = "dropdown-item" })</li>
+                                <li>@Html.ActionLink("Maintain Racks in 2002", "Index", "RACKS_WAREHOUSE", new { area = "" }, new { @class = "dropdown-item" })</li>
+                            </ul>
+
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> SMT Store </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li>@Html.ActionLink("Generate Rack Label", "GenerateSMTStoreRackLabel", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Generate Rack Label Automatically", "GenerateSMTStoreRackLabel", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Generate Rack Label Manually", "GENERATESMTRACKLABEL", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">SMT Store 2006 Trigerring</a>
+                            <ul class="dropdown-menu dropdown-submenu">
+                                <li><a class="dropdown-item" href="http://172.16.206.19/RM_2002_TRIGERRING/SMTTriggering_2006.aspx">2006 Triggering</a></li>
+                                <li><a class="dropdown-item" href="http://172.16.206.19/RM_2002_TRIGERRING/SMT2006TRIGERRINGFILEUPLOAD.aspx">2006 Triggering File Upload</a></li>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("SMT Pull List", "PullListIndex", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("SMT Pull List and Scanned Compare", "PULLLISTANDSCANNED", "Home", new { area = "" }, new { @class = "dropdown-item" })</li>
+                        <li><a class="dropdown-item" href="http://172.16.206.19/ProductionMonitor/T07Verification.aspx">T07 Triggering</a></li>
                     </ul>
-
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Work Instruction </a>

@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_PART_NUM_FROM_ORDER">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PO" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_PART_NUM_FROM_ORDERResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_PART_NUM_FROM_ORDERResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_DATA_FROM_BARC_INN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stor_loc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_DATA_FROM_BARC_INNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_DATA_FROM_BARC_INNResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RECEIVING_TOCK_2001">
+        <s:complexType />
+      </s:element>
+      <s:element name="RECEIVING_TOCK_2001Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RECEIVING_TOCK_2001Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="check_badge_valid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="badge_no" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="check_badge_validResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="check_badge_validResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cycle_count_insert_data_to_table">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data_from_bin">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="data_from_sap">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="stge_bin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="STOR_LOC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="badge_num" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cycle_count_insert_data_to_tableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cycle_count_insert_data_to_tableResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MPQsubmitToSAPT32">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="binNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="kanbanMaterial" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="location" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="badgeNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MPQsubmitToSAPT32Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MPQsubmitToSAPT32Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MPPsubmitToSAPT32">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="binNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="kanbanMaterial" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="location" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="badgeNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MPPsubmitToSAPT32Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MPPsubmitToSAPT32Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_MATERIAL_FROM_001">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_MATERIAL_FROM_001Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GET_MATERIAL_FROM_001Result" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GETMaterialLocMFRPN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GETMaterialLocMFRPNResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GETMaterialLocMFRPNResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_PART_NUM_FROM_ORDERSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_PART_NUM_FROM_ORDER" />
+  </wsdl:message>
+  <wsdl:message name="GET_PART_NUM_FROM_ORDERSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_PART_NUM_FROM_ORDERResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_DATA_FROM_BARC_INNSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_DATA_FROM_BARC_INN" />
+  </wsdl:message>
+  <wsdl:message name="GET_DATA_FROM_BARC_INNSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_DATA_FROM_BARC_INNResponse" />
+  </wsdl:message>
+  <wsdl:message name="RECEIVING_TOCK_2001SoapIn">
+    <wsdl:part name="parameters" element="tns:RECEIVING_TOCK_2001" />
+  </wsdl:message>
+  <wsdl:message name="RECEIVING_TOCK_2001SoapOut">
+    <wsdl:part name="parameters" element="tns:RECEIVING_TOCK_2001Response" />
+  </wsdl:message>
+  <wsdl:message name="check_badge_validSoapIn">
+    <wsdl:part name="parameters" element="tns:check_badge_valid" />
+  </wsdl:message>
+  <wsdl:message name="check_badge_validSoapOut">
+    <wsdl:part name="parameters" element="tns:check_badge_validResponse" />
+  </wsdl:message>
+  <wsdl:message name="cycle_count_insert_data_to_tableSoapIn">
+    <wsdl:part name="parameters" element="tns:cycle_count_insert_data_to_table" />
+  </wsdl:message>
+  <wsdl:message name="cycle_count_insert_data_to_tableSoapOut">
+    <wsdl:part name="parameters" element="tns:cycle_count_insert_data_to_tableResponse" />
+  </wsdl:message>
+  <wsdl:message name="MPQsubmitToSAPT32SoapIn">
+    <wsdl:part name="parameters" element="tns:MPQsubmitToSAPT32" />
+  </wsdl:message>
+  <wsdl:message name="MPQsubmitToSAPT32SoapOut">
+    <wsdl:part name="parameters" element="tns:MPQsubmitToSAPT32Response" />
+  </wsdl:message>
+  <wsdl:message name="MPPsubmitToSAPT32SoapIn">
+    <wsdl:part name="parameters" element="tns:MPPsubmitToSAPT32" />
+  </wsdl:message>
+  <wsdl:message name="MPPsubmitToSAPT32SoapOut">
+    <wsdl:part name="parameters" element="tns:MPPsubmitToSAPT32Response" />
+  </wsdl:message>
+  <wsdl:message name="GET_MATERIAL_FROM_001SoapIn">
+    <wsdl:part name="parameters" element="tns:GET_MATERIAL_FROM_001" />
+  </wsdl:message>
+  <wsdl:message name="GET_MATERIAL_FROM_001SoapOut">
+    <wsdl:part name="parameters" element="tns:GET_MATERIAL_FROM_001Response" />
+  </wsdl:message>
+  <wsdl:message name="GETMaterialLocMFRPNSoapIn">
+    <wsdl:part name="parameters" element="tns:GETMaterialLocMFRPN" />
+  </wsdl:message>
+  <wsdl:message name="GETMaterialLocMFRPNSoapOut">
+    <wsdl:part name="parameters" element="tns:GETMaterialLocMFRPNResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Local_Ws_secondSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_PART_NUM_FROM_ORDER">
+      <wsdl:input message="tns:GET_PART_NUM_FROM_ORDERSoapIn" />
+      <wsdl:output message="tns:GET_PART_NUM_FROM_ORDERSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_DATA_FROM_BARC_INN">
+      <wsdl:input message="tns:GET_DATA_FROM_BARC_INNSoapIn" />
+      <wsdl:output message="tns:GET_DATA_FROM_BARC_INNSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RECEIVING_TOCK_2001">
+      <wsdl:input message="tns:RECEIVING_TOCK_2001SoapIn" />
+      <wsdl:output message="tns:RECEIVING_TOCK_2001SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="check_badge_valid">
+      <wsdl:input message="tns:check_badge_validSoapIn" />
+      <wsdl:output message="tns:check_badge_validSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="cycle_count_insert_data_to_table">
+      <wsdl:input message="tns:cycle_count_insert_data_to_tableSoapIn" />
+      <wsdl:output message="tns:cycle_count_insert_data_to_tableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MPQsubmitToSAPT32">
+      <wsdl:input message="tns:MPQsubmitToSAPT32SoapIn" />
+      <wsdl:output message="tns:MPQsubmitToSAPT32SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MPPsubmitToSAPT32">
+      <wsdl:input message="tns:MPPsubmitToSAPT32SoapIn" />
+      <wsdl:output message="tns:MPPsubmitToSAPT32SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_MATERIAL_FROM_001">
+      <wsdl:input message="tns:GET_MATERIAL_FROM_001SoapIn" />
+      <wsdl:output message="tns:GET_MATERIAL_FROM_001SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GETMaterialLocMFRPN">
+      <wsdl:input message="tns:GETMaterialLocMFRPNSoapIn" />
+      <wsdl:output message="tns:GETMaterialLocMFRPNSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Local_Ws_secondSoap" type="tns:Local_Ws_secondSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_PART_NUM_FROM_ORDER">
+      <soap:operation soapAction="http://tempuri.org/GET_PART_NUM_FROM_ORDER" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_DATA_FROM_BARC_INN">
+      <soap:operation soapAction="http://tempuri.org/GET_DATA_FROM_BARC_INN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RECEIVING_TOCK_2001">
+      <soap:operation soapAction="http://tempuri.org/RECEIVING_TOCK_2001" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="check_badge_valid">
+      <soap:operation soapAction="http://tempuri.org/check_badge_valid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cycle_count_insert_data_to_table">
+      <soap:operation soapAction="http://tempuri.org/cycle_count_insert_data_to_table" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MPQsubmitToSAPT32">
+      <soap:operation soapAction="http://tempuri.org/MPQsubmitToSAPT32" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MPPsubmitToSAPT32">
+      <soap:operation soapAction="http://tempuri.org/MPPsubmitToSAPT32" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_MATERIAL_FROM_001">
+      <soap:operation soapAction="http://tempuri.org/GET_MATERIAL_FROM_001" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GETMaterialLocMFRPN">
+      <soap:operation soapAction="http://tempuri.org/GETMaterialLocMFRPN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Local_Ws_secondSoap12" type="tns:Local_Ws_secondSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_PART_NUM_FROM_ORDER">
+      <soap12:operation soapAction="http://tempuri.org/GET_PART_NUM_FROM_ORDER" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_DATA_FROM_BARC_INN">
+      <soap12:operation soapAction="http://tempuri.org/GET_DATA_FROM_BARC_INN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RECEIVING_TOCK_2001">
+      <soap12:operation soapAction="http://tempuri.org/RECEIVING_TOCK_2001" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="check_badge_valid">
+      <soap12:operation soapAction="http://tempuri.org/check_badge_valid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cycle_count_insert_data_to_table">
+      <soap12:operation soapAction="http://tempuri.org/cycle_count_insert_data_to_table" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MPQsubmitToSAPT32">
+      <soap12:operation soapAction="http://tempuri.org/MPQsubmitToSAPT32" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MPPsubmitToSAPT32">
+      <soap12:operation soapAction="http://tempuri.org/MPPsubmitToSAPT32" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_MATERIAL_FROM_001">
+      <soap12:operation soapAction="http://tempuri.org/GET_MATERIAL_FROM_001" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GETMaterialLocMFRPN">
+      <soap12:operation soapAction="http://tempuri.org/GETMaterialLocMFRPN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Local_Ws_second">
+    <wsdl:port name="Local_Ws_secondSoap" binding="tns:Local_Ws_secondSoap">
+      <soap:address location="http://172.16.206.19/PART_INFO/Local_Ws_second.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Local_Ws_secondSoap12" binding="tns:Local_Ws_secondSoap12">
+      <soap12:address location="http://172.16.206.19/PART_INFO/Local_Ws_second.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

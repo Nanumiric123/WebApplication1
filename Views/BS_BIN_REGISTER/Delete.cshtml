@@ -1,0 +1,88 @@
+﻿@model WebApplication1.Models.BS_BIN_REGISTER
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BS_BIN_REGISTER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <a>Storage Bin</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STORAGE_BIN)
+        </dd>
+
+        <dt>
+            <a>Part Number</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PART_NO)
+        </dd>
+
+        <dt>
+            <a>Bin Number End</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BIN_END)
+        </dd>
+
+        <dt>
+            <a>Bin Number Start</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BIN_START)
+        </dd>
+
+        <dt>
+            <a>Register date</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REG_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATE_REP)
+        </dt>
+
+        <dd>
+            <a>Reprint Date</a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REMARKS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REMARKS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PIC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PIC)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

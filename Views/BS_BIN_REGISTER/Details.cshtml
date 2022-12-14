@@ -1,0 +1,82 @@
+﻿@model WebApplication1.Models.BS_BIN_REGISTER
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BS Bin Regristration</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <a>Storage Bin</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STORAGE_BIN)
+        </dd>
+
+        <dt>
+            <a>Part Number</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PART_NO)
+        </dd>
+
+        <dt>
+            <a>Bin Number End</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BIN_END)
+        </dd>
+
+        <dt>
+            <a>Bin Number Start</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BIN_START)
+        </dd>
+
+        <dt>
+            <a>Register date</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REG_DATE)
+        </dd>
+
+        <dt>
+            <a>Reprint Date</a>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATE_REP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REMARKS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REMARKS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PIC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PIC)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

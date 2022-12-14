@@ -1,0 +1,394 @@
+﻿
+@model IEnumerable<WebApplication1.Models.WM2002DATA>
+
+@{
+    ViewBag.Title = "WM2002";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collapsible Div in Bootstrap CSHTML</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Style for the collapsible content */
+        .collapsible-content {
+            display: none;
+
+        }
+
+        /* Style for the button to toggle the collapsible content */
+        .collapsible-button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            text-align: left;
+            margin-top: 10px; /* Add margin at the top */
+        }
+    </style>
+</head>
+<body>
+    <!-- Bootstrap JS and Popper.js (required for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function toggleCollapsibleContent(button) {
+            var content = button.previousElementSibling; // Get the previous sibling, which is the collapsible content
+            content.style.display = (content.style.display === 'none' || content.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+
+    <h1>2002 Rack Layout</h1>
+
+
+    @using (Html.BeginForm("WM2002", "KANBAN_MASTER", FormMethod.Get))
+    {
+        <div>
+            @Html.DropDownList("rackTyp", new SelectList(ViewBag.listOfRacks, "RACK"))
+
+            <input type="submit" value="Generate" />
+        </div>
+        <div>
+            <table class="table table-bordered">
+                @{
+                    for (int i = 0; i < ViewBag.numberOfRows.Count; i++)
+                    {
+                        <tr>
+                            @{
+
+                                for (int j = 0; j < ViewBag.numberOfCols.Count; j++)
+                                {
+                                    for (int k = 0; k < 2; k++)
+                                    {
+                                        if (k == 0)
+                                        {
+
+
+                                            string Rackgrp;
+                                            if (ViewBag.RackType == "Z")
+                                            {
+                                                Rackgrp = ViewBag.RackType + ViewBag.numberOfRows[i] + ViewBag.numberOfCols[j] + "1A";
+                                            }
+                                            else
+                                            {
+                                                Rackgrp = ViewBag.RackType + ViewBag.numberOfRows[i] + ViewBag.numberOfCols[j] + "A";
+                                            }
+                                            var b = Model.OrderBy(x => x.MATERIAL).Where(x => x.BIN.Equals(Rackgrp)).Select(x => x.MATERIAL).Distinct().ToList();
+                                            <td>
+                                                <table class="table table-border">
+                                                    <tr>
+                                                        <td style="background-color: gray">
+                                                            <div>
+                                                                @Html.Raw(Rackgrp)
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        @{
+                                                            if (b.Count > 3)
+                                                            {
+                                                                <td>
+
+                                                                    @for (int q = 0; q < 3; q++)
+                                                                    {
+                                                                        var d = Model.Where(x => x.MATERIAL.Equals(b[q])).Where(x => x.BIN.Equals(Rackgrp)).Select(x => x.COLOR).ToList();
+                                                                        if (d[0] == "GREEN")
+                                                                        {
+                                                                            <p style="background-color:green">
+                                                                                @Html.Raw(b[q].ToString())
+                                                                            </p>
+
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <p style="background-color:red">
+                                                                                @Html.Raw(b[q].ToString())
+                                                                            </p>
+                                                                        }
+                                                                    }
+
+                                                                    <!-- Collapsible content -->
+                                                                    <div class="collapsible-content">
+                                                                        @for (int q = 3; q < b.Count; q++)
+                                                                        {
+                                                                            var d = Model.Where(x => x.MATERIAL.Equals(b[q])).Where(x => x.BIN.Equals(Rackgrp)).Select(x => x.COLOR).ToList();
+                                                                            if (d[0] == "GREEN")
+                                                                            {
+                                                                                <p style="background-color:green">
+                                                                                    @Html.Raw(b[q].ToString())
+                                                                                </p>
+
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <p style="background-color:red">
+                                                                                    @Html.Raw(b[q].ToString())
+                                                                                </p>
+                                                                            }
+                                                                        }
+                                                                    </div>
+
+                                                                    <!-- Button to toggle the collapsible content (moved to the bottom) -->
+                                                                    <div class="collapsible-button" onclick="toggleCollapsibleContent(this)">See More</div>
+                                                                </td>
+                                                            }
+                                                            else if (b.Count <= 3 && b.Count >= 2)
+                                                            {
+                                                                <td>
+                                                                    @foreach (var l in b)
+                                                                    {
+                                                                        var d = Model.Where(x => x.MATERIAL.Equals(l)).Where(x => x.BIN.Equals(Rackgrp)).Select(x => x.COLOR).ToList();
+                                                                        if (d[0] == "GREEN")
+                                                                        {
+                                                                            <p style="background-color:green">
+                                                                                @Html.Raw(l.ToString())
+                                                                            </p>
+
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <p style="background-color:red">
+                                                                                @Html.Raw(l.ToString())
+                                                                            </p>
+                                                                        }
+
+                                                                    }
+                                                                </td>
+                                                            }
+                                                            else if (b.Count == 1)
+                                                            {
+                                                                <td>
+                                                                    @{
+                                                                        var d = Model.Where(x => x.MATERIAL.Equals(b[0])).Where(x => x.BIN.Equals(Rackgrp)).Select(x => x.COLOR).ToList();
+                                                                        if (d[0] == "GREEN")
+                                                                        {
+                                                                            <p style="background-color:green">
+                                                                                @Html.Raw(b[0].ToString())
+                                                                            </p>
+
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <p style="background-color:red">
+                                                                                @Html.Raw(b[0].ToString())
+                                                                            </p>
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>
+                                                                    <p>Empty</p>
+                                                                </td>
+                                                            }
+                                                        }
+                                                    </tr>
+                                                    <tr>
+                                                        @{
+                                                            var c = Model.Where(x => x.BIN.Equals(Rackgrp)).Select(x => x.CYCLE_COUNT).Distinct().ToList();
+                                                            if (c.Count > 0)
+                                                            {
+                                                                <td>
+                                                                    @foreach (var l in c)
+                                                                    {
+                                                                        string date = l;
+                                                                        if (l.Equals("01/01/1900"))
+                                                                        {
+                                                                            <div>&nbsp;</div>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.Raw(l.ToString() + Environment.NewLine)
+                                                                        }
+
+                                                                    }
+                                                                </td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>
+                                                                    &nbsp;
+                                                                </td>
+                                                            }
+                                                        }
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        }
+                                        else
+                                        {
+
+                                            string Rackgrp;
+                                            if (ViewBag.RackType == "Z")
+                                            {
+                                                Rackgrp = ViewBag.RackType + ViewBag.numberOfRows[i] + ViewBag.numberOfCols[j] + "1B";
+
+
+                                            }
+                                            else
+                                            {
+                                                Rackgrp = ViewBag.RackType + ViewBag.numberOfRows[i] + ViewBag.numberOfCols[j] + "B";
+
+                                            }
+                                            var b = Model.OrderBy(x => x.MATERIAL).Where(x => x.BIN.Equals(Rackgrp)).Select(x => x.MATERIAL).Distinct().ToList();
+                                            <td>
+                                                <table class="table table-border">
+                                                    <tr>
+                                                        <td style="background-color: gray">
+                                                            <div>
+                                                                @Html.Raw(Rackgrp)
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        @{
+                                                            if (b.Count > 3)
+                                                            {
+                                                                <td>
+
+                                                                    @for (int q = 0; q < 3; q++)
+                                                                    {
+                                                                        var d = Model.Where(x => x.MATERIAL.Equals(b[q])).Where(x => x.BIN.Equals(Rackgrp)).Select(x => x.COLOR).ToList();
+                                                                        if (d[0] == "GREEN")
+                                                                        {
+                                                                            <p style="background-color:green">
+                                                                                @Html.Raw(b[q].ToString())
+                                                                            </p>
+
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <p style="background-color:red">
+                                                                                @Html.Raw(b[q].ToString())
+                                                                            </p>
+                                                                        }
+                                                                    }
+
+                                                                    <!-- Collapsible content -->
+                                                                    <div class="collapsible-content">
+                                                                        @for (int q = 3; q < b.Count; q++)
+                                                                        {
+                                                                            var d = Model.Where(x => x.MATERIAL.Equals(b[q])).Where(x => x.BIN.Equals(Rackgrp)).Select(x => x.COLOR).ToList();
+                                                                            if (d[0] == "GREEN")
+                                                                            {
+                                                                                <p style="background-color:green">
+                                                                                    @Html.Raw(b[q].ToString())
+                                                                                </p>
+
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <p style="background-color:red">
+                                                                                    @Html.Raw(b[q].ToString())
+                                                                                </p>
+                                                                            }
+                                                                        }
+                                                                    </div>
+
+                                                                    <!-- Button to toggle the collapsible content (moved to the bottom) -->
+                                                                    <div class="collapsible-button" onclick="toggleCollapsibleContent(this)">See More</div>
+                                                                </td>
+                                                            }
+                                                            else if (b.Count <= 3 && b.Count >= 2)
+                                                            {
+                                                                <td>
+                                                                    @foreach (var l in b)
+                                                                    {
+                                                                        var d = Model.Where(x => x.MATERIAL.Equals(l)).Where(x => x.BIN.Equals(Rackgrp)).Select(x => x.COLOR).ToList();
+                                                                        if (d[0] == "GREEN")
+                                                                        {
+                                                                            <p style="background-color:green">
+                                                                                @Html.Raw(l.ToString())
+                                                                            </p>
+
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <p style="background-color:red">
+                                                                                @Html.Raw(l.ToString())
+                                                                            </p>
+                                                                        }
+
+                                                                    }
+                                                                </td>
+                                                            }
+                                                            else if (b.Count == 1)
+                                                            {
+                                                                <td>
+                                                                    @{
+                                                                        var d = Model.Where(x => x.MATERIAL.Equals(b[0])).Where(x => x.BIN.Equals(Rackgrp)).Select(x => x.COLOR).ToList();
+                                                                        if (d[0] == "GREEN")
+                                                                        {
+                                                                            <p style="background-color:green">
+                                                                                @Html.Raw(b[0].ToString())
+                                                                            </p>
+
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <p style="background-color:red">
+                                                                                @Html.Raw(b[0].ToString())
+                                                                            </p>
+                                                                        }
+                                                                    }
+                                                                </td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>
+                                                                    <p>Empty</p>
+                                                                </td>
+                                                            }
+                                                        }
+                                                    </tr>
+                                                    <tr>
+                                                        @{
+                                                            var c = Model.Where(x => x.BIN.Equals(Rackgrp)).Select(x => x.CYCLE_COUNT).Distinct().ToList();
+                                                            if (c.Count > 0)
+                                                            {
+                                                                <td>
+                                                                    @foreach (var l in c)
+                                                                    {
+                                                                        string date = l;
+                                                                        if (l.Equals("01/01/1900"))
+                                                                        {
+                                                                            <div>&nbsp;</div>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @Html.Raw(l.ToString() + Environment.NewLine)
+                                                                        }
+
+                                                                    }
+                                                                </td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>
+                                                                    &nbsp;
+                                                                </td>
+                                                            }
+                                                        }
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        }
+                                    }
+
+                                }
+                            }
+                        </tr>
+                    }
+
+                }
+            </table>
+        </div>
+    }
+
+</body>
+</html>

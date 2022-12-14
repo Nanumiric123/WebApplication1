@@ -78,15 +78,13 @@
 
                         <dd>
                             @{
-                                string[] all_lines = Model.LINE.Split(' ');
+                                string[] all_LINES = Model.LINE.Split(' ');
                                 List<SelectListItem> lines = new List<SelectListItem>();
-
-                                foreach (var k in all_lines)
+                                foreach (var k in all_LINES)
                                 {
                                     lines.Add(new SelectListItem { Text = k, Value = k });
                                 }
                             }
-
                             @(Html.DropDownListFor(m => m.LINE, lines, new { @class = "form-control" }))
                         </dd>
 
@@ -157,10 +155,31 @@
                         <dt style="color: darkcyan">
                             Slider Address
                         </dt>
-
                         <dd>
-                            @Html.DisplayFor(model => model.SLIDER_ADDRESS)
+                            @{
+                                string[] all_SA = Model.SLIDER_ADDRESS.Split(' ');
+                                List<SelectListItem> SA = new List<SelectListItem>();
+
+                                foreach (var k in all_SA)
+                                {
+                                    SA.Add(new SelectListItem { Text = k, Value = k });
+                                }
+                            }
+
+                            @{
+                                string[] lines2 = Model.LINE.Split(' ');
+                                if (lines2.Length > 1)
+                                {
+                                    @(Html.DropDownListFor(m => m.SLIDER_ADDRESS, SA, new { @class = "form-control" }))
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(model => model.SLIDER_ADDRESS)
+                                }
+
+                            }
                         </dd>
+
 
                         <dt style="color: darkcyan">
                             Kitting Slider

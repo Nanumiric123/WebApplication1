@@ -22,5 +22,12 @@ namespace WebApplication1.Data
         public System.Data.Entity.DbSet<WebApplication1.Models.SUPERMARKET_LINE_CAPACITY> SUPERMARKET_LINE_CAPACITY { get; set; }
 
         public System.Data.Entity.DbSet<WebApplication1.Models.PACKAGING_INFO> PACKAGING_INFO { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication1.Models.BS_BIN_REGISTER> BS_BIN_REGISTER { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication1.Models.SMT_PULLLIST> SMT_PULLLIST { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication1.Models.RACKS_WAREHOUSE> RACKS_WAREHOUSE { get; set; }
+
     }
 }

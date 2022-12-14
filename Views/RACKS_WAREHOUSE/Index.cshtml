@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebApplication1.Models.RACKS_WAREHOUSE>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "RACKS_WAREHOUSE", FormMethod.Get))
+{
+    <p>
+        Search Rack Number : @Html.TextBox("searchRacks")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            RACK TYPE
+        </th>
+        <th>
+            RACK NUMBER
+        </th>
+        <th>
+            CYCLE COUNT
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RACK_TYPE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RACK_NUMBER)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CYCLE_COUNT_DATE)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

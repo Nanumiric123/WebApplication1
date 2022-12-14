@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configurationSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:schemas-microsoft-com:xml-wcfconfigurationsnapshot">
+  <behaviors />
+  <bindings>
+    <binding digest="System.ServiceModel.Configuration.BasicHttpBindingElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data name=&quot;Local_Ws_secondSoap&quot; /&gt;" bindingType="basicHttpBinding" name="Local_Ws_secondSoap" />
+  </bindings>
+  <endpoints>
+    <endpoint normalizedDigest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://172.16.206.19/PART_INFO/Local_Ws_second.asmx&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;Local_Ws_secondSoap&quot; contract=&quot;WH_PART_INFO_local_ws_second.Local_Ws_secondSoap&quot; name=&quot;Local_Ws_secondSoap&quot; /&gt;" digest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://172.16.206.19/PART_INFO/Local_Ws_second.asmx&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;Local_Ws_secondSoap&quot; contract=&quot;WH_PART_INFO_local_ws_second.Local_Ws_secondSoap&quot; name=&quot;Local_Ws_secondSoap&quot; /&gt;" contractName="WH_PART_INFO_local_ws_second.Local_Ws_secondSoap" name="Local_Ws_secondSoap" />
+  </endpoints>
+</configurationSnapshot>

@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<WebApplication1.Models.PACKAGING_INFO_INDEX>
+
 @{
     ViewBag.Title = "Index";
 }
@@ -8,79 +9,206 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EXT_PCK_METHOD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.INT_PACK_METHOD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EXT_PCK_SIZE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.INT_PCK_QTY)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TOTAL_NUMBER_OF_INT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PCK_TOTAL_QTY)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WEIGHT_KG)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.REMARKS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SAVE)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EXT_PCK_METHOD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.INT_PACK_METHOD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EXT_PCK_SIZE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.INT_PCK_QTY)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TOTAL_NUMBER_OF_INT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PCK_TOTAL_QTY)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WEIGHT_KG)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.REMARKS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SAVE)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+<style type="text/css">
+    .tableFixHead {
+        overflow-y: auto;
+        height: 1000px;
+    }
 
-</table>
+        .tableFixHead thead th {
+            position: sticky;
+            top: 0;
+        }
+
+    /* Just common table stuff. Really. */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .col-1 {
+        width: 200px;
+        min-width: 200px;
+    }
+
+    .col-2 {
+        width: 270px;
+        min-width: 270px;
+    }
+
+    th, td {
+        padding: 10px 16px;
+    }
+
+    th {
+        background: #eee;
+    }
+
+    .table tbody tr.highlight td {
+        background-color: lightblue;
+    }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" />
+
+<script>
+    $(document).ready(function () {
+        $('#bodytable').on('click', 'tbody tr', function (event) {
+            $(this).addClass('highlight').siblings().removeClass('highlight');
+        });
+    });
+</script>
+
+<div class="table tableFixHead table-responsive-xl">
+    <table id="bodytable" class="table table-bordered">
+        <thead>
+            <tr>
+                @using (Html.BeginForm("Index", "PACKAGING_INFO", FormMethod.Get))
+                {
+                    <th>
+                        <a>ID</a>
+                    </th>
+                    <th>
+                        <a>Part Number</a>
+                        <div class="form-group">
+                            @Html.TextBox("SearchpartNum")
+                            <input type="submit" value="Search" />
+                        </div>
+                    </th>
+                    <th>
+                        <a>
+                            External packaging method
+                        </a>
+                        <div class="form-group">
+                            @Html.TextBox("extSearchPackMthd")
+                            <input type="submit" value="Search" />
+                        </div>
+                    </th>
+                    <th>
+                        <a>
+                            Internal packaging method
+                        </a>
+                        <div class="form-group">
+                            @Html.TextBox("intSearchPackMthd")
+                            <input type="submit" value="Search" />
+                        </div>
+                    </th>
+                    <th>
+                        <a>
+                            External Package Height
+                        </a>
+                    </th>
+                    <th>
+                        <a>
+                            External Package Width
+                        </a>
+                    </th>
+                    <th>
+                        <a>
+                            External Package Length
+                        </a>
+                    </th>
+                    <th>
+                        <a>
+                            Internal Package Height
+                        </a>
+                    </th>
+                    <th>
+                        <a>
+                            Internal Package Width
+                        </a>
+                    </th>
+                    <th>
+                        <a>
+                            Internal Package Length
+                        </a>
+                    </th>
+                    <th>
+                        <a>
+                            Internal Package Quantity
+                        </a>
+                    </th>
+                    <th>
+                        <a>
+                            Total number of Internal
+                        </a>
+                    </th>
+                    <th>
+                        <a>
+                            Packaging Total Quantity
+                        </a>
+                    </th>
+                    <th>
+                        <a>
+                            Weight (kg)
+                        </a>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.REMARKS)
+                    </th>
+                }
+            </tr>
+            </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PART_NUMBER)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EXT_PCK_METHOD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.INT_PACK_METHOD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EXT_PCK_HEIGHT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EXT_PCK_WIDTH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EXT_PCK_LENGTH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.INT_PCK_HEIGHT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.INT_PCK_WIDTH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.INT_PCK_LENGTH)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.INT_PCK_QTY)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TOTAL_NUMBER_OF_INT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PCK_TOTAL_QTY)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WEIGHT_KG)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.REMARKS)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

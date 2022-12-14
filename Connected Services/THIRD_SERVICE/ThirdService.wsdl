@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LOGINSMTPULLLISTENTRY">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LOGINSMTPULLLISTENTRYResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LOGINSMTPULLLISTENTRYResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QTYPERREELPULLLISTENTRY">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QTYPERREELPULLLISTENTRYResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="QTYPERREELPULLLISTENTRYResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GETDATAFROMSMTPULLLIST">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="bnum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GETDATAFROMSMTPULLLISTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GETDATAFROMSMTPULLLISTResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DELETEFROMSMTPULLLIST">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bnum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DELETEFROMSMTPULLLISTResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GETMATERIALQUANTITYPERREEL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GETMATERIALQUANTITYPERREELResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GETMATERIALQUANTITYPERREELResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SAVEPULLLISTDATA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="s_reqQty" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="reelQty" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="location" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="badgeNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SAVEPULLLISTDATAResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getPalletNoCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="doNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPalletNoCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPalletNoCountResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettotalcustpo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="doNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="gettotalcustpoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="gettotalcustpoResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getcustpo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="doNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="palletNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getcustpoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getcustpoResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getmodels">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="doNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getmodelsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getmodelsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDOitem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="doNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="palletNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDOitemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDOitemResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkIfBadgeIsvalid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="badgeNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="checkIfBadgeIsvalidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="checkIfBadgeIsvalidResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cyclecountinsert_data_to_table">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data_from_bin">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="data_from_sap">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="stge_bin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="STOR_LOC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BADGE_NUM" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="cyclecountinsert_data_to_tableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cyclecountinsert_data_to_tableResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WHSTOCKSAP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STORAGE_LOCATION" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="STORAGE_TYPE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WHSTOCKSAPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WHSTOCKSAPResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="LOGINSMTPULLLISTENTRYSoapIn">
+    <wsdl:part name="parameters" element="tns:LOGINSMTPULLLISTENTRY" />
+  </wsdl:message>
+  <wsdl:message name="LOGINSMTPULLLISTENTRYSoapOut">
+    <wsdl:part name="parameters" element="tns:LOGINSMTPULLLISTENTRYResponse" />
+  </wsdl:message>
+  <wsdl:message name="QTYPERREELPULLLISTENTRYSoapIn">
+    <wsdl:part name="parameters" element="tns:QTYPERREELPULLLISTENTRY" />
+  </wsdl:message>
+  <wsdl:message name="QTYPERREELPULLLISTENTRYSoapOut">
+    <wsdl:part name="parameters" element="tns:QTYPERREELPULLLISTENTRYResponse" />
+  </wsdl:message>
+  <wsdl:message name="GETDATAFROMSMTPULLLISTSoapIn">
+    <wsdl:part name="parameters" element="tns:GETDATAFROMSMTPULLLIST" />
+  </wsdl:message>
+  <wsdl:message name="GETDATAFROMSMTPULLLISTSoapOut">
+    <wsdl:part name="parameters" element="tns:GETDATAFROMSMTPULLLISTResponse" />
+  </wsdl:message>
+  <wsdl:message name="DELETEFROMSMTPULLLISTSoapIn">
+    <wsdl:part name="parameters" element="tns:DELETEFROMSMTPULLLIST" />
+  </wsdl:message>
+  <wsdl:message name="DELETEFROMSMTPULLLISTSoapOut">
+    <wsdl:part name="parameters" element="tns:DELETEFROMSMTPULLLISTResponse" />
+  </wsdl:message>
+  <wsdl:message name="GETMATERIALQUANTITYPERREELSoapIn">
+    <wsdl:part name="parameters" element="tns:GETMATERIALQUANTITYPERREEL" />
+  </wsdl:message>
+  <wsdl:message name="GETMATERIALQUANTITYPERREELSoapOut">
+    <wsdl:part name="parameters" element="tns:GETMATERIALQUANTITYPERREELResponse" />
+  </wsdl:message>
+  <wsdl:message name="SAVEPULLLISTDATASoapIn">
+    <wsdl:part name="parameters" element="tns:SAVEPULLLISTDATA" />
+  </wsdl:message>
+  <wsdl:message name="SAVEPULLLISTDATASoapOut">
+    <wsdl:part name="parameters" element="tns:SAVEPULLLISTDATAResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPalletNoCountSoapIn">
+    <wsdl:part name="parameters" element="tns:getPalletNoCount" />
+  </wsdl:message>
+  <wsdl:message name="getPalletNoCountSoapOut">
+    <wsdl:part name="parameters" element="tns:getPalletNoCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="gettotalcustpoSoapIn">
+    <wsdl:part name="parameters" element="tns:gettotalcustpo" />
+  </wsdl:message>
+  <wsdl:message name="gettotalcustpoSoapOut">
+    <wsdl:part name="parameters" element="tns:gettotalcustpoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getcustpoSoapIn">
+    <wsdl:part name="parameters" element="tns:getcustpo" />
+  </wsdl:message>
+  <wsdl:message name="getcustpoSoapOut">
+    <wsdl:part name="parameters" element="tns:getcustpoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getmodelsSoapIn">
+    <wsdl:part name="parameters" element="tns:getmodels" />
+  </wsdl:message>
+  <wsdl:message name="getmodelsSoapOut">
+    <wsdl:part name="parameters" element="tns:getmodelsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDOitemSoapIn">
+    <wsdl:part name="parameters" element="tns:getDOitem" />
+  </wsdl:message>
+  <wsdl:message name="getDOitemSoapOut">
+    <wsdl:part name="parameters" element="tns:getDOitemResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkIfBadgeIsvalidSoapIn">
+    <wsdl:part name="parameters" element="tns:checkIfBadgeIsvalid" />
+  </wsdl:message>
+  <wsdl:message name="checkIfBadgeIsvalidSoapOut">
+    <wsdl:part name="parameters" element="tns:checkIfBadgeIsvalidResponse" />
+  </wsdl:message>
+  <wsdl:message name="cyclecountinsert_data_to_tableSoapIn">
+    <wsdl:part name="parameters" element="tns:cyclecountinsert_data_to_table" />
+  </wsdl:message>
+  <wsdl:message name="cyclecountinsert_data_to_tableSoapOut">
+    <wsdl:part name="parameters" element="tns:cyclecountinsert_data_to_tableResponse" />
+  </wsdl:message>
+  <wsdl:message name="WHSTOCKSAPSoapIn">
+    <wsdl:part name="parameters" element="tns:WHSTOCKSAP" />
+  </wsdl:message>
+  <wsdl:message name="WHSTOCKSAPSoapOut">
+    <wsdl:part name="parameters" element="tns:WHSTOCKSAPResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ThirdServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LOGINSMTPULLLISTENTRY">
+      <wsdl:input message="tns:LOGINSMTPULLLISTENTRYSoapIn" />
+      <wsdl:output message="tns:LOGINSMTPULLLISTENTRYSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QTYPERREELPULLLISTENTRY">
+      <wsdl:input message="tns:QTYPERREELPULLLISTENTRYSoapIn" />
+      <wsdl:output message="tns:QTYPERREELPULLLISTENTRYSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GETDATAFROMSMTPULLLIST">
+      <wsdl:input message="tns:GETDATAFROMSMTPULLLISTSoapIn" />
+      <wsdl:output message="tns:GETDATAFROMSMTPULLLISTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DELETEFROMSMTPULLLIST">
+      <wsdl:input message="tns:DELETEFROMSMTPULLLISTSoapIn" />
+      <wsdl:output message="tns:DELETEFROMSMTPULLLISTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GETMATERIALQUANTITYPERREEL">
+      <wsdl:input message="tns:GETMATERIALQUANTITYPERREELSoapIn" />
+      <wsdl:output message="tns:GETMATERIALQUANTITYPERREELSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SAVEPULLLISTDATA">
+      <wsdl:input message="tns:SAVEPULLLISTDATASoapIn" />
+      <wsdl:output message="tns:SAVEPULLLISTDATASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPalletNoCount">
+      <wsdl:input message="tns:getPalletNoCountSoapIn" />
+      <wsdl:output message="tns:getPalletNoCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="gettotalcustpo">
+      <wsdl:input message="tns:gettotalcustpoSoapIn" />
+      <wsdl:output message="tns:gettotalcustpoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getcustpo">
+      <wsdl:input message="tns:getcustpoSoapIn" />
+      <wsdl:output message="tns:getcustpoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getmodels">
+      <wsdl:input message="tns:getmodelsSoapIn" />
+      <wsdl:output message="tns:getmodelsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDOitem">
+      <wsdl:input message="tns:getDOitemSoapIn" />
+      <wsdl:output message="tns:getDOitemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkIfBadgeIsvalid">
+      <wsdl:input message="tns:checkIfBadgeIsvalidSoapIn" />
+      <wsdl:output message="tns:checkIfBadgeIsvalidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="cyclecountinsert_data_to_table">
+      <wsdl:input message="tns:cyclecountinsert_data_to_tableSoapIn" />
+      <wsdl:output message="tns:cyclecountinsert_data_to_tableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WHSTOCKSAP">
+      <wsdl:input message="tns:WHSTOCKSAPSoapIn" />
+      <wsdl:output message="tns:WHSTOCKSAPSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ThirdServiceSoap" type="tns:ThirdServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LOGINSMTPULLLISTENTRY">
+      <soap:operation soapAction="http://tempuri.org/LOGINSMTPULLLISTENTRY" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QTYPERREELPULLLISTENTRY">
+      <soap:operation soapAction="http://tempuri.org/QTYPERREELPULLLISTENTRY" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GETDATAFROMSMTPULLLIST">
+      <soap:operation soapAction="http://tempuri.org/GETDATAFROMSMTPULLLIST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DELETEFROMSMTPULLLIST">
+      <soap:operation soapAction="http://tempuri.org/DELETEFROMSMTPULLLIST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GETMATERIALQUANTITYPERREEL">
+      <soap:operation soapAction="http://tempuri.org/GETMATERIALQUANTITYPERREEL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SAVEPULLLISTDATA">
+      <soap:operation soapAction="http://tempuri.org/SAVEPULLLISTDATA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPalletNoCount">
+      <soap:operation soapAction="http://tempuri.org/getPalletNoCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettotalcustpo">
+      <soap:operation soapAction="http://tempuri.org/gettotalcustpo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getcustpo">
+      <soap:operation soapAction="http://tempuri.org/getcustpo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getmodels">
+      <soap:operation soapAction="http://tempuri.org/getmodels" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDOitem">
+      <soap:operation soapAction="http://tempuri.org/getDOitem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkIfBadgeIsvalid">
+      <soap:operation soapAction="http://tempuri.org/checkIfBadgeIsvalid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cyclecountinsert_data_to_table">
+      <soap:operation soapAction="http://tempuri.org/cyclecountinsert_data_to_table" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WHSTOCKSAP">
+      <soap:operation soapAction="http://tempuri.org/WHSTOCKSAP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ThirdServiceSoap12" type="tns:ThirdServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LOGINSMTPULLLISTENTRY">
+      <soap12:operation soapAction="http://tempuri.org/LOGINSMTPULLLISTENTRY" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QTYPERREELPULLLISTENTRY">
+      <soap12:operation soapAction="http://tempuri.org/QTYPERREELPULLLISTENTRY" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GETDATAFROMSMTPULLLIST">
+      <soap12:operation soapAction="http://tempuri.org/GETDATAFROMSMTPULLLIST" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DELETEFROMSMTPULLLIST">
+      <soap12:operation soapAction="http://tempuri.org/DELETEFROMSMTPULLLIST" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GETMATERIALQUANTITYPERREEL">
+      <soap12:operation soapAction="http://tempuri.org/GETMATERIALQUANTITYPERREEL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SAVEPULLLISTDATA">
+      <soap12:operation soapAction="http://tempuri.org/SAVEPULLLISTDATA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPalletNoCount">
+      <soap12:operation soapAction="http://tempuri.org/getPalletNoCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gettotalcustpo">
+      <soap12:operation soapAction="http://tempuri.org/gettotalcustpo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getcustpo">
+      <soap12:operation soapAction="http://tempuri.org/getcustpo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getmodels">
+      <soap12:operation soapAction="http://tempuri.org/getmodels" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDOitem">
+      <soap12:operation soapAction="http://tempuri.org/getDOitem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkIfBadgeIsvalid">
+      <soap12:operation soapAction="http://tempuri.org/checkIfBadgeIsvalid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cyclecountinsert_data_to_table">
+      <soap12:operation soapAction="http://tempuri.org/cyclecountinsert_data_to_table" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WHSTOCKSAP">
+      <soap12:operation soapAction="http://tempuri.org/WHSTOCKSAP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ThirdService">
+    <wsdl:port name="ThirdServiceSoap" binding="tns:ThirdServiceSoap">
+      <soap:address location="http://172.16.206.19/paRT_INFO/ThirdService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ThirdServiceSoap12" binding="tns:ThirdServiceSoap12">
+      <soap12:address location="http://172.16.206.19/paRT_INFO/ThirdService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

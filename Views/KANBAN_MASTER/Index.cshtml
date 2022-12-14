@@ -22,13 +22,19 @@
     @{ if (ViewBag.role != "supervisor")
         {
             @Html.ActionLink("Create Slider Address", "CreateSliderKanban")
-          }
+        }
     }
     <hr />
     @{ if (ViewBag.role != "supervisor")
         {
-           @Html.ActionLink("Modify Line output", "Index", "SUPERMARKET_LINE_CAPACITY")
-       }
+            @Html.ActionLink("Modify Line output", "Index", "SUPERMARKET_LINE_CAPACITY")
+        }
+    }
+    <hr />
+    @{ if (ViewBag.role != "supervisor")
+        {
+            @Html.ActionLink("Packaging Information", "Index", "PACKAGING_INFO")
+        }
     }
     <hr />
 
