@@ -53,8 +53,13 @@
             <input type="submit" value="Generate" />
         </div>
         <div>
+            <p style="font-size:24px">Total empty Rack : @Html.Raw(ViewBag.EmptyCount)</p>
+        </div>
+        <div>
             <table class="table table-bordered">
                 @{
+                    int emptyCount = 0;
+
                     for (int i = 0; i < ViewBag.numberOfRows.Count; i++)
                     {
                         <tr>
@@ -183,6 +188,7 @@
                                                             else
                                                             {
                                                                 <td>
+                                                                    @{ emptyCount++; }
                                                                     <p>Empty</p>
                                                                 </td>
                                                             }
@@ -341,6 +347,7 @@
                                                             else
                                                             {
                                                                 <td>
+                                                                    @{ emptyCount++; }
                                                                     <p>Empty</p>
                                                                 </td>
                                                             }

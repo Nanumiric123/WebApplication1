@@ -480,6 +480,7 @@
     <Content Include="Views\RACKS_WAREHOUSE\Details.cshtml" />
     <Content Include="Views\RACKS_WAREHOUSE\Edit.cshtml" />
     <Content Include="Views\RACKS_WAREHOUSE\Index.cshtml" />
+    <Content Include="Views\RACKS_WAREHOUSE\DisplayView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

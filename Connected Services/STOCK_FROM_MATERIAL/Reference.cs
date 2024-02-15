@@ -37,6 +37,20 @@ namespace WebApplication1.STOCK_FROM_MATERIAL {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/materials", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataTable> materialsAsync(string stge_bin);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/materials_2602", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable materials_2602(string stge_bin);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/materials_2602", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> materials_2602Async(string stge_bin);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/materials_2601", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable materials_2601(string stge_bin);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/materials_2601", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> materials_2601Async(string stge_bin);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/materials_2002_2005", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataTable materials_2002_2005(string stge_bin, string storage_location);
@@ -142,12 +156,61 @@ namespace WebApplication1.STOCK_FROM_MATERIAL {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/PART_FROM_STORAGE_TYPE_STORAGE_BIN", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataTable> PART_FROM_STORAGE_TYPE_STORAGE_BINAsync(string stge_type, string stge_bin);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/submitdata_smt_MAGAZINE", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string submitdata_smt_MAGAZINE(string material, string batch, string storage_bin);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/submitdata_smt_MAGAZINE", ReplyAction="*")]
+        System.Threading.Tasks.Task<string> submitdata_smt_MAGAZINEAsync(string material, string batch, string storage_bin);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GET_STOCK_FROM_MATERIAL", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataTable GET_STOCK_FROM_MATERIAL(string material);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GET_STOCK_FROM_MATERIAL", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataTable> GET_STOCK_FROM_MATERIALAsync(string material);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/break_barcode_to_array", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string[] break_barcode_to_array(string input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/break_barcode_to_array", ReplyAction="*")]
+        System.Threading.Tasks.Task<string[]> break_barcode_to_arrayAsync(string input);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/submitdata_smt_inventory", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string submitdata_smt_inventory(string material, string batch, string quantity, string reel_num);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/submitdata_smt_inventory", ReplyAction="*")]
+        System.Threading.Tasks.Task<string> submitdata_smt_inventoryAsync(string material, string batch, string quantity, string reel_num);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GET_MATERIAL_FROM_TF001", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool GET_MATERIAL_FROM_TF001(string material);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GET_MATERIAL_FROM_TF001", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> GET_MATERIAL_FROM_TF001Async(string material);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CHECKSTOCKIN2501", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool CHECKSTOCKIN2501(string material);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CHECKSTOCKIN2501", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> CHECKSTOCKIN2501Async(string material);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CHECKSTOCKIN2505", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool CHECKSTOCKIN2505(string material);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CHECKSTOCKIN2505", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> CHECKSTOCKIN2505Async(string material);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CHECKSTOCKIN2504", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        bool CHECKSTOCKIN2504(string material);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CHECKSTOCKIN2504", ReplyAction="*")]
+        System.Threading.Tasks.Task<bool> CHECKSTOCKIN2504Async(string material);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -199,6 +262,22 @@ namespace WebApplication1.STOCK_FROM_MATERIAL {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> materialsAsync(string stge_bin) {
             return base.Channel.materialsAsync(stge_bin);
+        }
+        
+        public System.Data.DataTable materials_2602(string stge_bin) {
+            return base.Channel.materials_2602(stge_bin);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> materials_2602Async(string stge_bin) {
+            return base.Channel.materials_2602Async(stge_bin);
+        }
+        
+        public System.Data.DataTable materials_2601(string stge_bin) {
+            return base.Channel.materials_2601(stge_bin);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> materials_2601Async(string stge_bin) {
+            return base.Channel.materials_2601Async(stge_bin);
         }
         
         public System.Data.DataTable materials_2002_2005(string stge_bin, string storage_location) {
@@ -321,12 +400,68 @@ namespace WebApplication1.STOCK_FROM_MATERIAL {
             return base.Channel.PART_FROM_STORAGE_TYPE_STORAGE_BINAsync(stge_type, stge_bin);
         }
         
+        public string submitdata_smt_MAGAZINE(string material, string batch, string storage_bin) {
+            return base.Channel.submitdata_smt_MAGAZINE(material, batch, storage_bin);
+        }
+        
+        public System.Threading.Tasks.Task<string> submitdata_smt_MAGAZINEAsync(string material, string batch, string storage_bin) {
+            return base.Channel.submitdata_smt_MAGAZINEAsync(material, batch, storage_bin);
+        }
+        
         public System.Data.DataTable GET_STOCK_FROM_MATERIAL(string material) {
             return base.Channel.GET_STOCK_FROM_MATERIAL(material);
         }
         
         public System.Threading.Tasks.Task<System.Data.DataTable> GET_STOCK_FROM_MATERIALAsync(string material) {
             return base.Channel.GET_STOCK_FROM_MATERIALAsync(material);
+        }
+        
+        public string[] break_barcode_to_array(string input) {
+            return base.Channel.break_barcode_to_array(input);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> break_barcode_to_arrayAsync(string input) {
+            return base.Channel.break_barcode_to_arrayAsync(input);
+        }
+        
+        public string submitdata_smt_inventory(string material, string batch, string quantity, string reel_num) {
+            return base.Channel.submitdata_smt_inventory(material, batch, quantity, reel_num);
+        }
+        
+        public System.Threading.Tasks.Task<string> submitdata_smt_inventoryAsync(string material, string batch, string quantity, string reel_num) {
+            return base.Channel.submitdata_smt_inventoryAsync(material, batch, quantity, reel_num);
+        }
+        
+        public bool GET_MATERIAL_FROM_TF001(string material) {
+            return base.Channel.GET_MATERIAL_FROM_TF001(material);
+        }
+        
+        public System.Threading.Tasks.Task<bool> GET_MATERIAL_FROM_TF001Async(string material) {
+            return base.Channel.GET_MATERIAL_FROM_TF001Async(material);
+        }
+        
+        public bool CHECKSTOCKIN2501(string material) {
+            return base.Channel.CHECKSTOCKIN2501(material);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CHECKSTOCKIN2501Async(string material) {
+            return base.Channel.CHECKSTOCKIN2501Async(material);
+        }
+        
+        public bool CHECKSTOCKIN2505(string material) {
+            return base.Channel.CHECKSTOCKIN2505(material);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CHECKSTOCKIN2505Async(string material) {
+            return base.Channel.CHECKSTOCKIN2505Async(material);
+        }
+        
+        public bool CHECKSTOCKIN2504(string material) {
+            return base.Channel.CHECKSTOCKIN2504(material);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CHECKSTOCKIN2504Async(string material) {
+            return base.Channel.CHECKSTOCKIN2504Async(material);
         }
     }
 }

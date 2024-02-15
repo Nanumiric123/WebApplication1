@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="Qq8Bn1cJqEdvk7LMOwdETxbIHCREPZszfVu74dPmM7Y=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="7gR3vKr9GOSLBoV/660/akYv4DyjeJAY+Fw7gYyCSss=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="get_part_quantity_from_binSoap1">
       <properties>

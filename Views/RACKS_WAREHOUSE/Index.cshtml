@@ -8,10 +8,27 @@
 
 @using (Html.BeginForm("Index", "RACKS_WAREHOUSE", FormMethod.Get))
 {
-    <p>
-        Search Rack Number : @Html.TextBox("searchRacks")
-        <input type="submit" value="Search" />
-    </p>
+    <table>
+        <tr>
+            <td>
+                <p>
+                    Search Rack Number : @Html.TextBox("searchRacks")
+                    <input type="submit" value="Search" />
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    Search Rack Type : @Html.TextBox("searchRackTyp")
+                    <input type="submit" value="Search" />
+                </p>
+            </td>
+        </tr>
+    </table>
+
+
+
 }
 
 <p>

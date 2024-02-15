@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:element name="HelloWorld">
@@ -44,6 +44,48 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="materialsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="materials_2602">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stge_bin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="materials_2602Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="materials_2602Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="materials_2601">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stge_bin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="materials_2601Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="materials_2601Result">
               <s:complexType>
                 <s:sequence>
                   <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
@@ -352,6 +394,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="submitdata_smt_MAGAZINE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="batch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="storage_bin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="submitdata_smt_MAGAZINEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="submitdata_smt_MAGAZINEResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GET_STOCK_FROM_MATERIAL">
         <s:complexType>
           <s:sequence>
@@ -370,6 +428,98 @@
                 </s:sequence>
               </s:complexType>
             </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="break_barcode_to_array">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="input" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="break_barcode_to_arrayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="break_barcode_to_arrayResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="submitdata_smt_inventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="batch" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="quantity" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reel_num" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="submitdata_smt_inventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="submitdata_smt_inventoryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_MATERIAL_FROM_TF001">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_MATERIAL_FROM_TF001Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GET_MATERIAL_FROM_TF001Result" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CHECKSTOCKIN2501">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CHECKSTOCKIN2501Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CHECKSTOCKIN2501Result" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CHECKSTOCKIN2505">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CHECKSTOCKIN2505Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CHECKSTOCKIN2505Result" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CHECKSTOCKIN2504">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="material" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CHECKSTOCKIN2504Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CHECKSTOCKIN2504Result" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -392,6 +542,18 @@
   </wsdl:message>
   <wsdl:message name="materialsSoapOut">
     <wsdl:part name="parameters" element="tns:materialsResponse" />
+  </wsdl:message>
+  <wsdl:message name="materials_2602SoapIn">
+    <wsdl:part name="parameters" element="tns:materials_2602" />
+  </wsdl:message>
+  <wsdl:message name="materials_2602SoapOut">
+    <wsdl:part name="parameters" element="tns:materials_2602Response" />
+  </wsdl:message>
+  <wsdl:message name="materials_2601SoapIn">
+    <wsdl:part name="parameters" element="tns:materials_2601" />
+  </wsdl:message>
+  <wsdl:message name="materials_2601SoapOut">
+    <wsdl:part name="parameters" element="tns:materials_2601Response" />
   </wsdl:message>
   <wsdl:message name="materials_2002_2005SoapIn">
     <wsdl:part name="parameters" element="tns:materials_2002_2005" />
@@ -483,11 +645,53 @@
   <wsdl:message name="PART_FROM_STORAGE_TYPE_STORAGE_BINSoapOut">
     <wsdl:part name="parameters" element="tns:PART_FROM_STORAGE_TYPE_STORAGE_BINResponse" />
   </wsdl:message>
+  <wsdl:message name="submitdata_smt_MAGAZINESoapIn">
+    <wsdl:part name="parameters" element="tns:submitdata_smt_MAGAZINE" />
+  </wsdl:message>
+  <wsdl:message name="submitdata_smt_MAGAZINESoapOut">
+    <wsdl:part name="parameters" element="tns:submitdata_smt_MAGAZINEResponse" />
+  </wsdl:message>
   <wsdl:message name="GET_STOCK_FROM_MATERIALSoapIn">
     <wsdl:part name="parameters" element="tns:GET_STOCK_FROM_MATERIAL" />
   </wsdl:message>
   <wsdl:message name="GET_STOCK_FROM_MATERIALSoapOut">
     <wsdl:part name="parameters" element="tns:GET_STOCK_FROM_MATERIALResponse" />
+  </wsdl:message>
+  <wsdl:message name="break_barcode_to_arraySoapIn">
+    <wsdl:part name="parameters" element="tns:break_barcode_to_array" />
+  </wsdl:message>
+  <wsdl:message name="break_barcode_to_arraySoapOut">
+    <wsdl:part name="parameters" element="tns:break_barcode_to_arrayResponse" />
+  </wsdl:message>
+  <wsdl:message name="submitdata_smt_inventorySoapIn">
+    <wsdl:part name="parameters" element="tns:submitdata_smt_inventory" />
+  </wsdl:message>
+  <wsdl:message name="submitdata_smt_inventorySoapOut">
+    <wsdl:part name="parameters" element="tns:submitdata_smt_inventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_MATERIAL_FROM_TF001SoapIn">
+    <wsdl:part name="parameters" element="tns:GET_MATERIAL_FROM_TF001" />
+  </wsdl:message>
+  <wsdl:message name="GET_MATERIAL_FROM_TF001SoapOut">
+    <wsdl:part name="parameters" element="tns:GET_MATERIAL_FROM_TF001Response" />
+  </wsdl:message>
+  <wsdl:message name="CHECKSTOCKIN2501SoapIn">
+    <wsdl:part name="parameters" element="tns:CHECKSTOCKIN2501" />
+  </wsdl:message>
+  <wsdl:message name="CHECKSTOCKIN2501SoapOut">
+    <wsdl:part name="parameters" element="tns:CHECKSTOCKIN2501Response" />
+  </wsdl:message>
+  <wsdl:message name="CHECKSTOCKIN2505SoapIn">
+    <wsdl:part name="parameters" element="tns:CHECKSTOCKIN2505" />
+  </wsdl:message>
+  <wsdl:message name="CHECKSTOCKIN2505SoapOut">
+    <wsdl:part name="parameters" element="tns:CHECKSTOCKIN2505Response" />
+  </wsdl:message>
+  <wsdl:message name="CHECKSTOCKIN2504SoapIn">
+    <wsdl:part name="parameters" element="tns:CHECKSTOCKIN2504" />
+  </wsdl:message>
+  <wsdl:message name="CHECKSTOCKIN2504SoapOut">
+    <wsdl:part name="parameters" element="tns:CHECKSTOCKIN2504Response" />
   </wsdl:message>
   <wsdl:portType name="get_part_quantity_from_binSoap">
     <wsdl:operation name="HelloWorld">
@@ -501,6 +705,14 @@
     <wsdl:operation name="materials">
       <wsdl:input message="tns:materialsSoapIn" />
       <wsdl:output message="tns:materialsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="materials_2602">
+      <wsdl:input message="tns:materials_2602SoapIn" />
+      <wsdl:output message="tns:materials_2602SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="materials_2601">
+      <wsdl:input message="tns:materials_2601SoapIn" />
+      <wsdl:output message="tns:materials_2601SoapOut" />
     </wsdl:operation>
     <wsdl:operation name="materials_2002_2005">
       <wsdl:input message="tns:materials_2002_2005SoapIn" />
@@ -562,9 +774,37 @@
       <wsdl:input message="tns:PART_FROM_STORAGE_TYPE_STORAGE_BINSoapIn" />
       <wsdl:output message="tns:PART_FROM_STORAGE_TYPE_STORAGE_BINSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="submitdata_smt_MAGAZINE">
+      <wsdl:input message="tns:submitdata_smt_MAGAZINESoapIn" />
+      <wsdl:output message="tns:submitdata_smt_MAGAZINESoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GET_STOCK_FROM_MATERIAL">
       <wsdl:input message="tns:GET_STOCK_FROM_MATERIALSoapIn" />
       <wsdl:output message="tns:GET_STOCK_FROM_MATERIALSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="break_barcode_to_array">
+      <wsdl:input message="tns:break_barcode_to_arraySoapIn" />
+      <wsdl:output message="tns:break_barcode_to_arraySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="submitdata_smt_inventory">
+      <wsdl:input message="tns:submitdata_smt_inventorySoapIn" />
+      <wsdl:output message="tns:submitdata_smt_inventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_MATERIAL_FROM_TF001">
+      <wsdl:input message="tns:GET_MATERIAL_FROM_TF001SoapIn" />
+      <wsdl:output message="tns:GET_MATERIAL_FROM_TF001SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CHECKSTOCKIN2501">
+      <wsdl:input message="tns:CHECKSTOCKIN2501SoapIn" />
+      <wsdl:output message="tns:CHECKSTOCKIN2501SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CHECKSTOCKIN2505">
+      <wsdl:input message="tns:CHECKSTOCKIN2505SoapIn" />
+      <wsdl:output message="tns:CHECKSTOCKIN2505SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CHECKSTOCKIN2504">
+      <wsdl:input message="tns:CHECKSTOCKIN2504SoapIn" />
+      <wsdl:output message="tns:CHECKSTOCKIN2504SoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="get_part_quantity_from_binSoap" type="tns:get_part_quantity_from_binSoap">
@@ -589,6 +829,24 @@
     </wsdl:operation>
     <wsdl:operation name="materials">
       <soap:operation soapAction="http://tempuri.org/materials" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="materials_2602">
+      <soap:operation soapAction="http://tempuri.org/materials_2602" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="materials_2601">
+      <soap:operation soapAction="http://tempuri.org/materials_2601" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -731,8 +989,71 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="submitdata_smt_MAGAZINE">
+      <soap:operation soapAction="http://tempuri.org/submitdata_smt_MAGAZINE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GET_STOCK_FROM_MATERIAL">
       <soap:operation soapAction="http://tempuri.org/GET_STOCK_FROM_MATERIAL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="break_barcode_to_array">
+      <soap:operation soapAction="http://tempuri.org/break_barcode_to_array" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitdata_smt_inventory">
+      <soap:operation soapAction="http://tempuri.org/submitdata_smt_inventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_MATERIAL_FROM_TF001">
+      <soap:operation soapAction="http://tempuri.org/GET_MATERIAL_FROM_TF001" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CHECKSTOCKIN2501">
+      <soap:operation soapAction="http://tempuri.org/CHECKSTOCKIN2501" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CHECKSTOCKIN2505">
+      <soap:operation soapAction="http://tempuri.org/CHECKSTOCKIN2505" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CHECKSTOCKIN2504">
+      <soap:operation soapAction="http://tempuri.org/CHECKSTOCKIN2504" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -763,6 +1084,24 @@
     </wsdl:operation>
     <wsdl:operation name="materials">
       <soap12:operation soapAction="http://tempuri.org/materials" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="materials_2602">
+      <soap12:operation soapAction="http://tempuri.org/materials_2602" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="materials_2601">
+      <soap12:operation soapAction="http://tempuri.org/materials_2601" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -905,8 +1244,71 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="submitdata_smt_MAGAZINE">
+      <soap12:operation soapAction="http://tempuri.org/submitdata_smt_MAGAZINE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GET_STOCK_FROM_MATERIAL">
       <soap12:operation soapAction="http://tempuri.org/GET_STOCK_FROM_MATERIAL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="break_barcode_to_array">
+      <soap12:operation soapAction="http://tempuri.org/break_barcode_to_array" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitdata_smt_inventory">
+      <soap12:operation soapAction="http://tempuri.org/submitdata_smt_inventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_MATERIAL_FROM_TF001">
+      <soap12:operation soapAction="http://tempuri.org/GET_MATERIAL_FROM_TF001" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CHECKSTOCKIN2501">
+      <soap12:operation soapAction="http://tempuri.org/CHECKSTOCKIN2501" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CHECKSTOCKIN2505">
+      <soap12:operation soapAction="http://tempuri.org/CHECKSTOCKIN2505" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CHECKSTOCKIN2504">
+      <soap12:operation soapAction="http://tempuri.org/CHECKSTOCKIN2504" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -2067,16 +2067,21 @@ namespace WebApplication1.Controllers
             var dataFromDB = db.RACKS_WAREHOUSE.ToList();
             ViewBag.listOfRacks = (from s in dataFromDB.Select(p => p.RACK_TYPE) select s).Distinct().ToList();
 
+
             if (rackTyp.IsNullOrWhiteSpace())
             {
+                int empty = 0;
                 rackTyp = "Rack F";
-                var rackNumbersList = (from s in dataFromDB where s.RACK_TYPE.Equals(rackTyp) select s).ToList();
+                var rackNumbersList = (from s in dataFromDB orderby s.RACK_NUMBER where s.RACK_TYPE.Equals(rackTyp) select s).ToList();
                 var cols = rackNumbersList.Select(p => p.RACK_NUMBER.Substring(1, 2)).Distinct().ToList();
                 var rows = rackNumbersList.Select(p => p.RACK_NUMBER.Substring(3, 1)).Distinct().ToList();
                 foreach (var i in rackNumbersList)
                 {
                     DataRow[] dr = DataFromSAP.Select("bin = '" + i.RACK_NUMBER + "'");
-
+                    if (dr.Length <= 0)
+                    {
+                        empty++;
+                    }
                     foreach (DataRow t in dr)
                     {
                         WM2002DATA temp = new WM2002DATA();
@@ -2105,17 +2110,22 @@ namespace WebApplication1.Controllers
                 ViewBag.numberOfRows = cols;
                 ViewBag.numberOfCols = rows;
                 ViewBag.RackType = data[0].BIN.Substring(0, 1);
+                ViewBag.EmptyCount = empty;
 
             }
             else
             {
-                var rackNumbersList = (from s in dataFromDB where s.RACK_TYPE.Equals(rackTyp) select s).ToList();
+                int empty = 0;
+                var rackNumbersList = (from s in dataFromDB orderby s.RACK_NUMBER where s.RACK_TYPE.Equals(rackTyp) select s).ToList();
                 var cols = rackNumbersList.Select(p => p.RACK_NUMBER.Substring(1, 2)).Distinct().ToList();
                 var rows = rackNumbersList.Select(p => p.RACK_NUMBER.Substring(3, 1)).Distinct().ToList();
                 foreach (var i in rackNumbersList)
                 {
                     DataRow[] dr = DataFromSAP.Select("bin = '" + i.RACK_NUMBER + "'");
-
+                    if (dr.Length <= 0)
+                    {
+                        empty++;
+                    }
                     foreach (DataRow t in dr)
                     {
                         WM2002DATA temp = new WM2002DATA();
@@ -2144,6 +2154,7 @@ namespace WebApplication1.Controllers
                 ViewBag.numberOfRows = cols;
                 ViewBag.numberOfCols = rows;
                 ViewBag.RackType = data[0].BIN.Substring(0, 1);
+                ViewBag.EmptyCount = empty;
             }
 
             return View(data);

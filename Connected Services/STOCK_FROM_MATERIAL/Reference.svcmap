@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ed95a9a6-63a8-4efc-ba66-ae45f6f4909a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="ed95a9a6-63a8-4efc-ba66-ae45f6f4909a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,8 +22,8 @@
     <MetadataSource Address="http://172.16.206.19/PART_INFO/get_part_quantity_from_bin.asmx?op=GET_STOCK_FROM_MATERIAL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="get_part_quantity_from_bin.disco" MetadataType="Disco" ID="8bcdcf5d-1903-4536-a6eb-734c6eff0c59" SourceId="1" SourceUrl="http://172.16.206.19/PART_INFO/get_part_quantity_from_bin.asmx?disco" />
     <MetadataFile FileName="get_part_quantity_from_bin.wsdl" MetadataType="Wsdl" ID="cd90839a-4fae-461a-aa37-49817023b967" SourceId="1" SourceUrl="http://172.16.206.19/PART_INFO/get_part_quantity_from_bin.asmx?wsdl" />
+    <MetadataFile FileName="get_part_quantity_from_bin.disco" MetadataType="Disco" ID="8bcdcf5d-1903-4536-a6eb-734c6eff0c59" SourceId="1" SourceUrl="http://172.16.206.19/PART_INFO/get_part_quantity_from_bin.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

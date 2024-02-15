@@ -17,15 +17,20 @@ namespace WebApplication1.Controllers
         private WebApplication1Context db = new WebApplication1Context();
 
         // GET: RACKS_WAREHOUSE
-        public ActionResult Index(string searchRacks)
+        public ActionResult Index(string searchRacks,string searchRackTyp)
         {
-            if (searchRacks.IsNullOrWhiteSpace())
+            if (!searchRacks.IsNullOrWhiteSpace())
             {
-                return View(db.RACKS_WAREHOUSE.ToList());
+                return View(db.RACKS_WAREHOUSE.Where(x => x.RACK_NUMBER.Equals(searchRacks)).ToList());
+            }
+            else if (!searchRackTyp.IsNullOrWhiteSpace())
+            {
+                return View(db.RACKS_WAREHOUSE.Where(x => x.RACK_TYPE.Equals(searchRackTyp)).ToList());
             }
             else
             {
-                return View(db.RACKS_WAREHOUSE.Where(x => x.RACK_NUMBER.Equals(searchRacks)).ToList());
+                return View(db.RACKS_WAREHOUSE.ToList());
+               
             }
 
         }
